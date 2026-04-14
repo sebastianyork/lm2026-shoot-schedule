@@ -1,0 +1,1874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LM 2026 Recap Reel Shoot</title>
+  <style>
+    :root {
+      --red: #C8102E;
+      --red-dark: #a00d24;
+      --red-light: #fff0f2;
+      --bg: #f2f2f7;
+      --card: #ffffff;
+      --text: #1c1c1e;
+      --muted: #6c6c70;
+      --border: #d8d8dc;
+      --green: #30d158;
+      --green-bg: #e6f9ed;
+      --blue: #0071e3;
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --r: 14px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', sans-serif; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    .header {
+      background: linear-gradient(135deg, #2c2c2e 0%, #1c1c1e 100%);
+      color: white;
+      padding: 30px 20px 20px;
+    }
+    .header-inner {
+      max-width: 880px;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .header h1 { font-size: 30px; font-weight: 700; letter-spacing: -0.4px; }
+    .header .sub { font-size: 13px; opacity: 0.8; margin-top: 4px; }
+    .header-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .btn-header {
+      background: rgba(255,255,255,0.18);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.32);
+      border-radius: 8px;
+      padding: 7px 14px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s;
+    }
+    .btn-header:hover { background: rgba(255,255,255,0.28); }
+
+    /* ── Tab Bar ── */
+    .tabbar-wrap {
+      background: linear-gradient(135deg, #2c2c2e 0%, #1c1c1e 100%);
+      border-bottom: 1px solid rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .tabbar {
+      max-width: 880px;
+      margin: 0 auto;
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      padding: 0 4px;
+    }
+    .tabbar::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      flex-shrink: 0;
+      padding: 11px 13px;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.65);
+      font-size: 12.5px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: inherit;
+      position: relative;
+      transition: color 0.15s;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .tab-btn:hover { color: rgba(255,255,255,0.9); }
+    .tab-btn.active { color: white; font-weight: 700; }
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 8px; right: 8px;
+      height: 2.5px;
+      background: white;
+      border-radius: 2px 2px 0 0;
+    }
+    .tab-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      flex-shrink: 0;
+    }
+    .tab-dot.filled { background: var(--green); }
+
+    /* ── Main ── */
+    .main {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 24px 16px 80px;
+    }
+    .day-panel { display: none; }
+    .day-panel.active { display: block; }
+
+    /* ── Day Header ── */
+    .day-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .day-header h2 {
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+    .progress-pill {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 5px 13px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .progress-pill .pbar {
+      width: 60px;
+      height: 5px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-pill .pbar-fill {
+      height: 100%;
+      background: var(--green);
+      border-radius: 3px;
+      transition: width 0.3s ease;
+    }
+
+    /* ── Info Card ── */
+    .info-card {
+      background: var(--card);
+      border-radius: var(--r);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 580px) { .info-card { grid-template-columns: 1fr; } }
+    .info-field label {
+      display: block;
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .info-field .field-icon { margin-right: 4px; }
+    .info-field input {
+      width: 100%;
+      border: 1.5px solid var(--border);
+      border-radius: 9px;
+      padding: 8px 11px;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--text);
+      background: var(--bg);
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .info-field input:focus {
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(200,16,46,0.1);
+    }
+    .info-field input::placeholder { color: #c0c0c5; }
+
+    /* ── Base Camp ── */
+    .basecamp-card {
+      background: var(--card);
+      border-radius: var(--r);
+      padding: 13px 18px;
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-left: 4px solid #2c2c2e;
+    }
+    .basecamp-icon { font-size: 20px; flex-shrink: 0; }
+    .basecamp-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+    .basecamp-address {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    /* ── Section label ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--muted);
+      margin: 20px 0 10px;
+      padding-left: 2px;
+    }
+
+    /* ── Location Card ── */
+    .location-card {
+      background: var(--card);
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .location-header {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      background: #f2f2f7;
+      border-bottom: 1px solid var(--border);
+      padding: 11px 16px;
+      flex-wrap: wrap;
+    }
+    .loc-maps-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11.5px;
+      font-weight: 500;
+      color: #0071e3;
+      text-decoration: none;
+      background: #e8f0fe;
+      border-radius: 6px;
+      padding: 3px 9px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background 0.15s;
+    }
+    .loc-maps-link:hover { background: #d0e4ff; }
+    .loc-pin { font-size: 15px; flex-shrink: 0; }
+    .loc-name-input {
+      flex: 1;
+      border: none;
+      padding: 0;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: inherit;
+      color: var(--text);
+      background: transparent;
+      outline: none;
+      letter-spacing: 0.1px;
+    }
+    .loc-name-input::placeholder { color: #bbb; font-weight: 400; }
+    .btn-remove-loc {
+      background: none;
+      border: none;
+      color: #c0c0c5;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 2px 5px;
+      border-radius: 5px;
+      line-height: 1;
+      flex-shrink: 0;
+      transition: color 0.15s;
+    }
+    .btn-remove-loc:hover { color: var(--red); }
+    /* ── Trainer Tab Bar ── */
+    .trainer-tabs-bar {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      padding: 0 12px;
+      border-bottom: 1px solid var(--border);
+      background: #fafafa;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      min-height: 40px;
+    }
+    .trainer-tabs-bar::-webkit-scrollbar { display: none; }
+    .trainer-tab-wrap {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      padding: 8px 10px 6px;
+      border-bottom: 2.5px solid transparent;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: border-color 0.15s;
+      position: relative;
+    }
+    .trainer-tab-wrap.active {
+      border-bottom-color: var(--red);
+    }
+    .trainer-tab-name {
+      border: none;
+      background: transparent;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+      color: var(--muted);
+      outline: none;
+      cursor: pointer;
+      min-width: 60px;
+      max-width: 120px;
+      padding: 0;
+      transition: color 0.15s;
+    }
+    .trainer-tab-name.active {
+      color: var(--red);
+      font-weight: 700;
+    }
+    .trainer-tab-name::placeholder { color: #ccc; }
+    .btn-remove-trainer {
+      background: none;
+      border: none;
+      color: #ccc;
+      font-size: 13px;
+      cursor: pointer;
+      padding: 1px 2px;
+      border-radius: 3px;
+      line-height: 1;
+      flex-shrink: 0;
+      transition: color 0.15s;
+    }
+    .btn-remove-trainer:hover { color: var(--red); }
+    .btn-add-trainer {
+      flex-shrink: 0;
+      margin-left: 4px;
+      padding: 5px 10px;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+    .btn-add-trainer:hover {
+      border-color: var(--red);
+      color: var(--red);
+      background: var(--red-light);
+    }
+
+    .location-shots {
+      padding: 12px 16px 14px;
+    }
+    .shots-heading {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    /* ── Shot Items ── */
+    .shot-list { margin-bottom: 8px; }
+    .shot-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 5px 4px;
+      border-radius: 7px;
+      transition: background 0.1s;
+    }
+    .shot-item:hover { background: #f9f9fb; }
+    .shot-cb {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      cursor: pointer;
+      accent-color: var(--green);
+    }
+    .shot-text-input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--text);
+      outline: none;
+      padding: 2px 0;
+      transition: color 0.2s;
+      min-width: 0;
+    }
+    .shot-text-input.done {
+      text-decoration: line-through;
+      color: var(--muted);
+    }
+    .shot-text-input::placeholder { color: #c8c8cc; }
+    .btn-remove-shot {
+      background: none;
+      border: none;
+      color: transparent;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 2px 5px;
+      border-radius: 5px;
+      line-height: 1;
+      flex-shrink: 0;
+      transition: color 0.15s;
+    }
+    .shot-item:hover .btn-remove-shot { color: #ccc; }
+    .btn-remove-shot:hover { color: var(--red) !important; }
+
+    /* ── Add Buttons ── */
+    .btn-add-shot {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      width: 100%;
+      padding: 7px 10px;
+      background: none;
+      border: 1.5px dashed var(--border);
+      border-radius: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.15s;
+      margin-top: 4px;
+    }
+    .btn-add-shot:hover {
+      border-color: var(--red);
+      color: var(--red);
+      background: var(--red-light);
+    }
+    .btn-add-location {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 13px;
+      background: var(--card);
+      border: 1.5px dashed var(--border);
+      border-radius: var(--r);
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+      font-family: inherit;
+      cursor: pointer;
+      margin-bottom: 16px;
+      transition: all 0.15s;
+      box-shadow: var(--shadow);
+    }
+    .btn-add-location:hover {
+      border-color: var(--red);
+      color: var(--red);
+      background: var(--red-light);
+    }
+
+    /* ── End of Day ── */
+    .eod-card {
+      background: var(--card);
+      border-radius: var(--r);
+      padding: 18px 20px;
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--red);
+    }
+    .eod-heading {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      color: var(--red);
+      margin-bottom: 14px;
+    }
+    .eod-item {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .eod-item:last-child { border-bottom: none; }
+    .eod-cb {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      cursor: pointer;
+      accent-color: var(--red);
+    }
+    .eod-label {
+      font-size: 14px;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.2s;
+    }
+    .eod-item.checked .eod-label {
+      text-decoration: line-through;
+      color: var(--muted);
+    }
+
+    /* ── Toast ── */
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(90px);
+      background: #1c1c1e;
+      color: white;
+      padding: 11px 22px;
+      border-radius: 22px;
+      font-size: 13.5px;
+      font-weight: 500;
+      z-index: 9999;
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+
+    /* ── Print ── */
+    @media print {
+      .tabbar-wrap, .header-actions, .btn-add-shot, .btn-add-location,
+      .btn-remove-shot, .btn-remove-loc, .toast { display: none !important; }
+      .day-panel { display: block !important; page-break-after: always; }
+      body { background: white; font-size: 12px; }
+      .header { background: var(--red) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div>
+      <h1>LM 2026 Recap Reel Shoot</h1>
+      <p class="sub">Shooting Schedule &nbsp;·&nbsp; 17–26 April 2026</p>
+    </div>
+    <div class="header-actions">
+      <button class="btn-header" onclick="shareState()">🔗 Share Link</button>
+      <button class="btn-header" onclick="exportJSON()">⬇ Export</button>
+      <button class="btn-header" onclick="importJSON()">⬆ Import</button>
+      <button class="btn-header" onclick="window.print()">🖨 Print</button>
+    </div>
+  </div>
+</header>
+
+<div class="tabbar-wrap">
+  <div class="tabbar" id="tabbar"></div>
+</div>
+
+<div class="main" id="main"></div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ─────────────────────────────────────────
+//  HELPERS  (function declarations → hoisted)
+// ─────────────────────────────────────────
+function _id()  { return 'x' + Math.random().toString(36).slice(2,9); }
+function _shots(arr) { return arr.map(t => ({ id: _id(), text: t, done: false })); }
+function _trainer(name, arr) { return { id: _id(), name, shots: _shots(arr) }; }
+function _coaches(arr) {
+  return ['Coach Jamie-Ray','Coach Kim','Coach Cory','Coach Josh','Coach Scott','Coach Dice','Coach Brian','Coach Sherica']
+    .map(n => _trainer(n, arr));
+}
+function _selectedCoaches(names, arr) {
+  return names.map(n => _trainer(n, arr));
+}
+function uid()  { return _id(); }
+function esc(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function allShotsForDay(d) {
+  return d.locations.flatMap(l => l.trainers.flatMap(t => t.shots));
+}
+
+// ─────────────────────────────────────────
+//  INITIAL DATA
+// ─────────────────────────────────────────
+const INITIAL_DAYS = [
+  {
+    id: 'd0417', label: 'Friday, 17 April', tab: 'Fri 17',
+    calltime: '', weather: 'Overcast, 49–63°F, 20% rain', meetAt: 'Battersea Park', dri: 'Tanea Jackson',
+    locations: [
+      { id: 'l417z', name: '📍 Battersea Park Area — Queenstown Rd, Chelsea', activeTrainer: 0,
+        trainers: [_trainer('General', ['Confirm arrival at Battersea Park — Queenstown Rd, Chelsea', 'Scout filming positions in the park'])]
+      },
+      { id: 'l417a', name: 'Battersea Park — Community Engagement (10 AM – 12 PM)', activeTrainer: 0,
+        trainers: [
+          _trainer('Coach Joe Wicks', [
+            '10:00 AM — 200 London school kids arrive',
+            'Apple Fitness+ x Joe Wicks — hour of fitness & movement education',
+            'Joe Wicks greeting Coach Cory',
+            'Joe Wicks greeting Coach Kim',
+            'Joe Wicks & school kids working out',
+            'Joe Wicks & school kids laughing',
+            'Joe Wicks & school kids jumping',
+            'Joe Wicks & school kids running',
+            'Joe Wicks & school kids listening',
+            'Joe Wicks & school kids dancing to music',
+            'Joe Wicks & school kids high fiving each other',
+            'Close-up — Joe Wicks teaching',
+            'Close-up — Joe Wicks talking with students',
+            'Close-up — Joe Wicks exercising',
+            'Close-up — Joe Wicks greeting Apple team members',
+          ]),
+          _trainer('Coach Kim', [
+            'Attend Community Engagement ✅ Required',
+            'Close-up shots of Coach Kim',
+            'DO NOT post any content — event includes minors',
+            'ONLY exception: if Joe Wicks takes a close-up selfie (no one identifiable) — re-share only',
+          ]),
+          _trainer('Coach Cory', [
+            'Attend Community Engagement ✅ Required',
+            'Close-up shots of Coach Cory',
+            'DO NOT post any content — event includes minors',
+            'ONLY exception: if Joe Wicks takes a close-up selfie (no one identifiable) — re-share only',
+          ]),
+        ]
+      },
+      { id: 'l417b', name: 'Production Prep (PM)', activeTrainer: 0,
+        trainers: [
+          _trainer('General', [
+            'Meet Clint — Camera Operator in PM',
+            'Gear check & camera battery charge',
+          ])
+        ]
+      },
+    ],
+    eod: [false, false, false]
+  },
+  {
+    id: 'd0418', label: 'Saturday, 18 April — Prep Day', tab: 'Sat 18',
+    calltime: '', weather: 'Light drizzle, 52–59°F, 27% rain', meetAt: '',
+    locations: [
+      { id: 'l418a', name: 'Prep Day', activeTrainer: 0,
+        trainers: [_trainer('General', [''])]
+      },
+    ],
+    eod: [false, false, false]
+  },
+  {
+    id: 'd0419', label: 'Sunday, 19 April — Arrivals', tab: 'Sun 19',
+    calltime: '', weather: 'Heavy drizzle, 47–54°F, 16% rain', meetAt: '',
+    locations: [
+      { id: 'l419a', name: 'Arrivals', activeTrainer: 0,
+        trainers: [_trainer('General', [''])]
+      },
+    ],
+    eod: [false, false, false]
+  },
+  {
+    id: 'd0420', label: 'Monday, 20 April — Prep / Location Scout Day', tab: 'Mon 20',
+    calltime: '', weather: 'Overcast, 41–59°F, 10% rain', meetAt: '',
+    locations: [
+      { id: 'l420a', name: 'Prep', activeTrainer: 0,
+        trainers: [_trainer('General', [''])]
+      },
+      { id: 'l420b', name: 'Apple Regent Street — 235 Regent St, London W1B 2EL', mapsUrl: 'https://maps.apple.com/?q=Apple+Regent+Street+London&ll=51.5125,-0.1415', activeTrainer: 0,
+        trainers: [
+          _trainer('General', [
+            'Clean shots of decals — morning before foot traffic',
+            'Clean shots — evening with internal store lights on',
+            'Action shots of exterior — people walking by',
+            'Action shots of runners running by',
+            'Shots of people taking selfies with decals',
+            'If possible — F+ trainers in front of decals',
+          ])
+        ]
+      },
+    ],
+    eod: [false, false, false]
+  },
+  {
+    id: 'd0421', label: 'Tuesday, 21 April — Prep', tab: 'Tue 21',
+    calltime: '', weather: 'Overcast, 43–59°F, 21% rain', meetAt: '',
+    locations: [
+      { id: 'l421a', name: 'Prep', activeTrainer: 0,
+        trainers: [_trainer('General', [''])]
+      },
+    ],
+    eod: [false, false, false]
+  },
+  {
+    id: 'd0422', label: 'Wednesday, 22 April', tab: 'Wed 22',
+    calltime: '9:00 AM', weather: 'Light drizzle, 45–53°F, 21% rain', meetAt: 'Battersea Power Station',
+    locations: [
+      { id: 'l422a', name: 'Battersea Power Station — Apple Watch Run Experience (9 AM – 6:30 PM)', activeTrainer: 0,
+        trainers: _selectedCoaches(['Coach Brian','Coach Cory','Coach Josh','Coach Scott','Coach Sherica'], [
+          'Brief 60–70 influencers',
+          'New-to and switchers activation',
+          'Social posts highlighting key Apple Watch features for runners',
+          'Trainer interview pull-asides',
+          'B-roll: Battersea Power Station exterior & event setup',
+          'Wide establishing — full event floor',
+        ])
+      },
+      { id: 'l422b', name: '📋 Social: Apple Watch Experience Tasks', activeTrainer: 0,
+        trainers: [
+          _trainer('Coach Cory', [
+            'Attend Apple Watch Experience ✅ Required',
+            'Re-share Brian\'s selfie video when tagged',
+          ]),
+          _trainer('Coach Josh', [
+            'Attend Apple Watch Experience ✅ Required',
+            'Re-share Brian\'s selfie video when tagged',
+          ]),
+          _trainer('Coach Scott', [
+            'Attend Apple Watch Experience ✅ Required',
+            'Re-share Brian\'s selfie video when tagged',
+          ]),
+          _trainer('Coach Brian', [
+            'Attend Apple Watch Experience ✅ Required',
+            'Record selfie video at installation with full trainer group (before guests arrive)',
+            'Script: "Hey team! We\'re here in London with my Fitness+ teammates learning more about Apple Watch! Let\'s go!"',
+            'Tag Sherica, Cory, Josh, Scott to re-share',
+          ]),
+          _trainer('Coach Sherica', [
+            'Attend Apple Watch Experience ✅ Required',
+            'Re-share Brian\'s selfie video when tagged',
+          ]),
+        ]
+      },
+    ],
+    eod: [false, false, false]
+  },
+  {
+    id: 'd0423', label: 'Thursday, 23 April', tab: 'Thu 23',
+    calltime: '', weather: 'Overcast, 42–66°F, 25% rain', meetAt: '',
+    locations: [
+      { id: 'l423a', name: 'Creator Cohort Welcome Programming — All Trainers', activeTrainer: 0,
+        trainers: _coaches([
+          'Attend Creator Cohort Welcome Programming ✅ All required',
+          'Re-share content when tagged by creators',
+          'Focus on energy & interaction with creators',
+          'Use judgement on re-shares — prioritise creator interaction over atmosphere',
+        ])
+      },
+      { id: 'l423b', name: 'Apple Brompton — TAA Panel + 5K Shakeout Run (6:30 PM – 8:30 PM)', activeTrainer: 0,
+        trainers: [
+          _trainer('Coach Jamie-Ray', [
+            'Attend TAA Panel + 5K Shakeout ✅ Required',
+            'Up to 150 attendees',
+            'Record 5K video diary for Stories',
+            'Photos back at Store after event',
+            'Re-share content when tagged',
+          ]),
+          _trainer('Coach Kim', [
+            'Attend TAA Panel + 5K Shakeout ✅ Required',
+            'Up to 150 attendees',
+            'Re-share content when tagged',
+          ]),
+          _trainer('Coach Cory', [
+            'Attend TAA Panel + 5K Shakeout ✅ Required — Moderator',
+            'Q&A Panel — Cory moderating',
+            'Up to 150 attendees',
+            'Accept collab from exec social on Saturday (TAA events carousel)',
+            'Re-share content when tagged',
+          ]),
+          _trainer('Coach Josh', [
+            'Attend TAA Panel + 5K Shakeout ✅ Required',
+            'Up to 150 attendees',
+            'Re-share content when tagged',
+          ]),
+          _trainer('Coach Scott', [
+            'Attend TAA Panel + 5K Shakeout ✅ Required',
+            'Up to 150 attendees',
+            'Re-share content when tagged',
+          ]),
+          _trainer('Coach Dice', [
+            'Attend TAA Panel + 5K Shakeout ✅ Required',
+            'Up to 150 attendees',
+            'Record 5K video diary for Stories',
+            'Photos back at Store after event',
+            'Re-share content when tagged',
+          ]),
+          _trainer('Coach Brian', [
+            'Attend TAA Panel + 5K Shakeout ✅ Required',
+            'Up to 150 attendees',
+            'Record 5K video diary for Stories',
+            'Photos back at Store after event',
+            'Re-share content when tagged',
+          ]),
+          _trainer('Coach Sherica', [
+            'Attend TAA Panel + 5K Shakeout ✅ Required — Panelist',
+            'Q&A Panel — Sherica panelist',
+            'Up to 150 attendees',
+            'Accept collab from exec social on Saturday (TAA events carousel)',
+            'Re-share content when tagged',
+          ]),
+        ]
+      },
+      { id: 'l423f', name: '🏃 5K Shakeout Run — Shot List', activeTrainer: 0,
+        trainers: [
+          _trainer('General', [
+            '— LEAVING STORE —',
+            'Hi-energy shots of group leaving store with decals in background',
+            'Wide shot — group exit from store entrance',
+            '— WARM UP —',
+            'Wide shot — full warm up set up',
+            'Medium shots — branded elements',
+            'Wide shot — full group warming up',
+            'Medium shot — trainers in centre warming up the crowd',
+            'Potential group huddle shot before run',
+            '— DURING RUN —',
+            'Candids of trainers and attendees running',
+            'Optimise for runners in green shirts',
+            'Wide shot — group running together',
+            'Close-ups — trainer faces, energy & effort',
+            '⚠️ NOTE: Audience will be on the move — second photographer / bike for photographer may be required',
+            '— COOL DOWN —',
+            'Wide shot — full group during cool down',
+            'Medium shot — trainers in centre addressing crowd',
+            '— AT STORE —',
+            'Group shot — participants and Apple retail team members',
+            'Group shot — with store decals in background',
+          ])
+        ]
+      },
+      { id: 'l423e', name: '🎤 Panel & Audience Shots', activeTrainer: 0,        trainers: [
+          _trainer('General', [
+            '— PRE-EVENT —',
+            'Video wall — full name of the event',
+            'Video wall detail & establishing B-roll',
+            '— DURING EVENT: WIDE —',
+            'Wide shot — full panel in front of video wall',
+            'Wide shot — include as many attendees as possible in frame',
+            'Wide shot — show full crowd, no empty chairs',
+            'Wide shot — full video wall in frame',
+            '— DURING EVENT: MEDIUM —',
+            'Medium shot — panelists, include as many attendees as possible',
+            'Medium shot — video wall centred in the image',
+            'Medium shot — animated panelist shots / good energy',
+            '— DURING EVENT: CLOSE-UPS —',
+            'Close-up — panelists in front of video wall (straight on)',
+            'Close-up — panelists in front of video wall (from the side)',
+            '— PANEL SPEAKERS —',
+            'Wide shot — full panel on stage',
+            'Cory Wharton-Malcolm — wide & close-up',
+            'Cory Wharton-Malcolm speaking to audience',
+            'Sherica Holmon — wide & close-up',
+            'Sherica Holmon speaking to audience',
+            'Dora Akim — wide & close-up',
+            'Dora Akim speaking to audience',
+            'Hellah Sidibe — wide & close-up',
+            'Hellah Sidibe speaking to audience',
+            'Becky Briggs — wide & close-up',
+            'Becky Briggs speaking to audience',
+            'Joe Wicks — wide & close-up',
+            'Joe Wicks speaking to audience',
+            'Panel interaction — speakers talking to each other',
+            'Reaction shots across the panel',
+            '— AUDIENCE —',
+            'Wide shot — full audience',
+            'Coach Josh in audience — wide & close-up',
+            'Coach Scott in audience — wide & close-up',
+            'Coach Jamie-Ray in audience — wide & close-up',
+            'Coach Kim in audience — wide & close-up',
+            'Coach Brian in audience — wide & close-up',
+            'Coach Dice in audience — wide & close-up',
+            'Audience reaction shots — applause, engagement',
+            'Audience wide — energy & atmosphere B-roll',
+          ])
+        ]
+      },
+    ],
+    eod: [false, false, false]
+  },
+  {
+    id: 'd0424', label: 'Friday, 24 April', tab: 'Fri 24',
+    calltime: '', weather: 'Overcast, 46–52°F, 24% rain', meetAt: '',
+    locations: [
+      { id: 'l424a', name: 'SoHo — Strava Breakfast (9:30 AM – 11:30 AM)', activeTrainer: 0,
+        trainers: [
+          _trainer('Coach Jamie-Ray', [
+            'Attend Strava Breakfast ✅ Required',
+            'Run or Walk + Breakfast',
+            'Re-share Strava program & link to program',
+            'Group photo at step and repeat',
+            'Re-share content when tagged',
+          ]),
+          _trainer('Coach Kim', [
+            'Attend Strava Breakfast ✅ Required',
+            'Run or Walk + Breakfast',
+            'Re-share Strava program & link to program',
+            'Group photo at step and repeat',
+            'Re-share content when tagged',
+          ]),
+          _trainer('Coach Cory', [
+            'Attend Strava Breakfast ✅ Required',
+            'Run or Walk + Breakfast',
+            'Re-share Strava program & link to program',
+            'Group photo at step and repeat',
+            'Re-share content when tagged',
+          ]),
+          _trainer('Coach Josh', [
+            'Attend Strava Breakfast ✅ Required',
+            'Run or Walk + Breakfast',
+            'Re-share Strava program & link to program',
+            'Group photo at step and repeat',
+            'Re-share content when tagged',
+          ]),
+          _trainer('Coach Scott', [
+            'Attend Strava Breakfast ✅ Required',
+            'Run or Walk + Breakfast',
+            'Re-share Strava program & link to program',
+            'Group photo at step and repeat',
+            'Re-share content when tagged',
+          ]),
+          _trainer('Coach Brian', [
+            'Attend Strava Breakfast ✅ Required',
+            'Run or Walk + Breakfast',
+            'Re-share Strava program & link to program',
+            'Group photo at step and repeat',
+            'Re-share content when tagged',
+          ]),
+        ]
+      },
+      { id: 'l424b', name: 'Photo Walk — JR, Dice, Kim', activeTrainer: 0,
+        trainers: [
+          _trainer('Coach Jamie-Ray', [
+            'Attend Photo Walk ✅ Required',
+            'DITL: Film "get ready for bib pick-up" with fellow creators',
+            'Mention Sherica on the day (iterate in the moment)',
+            'Steph to accompany & provide shot list on the day',
+          ]),
+          _trainer('Coach Kim', [
+            'Attend Photo Walk ✅ Required',
+            'Capture content during photo walk',
+            'Re-share when tagged',
+          ]),
+          _trainer('Coach Dice', [
+            'Attend Photo Walk ✅ Required',
+            'Capture content during photo walk',
+            'Re-share when tagged',
+          ]),
+        ]
+      },
+      { id: 'l424c', name: '1 Boiler House, BPS — VIP Event (5:30 PM – 7:30 PM)', activeTrainer: 0,
+        trainers: _coaches([
+          'Attend VIP Event ✅ All required',
+          '150 guests max',
+          'Re-share content when tagged by creators',
+          'Focus on energy & interaction with creators',
+        ])
+      },
+    ],
+    eod: [false, false, false]
+  },
+  {
+    id: 'd0425', label: 'Saturday, 25 April', tab: 'Sat 25',
+    calltime: '9:15 AM', weather: 'Partly cloudy, 40–61°F, 25% rain', meetAt: 'Apple Brompton',
+    locations: [
+      { id: 'l425z', name: '📍 Apple Brompton — 17-27 Brompton Rd, London SW1X 9LF', activeTrainer: 0,
+        trainers: [_trainer('General', [
+          '9:15 AM — Arrive at Apple Brompton',
+          'Confirm check-in & set up filming positions',
+          'Scout studio interior & exterior filming positions',
+          '📱 REMINDER: Download the TCS London Marathon app to track all runners on race day',
+        ])]
+      },
+      { id: 'l425aa', name: '🎙 The Daily Download — Podcast Recording (10:30 AM – 11:30 AM)', activeTrainer: 0,
+        trainers: [
+          _trainer('📹 Video Shots', [
+            '— EXTERIOR —',
+            'Apple Brompton store exterior — establishing wide shot',
+            'Store exterior with signage & decals — B-roll',
+            'Hosts arriving at store — candid video',
+            '— STUDIO INTERIOR —',
+            'Studio interior wide — full set establishing shot',
+            'Studio interior — branded elements & set dressing B-roll',
+            'Studio interior — lighting & atmosphere B-roll',
+            'Podcast set detail shots — mics, headphones, branding',
+            '— HOSTS & GUEST —',
+            'Paula Radcliffe — wide & close-up on set',
+            'Paula Radcliffe speaking / hosting',
+            'Chris Thompson — wide & close-up on set',
+            'Chris Thompson speaking / hosting',
+            'Cory Wharton Malcolm — wide & close-up on set',
+            'Cory Wharton Malcolm as guest — speaking',
+            'All three together — wide shot of full set',
+            'Host & guest interaction — candid energy',
+            'Reaction shots across hosts & guest',
+            '— THE DAILY DOWNLOAD —',
+            'The Daily Download branding / title card shot',
+            'Recording in progress — wide studio shot',
+            'Behind the scenes — production crew B-roll',
+            '— CORY INTERVIEW —',
+            'Cory Wharton Malcolm interview — wide shot',
+            'Cory Wharton Malcolm interview — medium shot',
+            'Cory Wharton Malcolm interview — close-up',
+            'Cory answering questions — candid energy',
+            'Cory & hosts interacting — natural conversation',
+            'Cory gesturing / animated interview moments',
+            'Over-the-shoulder shot — Cory being interviewed',
+            'Cory laughing / reacting — authentic moments',
+            '— AUDIENCE TRAINERS —',
+            'Coach Kim reacting to podcast — candid video',
+            'Coach Scott reacting to podcast — candid video',
+            'Coach Jamie-Ray reacting to podcast — candid video',
+            '— DURING EVENT —',
+            'Wide shot — full panel in front of video wall',
+            'Wide shot — include as many attendees as possible',
+            'Wide shot — show full crowd, no empty chairs',
+            'Wide shot — full video wall in frame',
+            'Medium shot — panelists, include as many attendees as possible',
+            'Medium shot — video wall centred in frame',
+          ]),
+          _trainer('📷 Photo Shots', [
+            '— PRE-EVENT —',
+            'Shot of video wall — full name of the event',
+            '— DURING EVENT: WIDE —',
+            'Wide shot — full panel in front of video wall',
+            'Wide shot — as many attendees as possible in frame',
+            'Wide shot — full crowd, no empty chairs',
+            'Wide shot — full video wall in frame',
+            '— DURING EVENT: MEDIUM —',
+            'Medium shot — panelists with as many attendees as possible',
+            'Medium shot — video wall centred in the image',
+            '— DURING EVENT: CLOSE-UPS —',
+            'Close-up — panelists in front of video wall (straight on)',
+            'Close-up — panelists in front of video wall (from the side)',
+            '— AUDIENCE TRAINERS —',
+            'Coach Kim in audience — wide & close-up',
+            'Coach Scott in audience — wide & close-up',
+            'Coach Jamie-Ray in audience — wide & close-up',
+            'All three trainers in audience together — group shot',
+            '— POST-EVENT —',
+            'Group photo — all attendees, panelists & retail staff in front of video wall',
+            '⚠️ NOTE: Photographer to gather group for this shot',
+            'Group photo — all trainers & retail staff',
+            'Panel team photo — panelists only, nice background (store wall / video wall)',
+            'Candids — fly-on-the-wall shots post-event',
+            'Candids — panelists and attendees interacting post-event',
+          ]),
+        ]
+      },
+      { id: 'l425a', name: 'Apple Brompton — TAA Live Podcast with Paula Radcliffe (10:30 AM – 11:30 AM)', activeTrainer: 0,
+        trainers: [
+          _trainer('Coach Jamie-Ray', [
+            'Attend Podcast Recording ✅ Required — Audience',
+            'Accept collab from exec social (Feed post)',
+          ]),
+          _trainer('Coach Kim', [
+            'Attend Podcast Recording ✅ Required — Audience',
+            'Accept collab from exec social (Feed post)',
+          ]),
+          _trainer('Coach Cory', [
+            'Attend Podcast Recording ✅ Required — FEATURED GUEST',
+            'Apple Fitness+ Trainer Cory Wharton Malcolm',
+            'Paula Radcliffe "Road to London" live podcast recording',
+            'Capture selfie with Paula Radcliffe in real time',
+            'Steph to provide professional photos after for Stories posting',
+            'Accept collab from exec social (Feed post)',
+          ]),
+          _trainer('Coach Josh', [
+            'Attend Run & Yoga ✅ Required',
+            'Re-share content when tagged by creators',
+          ]),
+          _trainer('Coach Scott', [
+            'Attend Podcast Recording ✅ Required — Audience',
+            'Accept collab from exec social (Feed post)',
+          ]),
+          _trainer('Coach Dice', [
+            'Attend Run & Yoga ✅ Required',
+            'Re-share content when tagged by creators',
+          ]),
+          _trainer('Coach Brian', [
+            'Attend Run & Yoga ✅ Required',
+            'Re-share content when tagged by creators',
+          ]),
+          _trainer('Coach Sherica', [
+            'Attend Run & Yoga ✅ Required',
+            'Re-share content when tagged by creators',
+          ]),
+        ]
+      },
+      { id: 'l425b', name: 'Creator Cohort Programming', activeTrainer: 0,
+        trainers: _coaches([
+          'Attend Creator Cohort Programming ✅ All required',
+          'Re-share content when tagged by creators',
+          'Focus on energy & interaction with creators',
+        ])
+      },
+      { id: 'l425c', name: '5KM Run', activeTrainer: 0,
+        trainers: _coaches([
+          'Wide shot — runners at start of 5KM',
+          'Coaches leading the run — front pack',
+          'Mid-run action shots',
+          'Close-ups — coaches running & encouraging',
+          'Crowd & spectator energy B-roll',
+          'Finish line — coaches crossing',
+          'Post-run group celebration',
+        ])
+      },
+    ],
+    eod: [false, false, false]
+  },
+  {
+    id: 'd0426', label: 'Sunday, 26 April — Race Day 🏃', tab: 'Sun 26',
+    calltime: '', weather: 'Overcast, 44–59°F, 26% rain', meetAt: '',
+    locations: [
+      { id: 'l426a', name: 'Blackheath — Start Line (Mile 0)', mapsUrl: 'https://maps.apple.com/?q=Blackheath+Common+London&ll=51.4739,-0.0076', activeTrainer: 0,
+        trainers: [
+          _trainer('Coach Jamie-Ray', [
+            'Jamie-Ray at the start line — wide & close-up',            'Jamie-Ray warming up in start pens',
+            'Jamie-Ray race bib & kit detail shots',
+            'Jamie-Ray heading into the start corral',
+            'Jamie-Ray crossing the start line — wide & tight',
+          ]),
+          _trainer('Coach Sherica', [
+            'Sherica at the start line — wide & close-up',
+            'Sherica warming up in start pens',
+            'Sherica race bib & kit detail shots',
+            'Sherica heading into the start corral',
+            'Sherica crossing the start line — wide & tight',
+          ]),
+          _trainer('Gemma', [
+            'Gemma at the start line — wide & close-up',
+            'Gemma warming up in start pens',
+            'Gemma race bib & kit detail shots',
+            'Gemma heading into the start corral',
+            'Gemma crossing the start line — wide & tight',
+          ]),
+          _trainer('Coach Kim', [
+            'Wide establishing shot — start line & pens',
+            'Mass start crowd — sweeping wide angle',
+            'Starter\'s gun / race begins moment',
+            'Runners flooding out of the start pens',
+            'Nervous energy & atmosphere B-roll',
+          ]),
+          _trainer('Coach Cory', [
+            'Wide establishing shot — start line & pens',
+            'Mass start crowd — sweeping wide angle',
+            'Starter\'s gun / race begins moment',
+            'Aerial / elevated overview of start',
+          ]),
+          _trainer('Coach Josh', [
+            'Wide establishing shot — start line & pens',
+            'Runners flooding out of the start pens',
+            'Atmosphere B-roll',
+          ]),
+          _trainer('Coach Scott', [
+            'Wide establishing shot — start line & pens',
+            'Atmosphere B-roll',
+          ]),
+          _trainer('Coach Dice', [
+            'Wide establishing shot — start line & pens',
+            'Mass start crowd — sweeping wide angle',
+            'Starter\'s gun / race begins moment',
+          ]),
+          _trainer('Coach Brian', [
+            'Wide establishing shot — start line & pens',
+            'Atmosphere B-roll',
+          ]),
+        ]
+      },
+      { id: 'l426b', name: 'Cutty Sark — Greenwich (Mile 6)', mapsUrl: 'https://maps.apple.com/?q=Cutty+Sark+Greenwich+London&ll=51.4832,-0.0098', activeTrainer: 0,
+        trainers: [
+          _trainer('Coach Jamie-Ray', [
+            'Jamie-Ray running through Greenwich — wide & tight',
+            'Jamie-Ray close-up — expression & focus at Mile 6',
+            'Jamie-Ray passing Cutty Sark — iconic backdrop shot',
+          ]),
+          _trainer('Coach Sherica', [
+            'Sherica running through Greenwich — wide & tight',
+            'Sherica close-up — expression & focus at Mile 6',
+            'Sherica passing Cutty Sark — iconic backdrop shot',
+          ]),
+          _trainer('Coach Kim', ['Wide shot — runners passing Cutty Sark', 'Crowd support & spectator energy', 'Pace groups B-roll']),
+          _trainer('Coach Cory', ['Wide shot — runners passing Cutty Sark', 'Crowd support & spectator energy']),
+          _trainer('Coach Josh', ['Crowd support & spectator energy B-roll']),
+          _trainer('Coach Scott', ['Crowd support & spectator energy B-roll']),
+          _trainer('Coach Dice', ['Wide shot — runners passing Cutty Sark', 'Close-up — athlete expressions']),
+          _trainer('Coach Brian', ['Crowd support & spectator energy B-roll']),
+        ]
+      },
+      { id: 'l426c', name: 'Tower Bridge (Mile 13)', mapsUrl: 'https://maps.apple.com/?q=Tower+Bridge+London&ll=51.5055,-0.0754', activeTrainer: 0,
+        trainers: [
+          _trainer('Coach Jamie-Ray', [
+            'Jamie-Ray crossing Tower Bridge — hero wide shot',
+            'Jamie-Ray on bridge — low angle close-up',
+            'Jamie-Ray at halfway — expression & determination',
+          ]),
+          _trainer('Coach Sherica', [
+            'Sherica crossing Tower Bridge — hero wide shot',
+            'Sherica on bridge — low angle close-up',
+            'Sherica at halfway — expression & determination',
+          ]),
+          _trainer('Coach Kim', ['Hero wide shot — runners on Tower Bridge', 'Crowd lining bridge railings B-roll', 'Compressed telephoto — stream of runners']),
+          _trainer('Coach Cory', ['Hero wide shot — runners on Tower Bridge', 'Tower Bridge + city skyline establishing']),
+          _trainer('Coach Josh', ['Crowd lining bridge railings B-roll']),
+          _trainer('Coach Scott', ['Crowd lining bridge railings B-roll']),
+          _trainer('Coach Dice', ['Hero wide shot — runners on Tower Bridge', 'Halfway marker reaction shots']),
+          _trainer('Coach Brian', ['Crowd lining bridge railings B-roll']),
+        ]
+      },
+      { id: 'l426d', name: 'Canary Wharf (Mile 18)', mapsUrl: 'https://maps.apple.com/?q=Canary+Wharf+London&ll=51.5054,-0.0235', activeTrainer: 0,
+        trainers: [
+          _trainer('Coach Jamie-Ray', [
+            'Jamie-Ray through Canary Wharf — wide & tight',
+            'Jamie-Ray close-up — digging deep at Mile 18',
+            'Jamie-Ray taking on water / nutrition',
+          ]),
+          _trainer('Coach Sherica', [
+            'Sherica through Canary Wharf — wide & tight',
+            'Sherica close-up — digging deep at Mile 18',
+            'Sherica taking on water / nutrition',
+          ]),
+          _trainer('Coach Kim', ['Runners through Canary Wharf glass towers', 'Urban tunnel / underpass section', 'Crowd support tunnel atmosphere']),
+          _trainer('Coach Cory', ['Wide — skyscraper backdrop with runners', 'Crowd support tunnel atmosphere']),
+          _trainer('Coach Josh', ['Crowd support tunnel atmosphere B-roll']),
+          _trainer('Coach Scott', ['Crowd support tunnel atmosphere B-roll']),
+          _trainer('Coach Dice', ['Runners through Canary Wharf glass towers', 'Athletes taking on water / nutrition']),
+          _trainer('Coach Brian', ['Crowd support tunnel atmosphere B-roll']),
+        ]
+      },
+      { id: 'l426e', name: 'Victoria Embankment (Mile 23–24)', mapsUrl: 'https://maps.apple.com/?q=Victoria+Embankment+London&ll=51.5074,-0.1228', activeTrainer: 0,
+        trainers: [
+          _trainer('Coach Jamie-Ray', [
+            'Jamie-Ray on the Embankment — final miles wide shot',
+            'Jamie-Ray close-up — pain & determination',
+            'Jamie-Ray with Big Ben / Westminster backdrop',
+          ]),
+          _trainer('Coach Sherica', [
+            'Sherica on the Embankment — final miles wide shot',
+            'Sherica close-up — pain & determination',
+            'Sherica with Big Ben / Westminster backdrop',
+          ]),
+          _trainer('Coach Kim', ['Skyline shot — Big Ben / Westminster backdrop', 'Spectator crowd energy on Embankment', 'Athletes digging deep — final miles']),
+          _trainer('Coach Cory', ['Skyline shot — Big Ben / Westminster backdrop', 'Medical & support zone B-roll']),
+          _trainer('Coach Josh', ['Spectator crowd energy B-roll']),
+          _trainer('Coach Scott', ['Spectator crowd energy B-roll']),
+          _trainer('Coach Dice', ['Skyline shot — Big Ben / Westminster backdrop', 'Close-up — athlete pain & determination']),
+          _trainer('Coach Brian', ['Spectator crowd energy B-roll']),
+        ]
+      },
+      { id: 'l426f', name: 'The Mall — Finish Line (Mile 26.2)', mapsUrl: 'https://maps.apple.com/?q=The+Mall+London&ll=51.5021,-0.1363', activeTrainer: 0,
+        trainers: [
+          _trainer('Coach Jamie-Ray', [
+            'Jamie-Ray approaching The Mall — final straight',
+            'Jamie-Ray crossing the finish line 🎉',
+            'Jamie-Ray finish line emotion — close-up',
+            'Jamie-Ray arms raised / celebration',
+            'Jamie-Ray receiving medal',
+            'Post-race: Jamie-Ray wrapped in foil blanket',
+          ]),
+          _trainer('Coach Sherica', [
+            'Sherica approaching The Mall — final straight',
+            'Sherica crossing the finish line 🎉',
+            'Sherica finish line emotion — close-up',
+            'Sherica arms raised / celebration',
+            'Sherica receiving medal',
+            'Post-race: Sherica wrapped in foil blanket',
+          ]),
+          _trainer('Coach Kim', ['First finisher crossing the line', 'Elite finishes — wide & tight', 'Arms raised / celebration', 'Medal ceremony B-roll', 'Post-race family reunion moments']),
+          _trainer('Coach Cory', ['Finish line wide establishing', 'Buckingham Palace backdrop with finishers', 'Results board / timing display']),
+          _trainer('Coach Josh', ['Finish line crowd energy B-roll']),
+          _trainer('Coach Scott', ['Finish line crowd energy B-roll']),
+          _trainer('Coach Dice', ['Finishers crossing the line', 'Emotional finish reactions', 'Finishers wrapped in foil blankets']),
+          _trainer('Coach Brian', ['Finish line crowd energy B-roll']),
+        ]
+      },
+      { id: 'l426h', name: '🎉 Cheer Station', mapsUrl: 'https://maps.apple.com/?q=London+Marathon+Cheer+Zone+The+Mall&ll=51.5021,-0.1363', activeTrainer: 0,        trainers: [
+          _trainer('Coach Jamie-Ray', ['Running in race — being cheered on 🏃']),
+          _trainer('Coach Kim', [
+            'Cheer station wide establishing shot',
+            'Coaches cheering & holding signs — group shot',
+            'Close-up — coaches reacting as Jamie-Ray passes',
+            'Close-up — coaches reacting as Sherica passes',
+            'DJ setup & music playing B-roll',
+            'Crowd holding signs — wide & close-up',
+            'Energy & atmosphere B-roll',
+            'Apple Music DJ race course activation',
+          ]),
+          _trainer('Coach Cory', [
+            'Cheering & holding sign — wide & close-up',
+            'Reaction shots as Jamie-Ray & Sherica pass',
+            'Group energy B-roll',
+            'Apple Music DJ race course activation',
+          ]),
+          _trainer('Coach Josh', [
+            'Cheering & holding sign — wide & close-up',
+            'Reaction shots as Jamie-Ray & Sherica pass',
+            'Group energy B-roll',
+          ]),
+          _trainer('Coach Scott', [
+            'Cheering & holding sign — wide & close-up',
+            'Reaction shots as Jamie-Ray & Sherica pass',
+          ]),
+          _trainer('Coach Dice', [
+            'Cheer station wide establishing shot',
+            'Coaches cheering & holding signs — group shot',
+            'Close-up — coaches reacting as Jamie-Ray passes',
+            'Close-up — coaches reacting as Sherica passes',
+            'DJ setup & music playing B-roll',
+            'Crowd holding signs — wide & close-up',
+            'Apple Music DJ race course activation',
+          ]),
+          _trainer('Coach Brian', [
+            'Cheering & holding sign — wide & close-up',
+            'Reaction shots as Jamie-Ray & Sherica pass',
+          ]),
+          _trainer('Coach Sherica', ['Running in race — being cheered on 🏃']),
+        ]
+      },
+      { id: 'l426i', name: '🎵 Mile 24 — Apple Music Activation, Victoria Embankment, London WC2N 5DJ', mapsUrl: 'https://maps.apple.com/?q=Victoria+Embankment+London+WC2N+5DJ&ll=51.5033,-0.1195', activeTrainer: 0,
+        trainers: [
+          _trainer('General', [
+            '— PERFORMANCE SCHEDULE —',
+            '10:00 AM – 12:00 PM: Tempo Run Club DJs',
+            '12:00 PM – 2:00 PM: Joel Corry',
+            '2:00 PM – 3:30 PM: Mel C',
+            '3:30 PM – 5:00 PM: Switch Disco',
+            '5:00 PM – 7:00 PM: NAINA',
+            '— WIDE SHOTS —',
+            'Wide shot — Apple Music installation with spectators on either side',
+            'Wide shot — include runners in front of installation',
+            'Wide shot — include London backdrop where possible',
+            'Wide shot — full crowd & stage energy',
+            'Wide shot — full activation with branding visible',
+            '— MEDIUM SHOTS —',
+            'Medium shot — DJs performing, include spectators',
+            'Medium shot — main talent performing, include spectators',
+            'Medium shot — MCs on stage, include spectators',
+            'Medium shot — capture energy & excitement of spectators',
+            'Medium shot — capture energy & excitement of runners passing',
+            '— CLOSE-UPS —',
+            'Close-up — talent performing',
+            'Close-up — MCs addressing crowd',
+            'Close-up — spectator reactions & excitement',
+            'Close-up — runner reactions to music',
+            '— TEMPO RUN CLUB DJ\'S (10:00 AM – 12:00 PM) —',
+            'Tempo Run Club DJs — wide & close-up',
+            'Tempo Run Club DJs in action — detail shots',
+            'Crowd energy during Tempo Run Club set',
+            '— JOEL CORRY (12:00 PM – 2:00 PM) —',
+            'Joel Corry performing — wide & close-up',
+            'Joel Corry hyping up the crowd',
+            'Joel Corry DJ set — detail shots',
+            '— MEL C (2:00 PM – 3:30 PM) —',
+            'Mel C performing — wide & close-up',
+            'Mel C hyping up the crowd',
+            'Mel C hyping up passing runners',
+            'Mel C on stage — detail shots',
+            '— SWITCH DISCO (3:30 PM – 5:00 PM) —',
+            'Switch Disco performing — wide & close-up',
+            'Switch Disco hyping up the crowd',
+            'Switch Disco DJ set — detail shots',
+            '— NAINA (5:00 PM – 7:00 PM) —',
+            'NAINA performing — wide & close-up',
+            'NAINA hyping up the crowd',
+            'NAINA DJ set — detail shots',
+            '— MC\'S —',
+            'Cory Wharton Malcolm as MC — wide & close-up',
+            'Cory Wharton Malcolm addressing the crowd',
+            'Rebecca Judd as MC — wide & close-up',
+            'Rebecca Judd addressing the crowd',
+            'Cory & Rebecca together — MC duo shot',
+            '— GROUP —',
+            'Group shot — all artists together',
+            'Artists interacting — candid energy',
+            'Behind the scenes — backstage / artist area B-roll',
+            'Apple Music branding — signage, banners & stage set detail',
+          ])
+        ]
+      },
+      { id: 'l426g', name: '📋 Social & Activation: Race Day Tasks', activeTrainer: 0,
+        trainers: [
+          _trainer('Coach Jamie-Ray', [
+            'Running in the race 🏃 — Cheering at start & finish',
+            'Kim & Dice to capture crossing finish line',
+            'Group selfies at finish line',
+            'Brand presence at race',
+          ]),
+          _trainer('Coach Kim', [
+            'Capture real-time Stories — crowd racing & enthusiasm ✅',
+            'Tag other trainers in Stories content',
+            'Capture Sherica & Jamie-Ray crossing the finish line',
+            'Group selfies of the energy',
+            'Brand presence at race',
+            'Apple Music DJ race course activation B-roll',
+          ]),
+          _trainer('Coach Cory', [
+            'Cheering at race ✅ Required',
+            'Group selfies of the energy',
+            'Brand presence at race',
+            'Apple Music DJ race course activation B-roll',
+          ]),
+          _trainer('Coach Josh', [
+            'Cheering at race ✅ Required',
+            'Group selfies of the energy',
+            'Brand presence at race',
+          ]),
+          _trainer('Coach Scott', [
+            'Attend Race Day — Cheering',
+            'Group selfies of the energy',
+            'Brand presence at race',
+          ]),
+          _trainer('Coach Dice', [
+            'Capture real-time Stories — crowd racing & enthusiasm ✅',
+            'Tag other trainers in Stories content',
+            'Capture Sherica & Jamie-Ray crossing the finish line',
+            'Group selfies of the energy',
+            'Brand presence at race',
+            'Apple Music DJ race course activation B-roll',
+          ]),
+          _trainer('Coach Brian', [
+            'Attend Race Day',
+            'Group selfies of the energy',
+            'Brand presence at race',
+          ]),
+          _trainer('Coach Sherica', [
+            'Running in the race 🏃',
+            'Kim & Dice to capture crossing finish line',
+            'Group selfies at finish line',
+          ]),
+        ]
+      },
+    ],
+    eod: [false, false, false]
+  }
+];
+
+const EOD_LABELS = [
+  '✅ Choose selects',
+  '💾 Upload to both hard drives',
+  '🏢 Upload content to SAN at Apple Battersea'
+];
+
+// ─────────────────────────────────────────
+//  STATE
+// ─────────────────────────────────────────
+let state;
+let activeDay = 0;
+let saveTimer = null;
+
+// Migrate old data (location.shots[]) → new (location.trainers[])
+function migrateState(s) {
+  if (s && s.days) {
+    s.days.forEach(day => {
+      (day.locations || []).forEach(loc => {
+        if (loc.shots && !loc.trainers) {
+          loc.trainers = [{ id: _id(), name: 'General', shots: loc.shots }];
+          delete loc.shots;
+        }
+        if (loc.activeTrainer === undefined) loc.activeTrainer = 0;
+      });
+    });
+  }
+  return s;
+}
+
+function loadState() {
+  const hash = window.location.hash.slice(1);
+  if (hash) {
+    try {
+      const decoded = JSON.parse(decodeURIComponent(atob(hash)));
+      if (decoded && decoded.days) {
+        state = migrateState(decoded);
+        showToast('📎 Loaded shared schedule');
+        window.location.hash = '';
+        return;
+      }
+    } catch(e) {}
+  }
+  const saved = localStorage.getItem('lm2026_v24_schedule');
+  if (saved) {
+    try {
+      const parsed = JSON.parse(saved);
+      if (parsed && parsed.days) { state = migrateState(parsed); return; }
+    } catch(e) {}
+  }
+  state = { days: JSON.parse(JSON.stringify(INITIAL_DAYS)) };
+}
+
+function saveState() {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => {
+    localStorage.setItem('lm2026_v16_schedule', JSON.stringify(state));
+  }, 300);
+}
+
+// ─────────────────────────────────────────
+//  RENDER
+// ─────────────────────────────────────────
+function render() {
+  renderTabs();
+  renderDays();
+}
+
+function renderTabs() {
+  const bar = document.getElementById('tabbar');
+  bar.innerHTML = state.days.map((d, i) => {
+    const shots = allShotsForDay(d);
+    const hasContent = d.calltime || d.weather || d.meetAt || shots.some(s => s.done);
+    return `<button class="tab-btn ${i === activeDay ? 'active' : ''}" onclick="switchDay(${i})">
+      ${d.tab}<span class="tab-dot ${hasContent ? 'filled' : ''}"></span>
+    </button>`;
+  }).join('');
+}
+
+function renderDays() {
+  const main = document.getElementById('main');
+  main.innerHTML = state.days.map((d, di) => `
+    <div class="day-panel ${di === activeDay ? 'active' : ''}" id="panel-${di}">
+      ${renderDayHeader(d, di)}
+      ${renderInfoCard(d, di)}
+      <div class="basecamp-card">
+        <span class="basecamp-icon">🏨</span>
+        <div>
+          <div class="basecamp-label">Base Camp</div>
+          <div class="basecamp-address">Park Hyatt London River &nbsp;·&nbsp; 7 Nine Elms Lane, London GB SW8 5PH</div>
+        </div>
+      </div>
+      <div class="section-label">📍 Locations & Shots</div>
+      ${d.locations.map((loc, li) => renderLocation(d, di, loc, li)).join('')}
+      <button class="btn-add-location" onclick="addLocation(${di})">＋ Add Location</button>
+      <div class="section-label">🌙 End of Day Checklist</div>
+      ${renderEOD(d, di)}
+    </div>
+  `).join('');
+}
+
+function renderDayHeader(d, di) {
+  const allShots = allShotsForDay(d);
+  const total = allShots.length;
+  const done  = allShots.filter(s => s.done).length;
+  const pct   = total > 0 ? Math.round((done / total) * 100) : 0;
+  return `
+    <div class="day-header">
+      <h2>${d.label}</h2>
+      <div class="progress-pill">
+        <div class="pbar"><div class="pbar-fill" style="width:${pct}%"></div></div>
+        ${done}/${total} shots
+      </div>
+    </div>`;
+}
+
+function renderInfoCard(d, di) {
+  return `
+    <div class="info-card">
+      <div class="info-field">
+        <label><span class="field-icon">⏰</span> Call Time</label>
+        <input type="text" placeholder="e.g. 06:00" value="${esc(d.calltime)}"
+          oninput="updateInfo(${di},'calltime',this.value)" />
+      </div>
+      <div class="info-field">
+        <label><span class="field-icon">🌤</span> Weather Forecast</label>
+        <input type="text" placeholder="e.g. Cloudy, 65°F" value="${esc(d.weather)}"
+          oninput="updateInfo(${di},'weather',this.value)" />
+      </div>
+      <div class="info-field">
+        <label><span class="field-icon">📍</span> Meet At</label>
+        <input type="text" placeholder="e.g. Blackheath Station" value="${esc(d.meetAt)}"
+          oninput="updateInfo(${di},'meetAt',this.value)" />
+      </div>
+      <div class="info-field">
+        <label><span class="field-icon">👤</span> DRI</label>
+        <input type="text" placeholder="Directly Responsible Individual" value="${esc(d.dri||'')}"
+          oninput="updateInfo(${di},'dri',this.value)" />
+      </div>
+    </div>`;
+}
+
+function renderLocation(d, di, loc, li) {
+  const at      = loc.activeTrainer || 0;
+  const trainer = loc.trainers[at];
+  return `
+    <div class="location-card" id="loc-${di}-${li}">
+      <div class="location-header">
+        <span class="loc-pin">📍</span>
+        <input class="loc-name-input" type="text" placeholder="Location name…"
+          value="${esc(loc.name)}" oninput="updateLocName(${di},${li},this.value)" />
+        ${loc.mapsUrl ? `<a class="loc-maps-link" href="${loc.mapsUrl}" target="_blank">🗺 Open in Maps</a>` : ''}
+        <button class="btn-remove-loc" onclick="removeLocation(${di},${li})" title="Remove location">×</button>
+      </div>
+      <div class="trainer-tabs-bar">
+        ${loc.trainers.map((t, ti) => `
+          <div class="trainer-tab-wrap ${ti === at ? 'active' : ''}"
+               onclick="switchTrainer(${di},${li},${ti})">
+            <input class="trainer-tab-name ${ti === at ? 'active' : ''}" type="text"
+              value="${esc(t.name)}" placeholder="Trainer…"
+              onclick="event.stopPropagation()"
+              onfocus="switchTrainer(${di},${li},${ti})"
+              oninput="updateTrainerName(${di},${li},${ti},this.value)" />
+            ${loc.trainers.length > 1 ? `
+              <button class="btn-remove-trainer" title="Remove trainer"
+                onclick="event.stopPropagation();removeTrainer(${di},${li},${ti})">×</button>
+            ` : ''}
+          </div>
+        `).join('')}
+        <button class="btn-add-trainer" onclick="addTrainer(${di},${li})">＋ Trainer</button>
+      </div>
+      <div class="location-shots">
+        <div class="shots-heading" id="sh-${di}-${li}">Shots — ${esc(trainer.name)}</div>
+        <div class="shot-list" id="shots-${di}-${li}">
+          ${trainer.shots.map((s, si) => renderShot(di, li, at, s, si)).join('')}
+        </div>
+        <button class="btn-add-shot" onclick="addShot(${di},${li})">＋ Add shot</button>
+      </div>
+    </div>`;
+}
+
+function renderShot(di, li, ti, s, si) {
+  return `
+    <div class="shot-item" id="shot-${di}-${li}-${ti}-${si}">
+      <input type="checkbox" class="shot-cb" ${s.done ? 'checked' : ''}
+        onchange="toggleShot(${di},${li},${ti},${si},this.checked)" />
+      <input type="text" class="shot-text-input ${s.done ? 'done' : ''}"
+        value="${esc(s.text)}" placeholder="Describe the shot…"
+        oninput="updateShotText(${di},${li},${ti},${si},this.value)" />
+      <button class="btn-remove-shot" onclick="removeShot(${di},${li},${ti},${si})" title="Remove">✕</button>
+    </div>`;
+}
+
+function renderEOD(d, di) {
+  return `
+    <div class="eod-card">
+      <div class="eod-heading">📋 Wrap Checklist</div>
+      ${EOD_LABELS.map((lbl, i) => `
+        <div class="eod-item ${d.eod[i] ? 'checked' : ''}" id="eod-${di}-${i}">
+          <input type="checkbox" class="eod-cb" id="eodcb-${di}-${i}" ${d.eod[i] ? 'checked' : ''}
+            onchange="toggleEOD(${di},${i},this.checked)" />
+          <label class="eod-label" for="eodcb-${di}-${i}">${lbl}</label>
+        </div>
+      `).join('')}
+    </div>`;
+}
+
+// ─────────────────────────────────────────
+//  ACTIONS — Day
+// ─────────────────────────────────────────
+function switchDay(i) {
+  activeDay = i;
+  render();
+  document.getElementById('main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function updateInfo(di, field, val) {
+  state.days[di][field] = val;
+  saveState();
+  updateTabDot(di);
+}
+
+// ─────────────────────────────────────────
+//  ACTIONS — Location
+// ─────────────────────────────────────────
+function updateLocName(di, li, val) {
+  state.days[di].locations[li].name = val;
+  saveState();
+}
+
+function addLocation(di) {
+  state.days[di].locations.push({
+    id: _id(), name: '', activeTrainer: 0,
+    trainers: _coaches([''])
+  });
+  render();
+  saveState();
+}
+
+function removeLocation(di, li) {
+  if (state.days[di].locations.length === 1) {
+    showToast('⚠️ At least one location is required'); return;
+  }
+  state.days[di].locations.splice(li, 1);
+  render();
+  saveState();
+}
+
+// ─────────────────────────────────────────
+//  ACTIONS — Trainer tabs
+// ─────────────────────────────────────────
+function switchTrainer(di, li, ti) {
+  if (state.days[di].locations[li].activeTrainer === ti) return;
+  state.days[di].locations[li].activeTrainer = ti;
+  render();
+  saveState();
+}
+
+function addTrainer(di, li) {
+  const loc = state.days[di].locations[li];
+  // Pre-fill shot list from the first trainer's shot texts (all unchecked)
+  const template = loc.trainers[0].shots.map(s => ({ id: _id(), text: s.text, done: false }));
+  loc.trainers.push({ id: _id(), name: 'Trainer ' + (loc.trainers.length + 1), shots: template });
+  loc.activeTrainer = loc.trainers.length - 1;
+  render();
+  saveState();
+  setTimeout(() => {
+    const tabs = document.querySelectorAll(`#loc-${di}-${li} .trainer-tab-name`);
+    if (tabs.length) { const last = tabs[tabs.length - 1]; last.focus(); last.select(); }
+  }, 50);
+}
+
+function removeTrainer(di, li, ti) {
+  const loc = state.days[di].locations[li];
+  if (loc.trainers.length === 1) { showToast('⚠️ At least one trainer tab required'); return; }
+  loc.trainers.splice(ti, 1);
+  loc.activeTrainer = Math.min(loc.activeTrainer, loc.trainers.length - 1);
+  render();
+  saveState();
+}
+
+function updateTrainerName(di, li, ti, val) {
+  state.days[di].locations[li].trainers[ti].name = val;
+  const heading = document.getElementById(`sh-${di}-${li}`);
+  if (heading && state.days[di].locations[li].activeTrainer === ti) {
+    heading.textContent = 'Shots — ' + val;
+  }
+  saveState();
+}
+
+// ─────────────────────────────────────────
+//  ACTIONS — Shots
+// ─────────────────────────────────────────
+function addShot(di, li) {
+  const loc = state.days[di].locations[li];
+  const ti  = loc.activeTrainer || 0;
+  loc.trainers[ti].shots.push({ id: _id(), text: '', done: false });
+  render();
+  saveState();
+  setTimeout(() => {
+    const shots = document.querySelectorAll(`#shots-${di}-${li} .shot-text-input`);
+    if (shots.length) shots[shots.length - 1].focus();
+  }, 50);
+}
+
+function removeShot(di, li, ti, si) {
+  const shots = state.days[di].locations[li].trainers[ti].shots;
+  if (shots.length === 1) { showToast('⚠️ At least one shot required'); return; }
+  shots.splice(si, 1);
+  render();
+  saveState();
+}
+
+function toggleShot(di, li, ti, si, checked) {
+  state.days[di].locations[li].trainers[ti].shots[si].done = checked;
+  const input = document.querySelector(`#shot-${di}-${li}-${ti}-${si} .shot-text-input`);
+  if (input) input.classList.toggle('done', checked);
+  const allShots = allShotsForDay(state.days[di]);
+  const done = allShots.filter(s => s.done).length;
+  const pct  = Math.round((done / allShots.length) * 100);
+  const fill = document.querySelector(`#panel-${di} .pbar-fill`);
+  const pill = document.querySelector(`#panel-${di} .progress-pill`);
+  if (fill) fill.style.width = pct + '%';
+  if (pill) pill.lastChild.textContent = ` ${done}/${allShots.length} shots`;
+  saveState();
+  updateTabDot(di);
+}
+
+function updateShotText(di, li, ti, si, val) {
+  state.days[di].locations[li].trainers[ti].shots[si].text = val;
+  saveState();
+}
+
+function toggleEOD(di, i, checked) {
+  state.days[di].eod[i] = checked;
+  const item = document.getElementById(`eod-${di}-${i}`);
+  if (item) item.classList.toggle('checked', checked);
+  saveState();
+}
+
+function updateTabDot(di) {
+  const d = state.days[di];
+  const shots = allShotsForDay(d);
+  const hasContent = d.calltime || d.weather || d.meetAt || shots.some(s => s.done);
+  const dot = document.querySelectorAll('.tab-dot')[di];
+  if (dot) dot.classList.toggle('filled', !!hasContent);
+}
+
+// ─────────────────────────────────────────
+//  SHARE / EXPORT / IMPORT
+// ─────────────────────────────────────────
+function shareState() {
+  try {
+    const encoded = btoa(encodeURIComponent(JSON.stringify(state)));
+    const url = `${window.location.origin}${window.location.pathname}#${encoded}`;
+    navigator.clipboard.writeText(url).then(() => showToast('🔗 Shareable link copied!'));
+  } catch(e) { showToast('⚠️ Could not copy link'); }
+}
+
+function exportJSON() {
+  const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'lm2026-schedule.json';
+  a.click();
+  showToast('⬇ Schedule exported');
+}
+
+function importJSON() {
+  const input = document.createElement('input');
+  input.type = 'file'; input.accept = '.json';
+  input.onchange = e => {
+    const file = e.target.files[0]; if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      try {
+        const parsed = JSON.parse(ev.target.result);
+        if (parsed && parsed.days) {
+          state = migrateState(parsed); render(); saveState();
+          showToast('⬆ Schedule imported');
+        } else showToast('⚠️ Invalid file');
+      } catch { showToast('⚠️ Could not parse file'); }
+    };
+    reader.readAsText(file);
+  };
+  input.click();
+}
+
+// ─────────────────────────────────────────
+//  TOAST
+// ─────────────────────────────────────────
+let toastTimer;
+function showToast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 2800);
+}
+
+// ─────────────────────────────────────────
+//  INIT
+// ─────────────────────────────────────────
+loadState();
+render();
+</script>
+</body>
+</html>
