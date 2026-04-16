@@ -178,8 +178,7 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 14px;
     }
-    @media (max-width: 580px) { .info-card { grid-template-columns: 1fr; } }
-    .info-field label {
+    @media (max-width: 580px) { .info-card { grid-template-columns: 1fr; } }    .info-field label {
       display: block;
       font-size: 10.5px;
       font-weight: 700;
@@ -608,6 +607,15 @@ function _coaches(arr) {
 function _selectedCoaches(names, arr) {
   return names.map(n => _trainer(n, arr));
 }
+function _dailyPhotos(location) {
+  return [_trainer('General', [
+    `Pristine wide shot — ${location}`,
+    `Pristine detail/texture shot — ${location}`,
+    'Candid shot of people at location — natural & unposed',
+    'Portrait / close-up of a team member or subject',
+    'Atmosphere & mood shot — light, environment, energy',
+  ])];
+}
 function uid()  { return _id(); }
 function esc(str) {
   if (!str) return '';
@@ -623,15 +631,16 @@ function allShotsForDay(d) {
 const INITIAL_DAYS = [
   {
     id: 'd0417', label: 'Friday, 17 April', tab: 'Fri 17',
-    calltime: '', weather: 'Overcast, 49–63°F, 20% rain', meetAt: 'Battersea Park', dri: 'Tanea Jackson',
+    calltime: '9:00 AM — Hotel Lobby at Park Hyatt, then depart for location', weather: 'Overcast, 49–63°F, 20% rain', meetAt: 'Evolution London, Battersea Park', dri: 'Tanea Jackson', locationAddress: 'Evolution London, Chelsea Bridge Gate, Battersea Park, Queenstown Rd, London SW11 4NJ',
     locations: [
-      { id: 'l417z', name: '📍 Battersea Park Area — Queenstown Rd, Chelsea', activeTrainer: 0,
-        trainers: [_trainer('General', ['Confirm arrival at Battersea Park — Queenstown Rd, Chelsea', 'Scout filming positions in the park'])]
+      { id: 'l417z', name: '📍 Evolution London — Chelsea Bridge Gate, Battersea Park, Queenstown Rd, London SW11 4NJ', mapsUrl: 'https://maps.apple.com/?q=Evolution+London+Battersea+Park&ll=51.4813,-0.1559', activeTrainer: 0,
+        trainers: [_trainer('General', ['Confirm arrival at Evolution London, Battersea Park', 'Scout filming positions inside & outside venue'])]
       },
-      { id: 'l417a', name: 'Battersea Park — Community Engagement (10 AM – 12 PM)', activeTrainer: 0,
+      { id: 'l417a', name: 'Evolution London — Community Engagement (10 AM – 12 PM)', activeTrainer: 0,
         trainers: [
           _trainer('Coach Joe Wicks', [
             '10:00 AM — 200 London school kids arrive',
+            '⚠️ DO NOT FILM students wearing WHITE WRISTBANDS',
             'Apple Fitness+ x Joe Wicks — hour of fitness & movement education',
             'Joe Wicks greeting Coach Cory',
             'Joe Wicks greeting Coach Kim',
@@ -646,55 +655,48 @@ const INITIAL_DAYS = [
             'Close-up — Joe Wicks talking with students',
             'Close-up — Joe Wicks exercising',
             'Close-up — Joe Wicks greeting Apple team members',
+            'Over the shoulder shot — Joe Wicks, Coach Kim & Coach Cory (no kids in shot)',
+            'Over the shoulder — Fireside Chat',
           ]),
           _trainer('Coach Kim', [
-            'Attend Community Engagement ✅ Required',
+            '⚠️ DO NOT FILM students wearing WHITE WRISTBANDS',
             'Close-up shots of Coach Kim',
             'DO NOT post any content — event includes minors',
             'ONLY exception: if Joe Wicks takes a close-up selfie (no one identifiable) — re-share only',
           ]),
           _trainer('Coach Cory', [
-            'Attend Community Engagement ✅ Required',
+            '⚠️ DO NOT FILM students wearing WHITE WRISTBANDS',
             'Close-up shots of Coach Cory',
             'DO NOT post any content — event includes minors',
             'ONLY exception: if Joe Wicks takes a close-up selfie (no one identifiable) — re-share only',
           ]),
         ]
+      },      { id: 'd0417_photos', name: '📷 Daily Photos', activeTrainer: 0,
+        trainers: _dailyPhotos('Evolution London, Battersea Park')
       },
-      { id: 'l417b', name: 'Production Prep (PM)', activeTrainer: 0,
-        trainers: [
-          _trainer('General', [
-            'Meet Clint — Camera Operator in PM',
-            'Gear check & camera battery charge',
-          ])
-        ]
-      },
-    ],
-    eod: [false, false, false]
-  },
-  {
-    id: 'd0418', label: 'Saturday, 18 April — Prep Day', tab: 'Sat 18',
-    calltime: '', weather: 'Light drizzle, 52–59°F, 27% rain', meetAt: '',
-    locations: [
-      { id: 'l418a', name: 'Prep Day', activeTrainer: 0,
-        trainers: [_trainer('General', [''])]
+      { id: 'd0417_battersea', name: '📍 Apple Battersea — End of Day', mapsUrl: 'https://maps.apple.com/?q=Apple+Battersea+Power+Station+London&ll=51.4836,-0.1441', activeTrainer: 0,
+        trainers: [_trainer('General', [
+          'Upload content to Box at Apple Battersea',
+          'Back up footage to both hard drives',
+          'Choose selects for the day',
+        ])]
       },
     ],
-    eod: [false, false, false]
-  },
-  {
-    id: 'd0419', label: 'Sunday, 19 April — Arrivals', tab: 'Sun 19',
-    calltime: '', weather: 'Heavy drizzle, 47–54°F, 16% rain', meetAt: '',
-    locations: [
-      { id: 'l419a', name: 'Arrivals', activeTrainer: 0,
-        trainers: [_trainer('General', [''])]
+      { id: 'd0417_parkhyatt', name: '📍 Return to Base Camp — Park Hyatt London River, 7 Nine Elms Lane, London SW8 5PH', mapsUrl: 'https://maps.apple.com/?q=Park+Hyatt+London+River&ll=51.4855,-0.1258', activeTrainer: 0,
+        trainers: [_trainer('General', ['Return to Park Hyatt London River', 'Debrief on the day'])]
       },
-    ],
+      { id: 'd0417_prep', name: 'Production Prep (PM)', activeTrainer: 0,
+        trainers: [_trainer('General', [
+          'Clint to check gear & charge all devices',
+          'Format cards / back up footage',
+          'Review footage from today',
+        ])]
+      },
     eod: [false, false, false]
   },
   {
     id: 'd0420', label: 'Monday, 20 April — Prep / Location Scout Day', tab: 'Mon 20',
-    calltime: '', weather: 'Overcast, 41–59°F, 10% rain', meetAt: '',
+    calltime: '', weather: 'Overcast, 41–59°F, 10% rain', meetAt: '', locationAddress: 'Apple Regent Street, 235 Regent St, London W1B 2EL',
     locations: [
       { id: 'l420a', name: 'Prep', activeTrainer: 0,
         trainers: [_trainer('General', [''])]
@@ -710,23 +712,61 @@ const INITIAL_DAYS = [
             'If possible — F+ trainers in front of decals',
           ])
         ]
+      },      { id: 'd0420_photos', name: '📷 Daily Photos', activeTrainer: 0,
+        trainers: _dailyPhotos('Apple Regent Street & Central London')
+      },
+      { id: 'd0420_battersea', name: '📍 Apple Battersea — End of Day', mapsUrl: 'https://maps.apple.com/?q=Apple+Battersea+Power+Station+London&ll=51.4836,-0.1441', activeTrainer: 0,
+        trainers: [_trainer('General', [
+          'Upload content to Box at Apple Battersea',
+          'Back up footage to both hard drives',
+          'Choose selects for the day',
+        ])]
       },
     ],
+      { id: 'd0420_parkhyatt', name: '📍 Return to Base Camp — Park Hyatt London River, 7 Nine Elms Lane, London SW8 5PH', mapsUrl: 'https://maps.apple.com/?q=Park+Hyatt+London+River&ll=51.4855,-0.1258', activeTrainer: 0,
+        trainers: [_trainer('General', ['Return to Park Hyatt London River', 'Debrief on the day'])]
+      },
+      { id: 'd0420_prep', name: 'Production Prep (PM)', activeTrainer: 0,
+        trainers: [_trainer('General', [
+          'Clint to check gear & charge all devices',
+          'Format cards / back up footage',
+          'Review footage from today',
+        ])]
+      },
     eod: [false, false, false]
   },
   {
     id: 'd0421', label: 'Tuesday, 21 April — Prep', tab: 'Tue 21',
-    calltime: '', weather: 'Overcast, 43–59°F, 21% rain', meetAt: '',
+    calltime: '', weather: 'Overcast, 43–59°F, 21% rain', meetAt: '', locationAddress: 'London — Prep Day',
     locations: [
       { id: 'l421a', name: 'Prep', activeTrainer: 0,
         trainers: [_trainer('General', [''])]
+      },      { id: 'd0421_photos', name: '📷 Daily Photos', activeTrainer: 0,
+        trainers: _dailyPhotos('London')
+      },
+      { id: 'd0421_battersea', name: '📍 Apple Battersea — End of Day', mapsUrl: 'https://maps.apple.com/?q=Apple+Battersea+Power+Station+London&ll=51.4836,-0.1441', activeTrainer: 0,
+        trainers: [_trainer('General', [
+          'Upload content to Box at Apple Battersea',
+          'Back up footage to both hard drives',
+          'Choose selects for the day',
+        ])]
       },
     ],
+      { id: 'd0421_parkhyatt', name: '📍 Return to Base Camp — Park Hyatt London River, 7 Nine Elms Lane, London SW8 5PH', mapsUrl: 'https://maps.apple.com/?q=Park+Hyatt+London+River&ll=51.4855,-0.1258', activeTrainer: 0,
+        trainers: [_trainer('General', ['Return to Park Hyatt London River', 'Debrief on the day'])]
+      },
+      { id: 'd0421_prep', name: 'Production Prep (PM)', activeTrainer: 0,
+        trainers: [_trainer('General', [
+          'Clint to check gear & charge all devices',
+          'Format cards / back up footage',
+          'Review footage from today',
+        ])]
+      },
     eod: [false, false, false]
   },
   {
     id: 'd0422', label: 'Wednesday, 22 April', tab: 'Wed 22',
-    calltime: '9:00 AM', weather: 'Light drizzle, 45–53°F, 21% rain', meetAt: 'Battersea Power Station',
+    calltime: '9:00 AM', weather: 'Light drizzle, 45–53°F, 21% rain', meetAt: 'Battersea Power Station', locationAddress: 'Battersea Power Station, Circus Rd West, London SW11 8EZ',
     locations: [
       { id: 'l422a', name: 'Battersea Power Station — Apple Watch Run Experience (9 AM – 6:30 PM)', activeTrainer: 0,
         trainers: _selectedCoaches(['Coach Brian','Coach Cory','Coach Josh','Coach Scott','Coach Sherica'], [
@@ -741,95 +781,94 @@ const INITIAL_DAYS = [
       { id: 'l422b', name: '📋 Social: Apple Watch Experience Tasks', activeTrainer: 0,
         trainers: [
           _trainer('Coach Cory', [
-            'Attend Apple Watch Experience ✅ Required',
             'Re-share Brian\'s selfie video when tagged',
           ]),
           _trainer('Coach Josh', [
-            'Attend Apple Watch Experience ✅ Required',
             'Re-share Brian\'s selfie video when tagged',
           ]),
           _trainer('Coach Scott', [
-            'Attend Apple Watch Experience ✅ Required',
             'Re-share Brian\'s selfie video when tagged',
           ]),
           _trainer('Coach Brian', [
-            'Attend Apple Watch Experience ✅ Required',
             'Record selfie video at installation with full trainer group (before guests arrive)',
             'Script: "Hey team! We\'re here in London with my Fitness+ teammates learning more about Apple Watch! Let\'s go!"',
             'Tag Sherica, Cory, Josh, Scott to re-share',
           ]),
           _trainer('Coach Sherica', [
-            'Attend Apple Watch Experience ✅ Required',
             'Re-share Brian\'s selfie video when tagged',
           ]),
         ]
+      },      { id: 'd0422_photos', name: '📷 Daily Photos', activeTrainer: 0,
+        trainers: _dailyPhotos('Battersea Power Station')
+      },
+      { id: 'd0422_battersea', name: '📍 Apple Battersea — End of Day', mapsUrl: 'https://maps.apple.com/?q=Apple+Battersea+Power+Station+London&ll=51.4836,-0.1441', activeTrainer: 0,
+        trainers: [_trainer('General', [
+          'Upload content to Box at Apple Battersea',
+          'Back up footage to both hard drives',
+          'Choose selects for the day',
+        ])]
       },
     ],
+      { id: 'd0422_parkhyatt', name: '📍 Return to Base Camp — Park Hyatt London River, 7 Nine Elms Lane, London SW8 5PH', mapsUrl: 'https://maps.apple.com/?q=Park+Hyatt+London+River&ll=51.4855,-0.1258', activeTrainer: 0,
+        trainers: [_trainer('General', ['Return to Park Hyatt London River', 'Debrief on the day'])]
+      },
+      { id: 'd0422_prep', name: 'Production Prep (PM)', activeTrainer: 0,
+        trainers: [_trainer('General', [
+          'Clint to check gear & charge all devices',
+          'Format cards / back up footage',
+          'Review footage from today',
+        ])]
+      },
     eod: [false, false, false]
   },
   {
     id: 'd0423', label: 'Thursday, 23 April', tab: 'Thu 23',
-    calltime: '', weather: 'Overcast, 42–66°F, 25% rain', meetAt: '',
+    calltime: '', weather: 'Overcast, 42–66°F, 25% rain', meetAt: '', locationAddress: 'Apple Brompton, 17-27 Brompton Rd, London SW1X 9LF',
     locations: [
+      { id: 'l423z', name: '📍 Apple Brompton — Morning Walkthrough (17-27 Brompton Rd, London SW1X 9LF)', mapsUrl: 'https://maps.apple.com/?q=Apple+Brompton+Street+London&ll=51.5125,-0.1415', activeTrainer: 0,
+        trainers: [
+          _trainer('General', [
+            '⚠️ IMPORTANT — Morning walkthrough at Apple Brompton store',
+            'Arrive at Apple Brompton for morning walkthrough',
+            'Scout all filming positions — interior & exterior',
+            'Check event setup & staging',
+            'Check video wall placement & lighting',
+            'Confirm camera angles for panel & audience',
+            'Check sight lines for 5K run departure',
+            'Confirm access points & crew positions',
+            'Liaise with store team & event team on the day plan',
+          ])
+        ]
+      },
       { id: 'l423a', name: 'Creator Cohort Welcome Programming — All Trainers', activeTrainer: 0,
         trainers: _coaches([
-          'Attend Creator Cohort Welcome Programming ✅ All required',
-          'Re-share content when tagged by creators',
-          'Focus on energy & interaction with creators',
-          'Use judgement on re-shares — prioritise creator interaction over atmosphere',
         ])
       },
       { id: 'l423b', name: 'Apple Brompton — TAA Panel + 5K Shakeout Run (6:30 PM – 8:30 PM)', activeTrainer: 0,
         trainers: [
           _trainer('Coach Jamie-Ray', [
-            'Attend TAA Panel + 5K Shakeout ✅ Required',
-            'Up to 150 attendees',
             'Record 5K video diary for Stories',
             'Photos back at Store after event',
-            'Re-share content when tagged',
           ]),
           _trainer('Coach Kim', [
-            'Attend TAA Panel + 5K Shakeout ✅ Required',
-            'Up to 150 attendees',
-            'Re-share content when tagged',
           ]),
           _trainer('Coach Cory', [
-            'Attend TAA Panel + 5K Shakeout ✅ Required — Moderator',
             'Q&A Panel — Cory moderating',
-            'Up to 150 attendees',
-            'Accept collab from exec social on Saturday (TAA events carousel)',
-            'Re-share content when tagged',
           ]),
           _trainer('Coach Josh', [
-            'Attend TAA Panel + 5K Shakeout ✅ Required',
-            'Up to 150 attendees',
-            'Re-share content when tagged',
           ]),
           _trainer('Coach Scott', [
-            'Attend TAA Panel + 5K Shakeout ✅ Required',
-            'Up to 150 attendees',
-            'Re-share content when tagged',
           ]),
           _trainer('Coach Dice', [
-            'Attend TAA Panel + 5K Shakeout ✅ Required',
-            'Up to 150 attendees',
             'Record 5K video diary for Stories',
             'Photos back at Store after event',
-            'Re-share content when tagged',
           ]),
           _trainer('Coach Brian', [
-            'Attend TAA Panel + 5K Shakeout ✅ Required',
-            'Up to 150 attendees',
             'Record 5K video diary for Stories',
             'Photos back at Store after event',
-            'Re-share content when tagged',
           ]),
           _trainer('Coach Sherica', [
-            'Attend TAA Panel + 5K Shakeout ✅ Required — Panelist',
             'Q&A Panel — Sherica panelist',
-            'Up to 150 attendees',
-            'Accept collab from exec social on Saturday (TAA events carousel)',
-            'Re-share content when tagged',
           ]),
         ]
       },
@@ -905,94 +944,105 @@ const INITIAL_DAYS = [
             'Audience wide — energy & atmosphere B-roll',
           ])
         ]
+      },      { id: 'd0423_photos', name: '📷 Daily Photos', activeTrainer: 0,
+        trainers: _dailyPhotos('Apple Brompton Store')
+      },
+      { id: 'd0423_battersea', name: '📍 Apple Battersea — End of Day', mapsUrl: 'https://maps.apple.com/?q=Apple+Battersea+Power+Station+London&ll=51.4836,-0.1441', activeTrainer: 0,
+        trainers: [_trainer('General', [
+          'Upload content to Box at Apple Battersea',
+          'Back up footage to both hard drives',
+          'Choose selects for the day',
+        ])]
       },
     ],
+      { id: 'd0423_parkhyatt', name: '📍 Return to Base Camp — Park Hyatt London River, 7 Nine Elms Lane, London SW8 5PH', mapsUrl: 'https://maps.apple.com/?q=Park+Hyatt+London+River&ll=51.4855,-0.1258', activeTrainer: 0,
+        trainers: [_trainer('General', ['Return to Park Hyatt London River', 'Debrief on the day'])]
+      },
+      { id: 'd0423_prep', name: 'Production Prep (PM)', activeTrainer: 0,
+        trainers: [_trainer('General', [
+          'Clint to check gear & charge all devices',
+          'Format cards / back up footage',
+          'Review footage from today',
+        ])]
+      },
     eod: [false, false, false]
   },
   {
     id: 'd0424', label: 'Friday, 24 April', tab: 'Fri 24',
-    calltime: '', weather: 'Overcast, 46–52°F, 24% rain', meetAt: '',
+    calltime: '', weather: 'Overcast, 46–52°F, 24% rain', meetAt: '', locationAddress: 'SoHo, London & 1 Boiler House, Battersea Power Station, SW11 8EZ',
     locations: [
       { id: 'l424a', name: 'SoHo — Strava Breakfast (9:30 AM – 11:30 AM)', activeTrainer: 0,
         trainers: [
           _trainer('Coach Jamie-Ray', [
-            'Attend Strava Breakfast ✅ Required',
             'Run or Walk + Breakfast',
-            'Re-share Strava program & link to program',
             'Group photo at step and repeat',
-            'Re-share content when tagged',
           ]),
           _trainer('Coach Kim', [
-            'Attend Strava Breakfast ✅ Required',
             'Run or Walk + Breakfast',
-            'Re-share Strava program & link to program',
             'Group photo at step and repeat',
-            'Re-share content when tagged',
           ]),
           _trainer('Coach Cory', [
-            'Attend Strava Breakfast ✅ Required',
             'Run or Walk + Breakfast',
-            'Re-share Strava program & link to program',
             'Group photo at step and repeat',
-            'Re-share content when tagged',
           ]),
           _trainer('Coach Josh', [
-            'Attend Strava Breakfast ✅ Required',
             'Run or Walk + Breakfast',
-            'Re-share Strava program & link to program',
             'Group photo at step and repeat',
-            'Re-share content when tagged',
           ]),
           _trainer('Coach Scott', [
-            'Attend Strava Breakfast ✅ Required',
             'Run or Walk + Breakfast',
-            'Re-share Strava program & link to program',
             'Group photo at step and repeat',
-            'Re-share content when tagged',
           ]),
           _trainer('Coach Brian', [
-            'Attend Strava Breakfast ✅ Required',
             'Run or Walk + Breakfast',
-            'Re-share Strava program & link to program',
             'Group photo at step and repeat',
-            'Re-share content when tagged',
           ]),
         ]
       },
       { id: 'l424b', name: 'Photo Walk — JR, Dice, Kim', activeTrainer: 0,
         trainers: [
           _trainer('Coach Jamie-Ray', [
-            'Attend Photo Walk ✅ Required',
             'DITL: Film "get ready for bib pick-up" with fellow creators',
             'Mention Sherica on the day (iterate in the moment)',
-            'Steph to accompany & provide shot list on the day',
           ]),
           _trainer('Coach Kim', [
-            'Attend Photo Walk ✅ Required',
             'Capture content during photo walk',
-            'Re-share when tagged',
           ]),
           _trainer('Coach Dice', [
-            'Attend Photo Walk ✅ Required',
             'Capture content during photo walk',
-            'Re-share when tagged',
           ]),
         ]
       },
       { id: 'l424c', name: '1 Boiler House, BPS — VIP Event (5:30 PM – 7:30 PM)', activeTrainer: 0,
         trainers: _coaches([
-          'Attend VIP Event ✅ All required',
           '150 guests max',
-          'Re-share content when tagged by creators',
-          'Focus on energy & interaction with creators',
         ])
+      },      { id: 'd0424_photos', name: '📷 Daily Photos', activeTrainer: 0,
+        trainers: _dailyPhotos('SoHo & Battersea Power Station')
+      },
+      { id: 'd0424_battersea', name: '📍 Apple Battersea — End of Day', mapsUrl: 'https://maps.apple.com/?q=Apple+Battersea+Power+Station+London&ll=51.4836,-0.1441', activeTrainer: 0,
+        trainers: [_trainer('General', [
+          'Upload content to Box at Apple Battersea',
+          'Back up footage to both hard drives',
+          'Choose selects for the day',
+        ])]
       },
     ],
+      { id: 'd0424_parkhyatt', name: '📍 Return to Base Camp — Park Hyatt London River, 7 Nine Elms Lane, London SW8 5PH', mapsUrl: 'https://maps.apple.com/?q=Park+Hyatt+London+River&ll=51.4855,-0.1258', activeTrainer: 0,
+        trainers: [_trainer('General', ['Return to Park Hyatt London River', 'Debrief on the day'])]
+      },
+      { id: 'd0424_prep', name: 'Production Prep (PM)', activeTrainer: 0,
+        trainers: [_trainer('General', [
+          'Clint to check gear & charge all devices',
+          'Format cards / back up footage',
+          'Review footage from today',
+        ])]
+      },
     eod: [false, false, false]
   },
   {
     id: 'd0425', label: 'Saturday, 25 April', tab: 'Sat 25',
-    calltime: '9:15 AM', weather: 'Partly cloudy, 40–61°F, 25% rain', meetAt: 'Apple Brompton',
+    calltime: '9:15 AM', weather: 'Partly cloudy, 40–61°F, 25% rain', meetAt: 'Apple Brompton', locationAddress: 'Apple Brompton, 17-27 Brompton Rd, London SW1X 9LF',
     locations: [
       { id: 'l425z', name: '📍 Apple Brompton — 17-27 Brompton Rd, London SW1X 9LF', activeTrainer: 0,
         trainers: [_trainer('General', [
@@ -1081,48 +1131,28 @@ const INITIAL_DAYS = [
       { id: 'l425a', name: 'Apple Brompton — TAA Live Podcast with Paula Radcliffe (10:30 AM – 11:30 AM)', activeTrainer: 0,
         trainers: [
           _trainer('Coach Jamie-Ray', [
-            'Attend Podcast Recording ✅ Required — Audience',
-            'Accept collab from exec social (Feed post)',
           ]),
           _trainer('Coach Kim', [
-            'Attend Podcast Recording ✅ Required — Audience',
-            'Accept collab from exec social (Feed post)',
           ]),
           _trainer('Coach Cory', [
-            'Attend Podcast Recording ✅ Required — FEATURED GUEST',
             'Apple Fitness+ Trainer Cory Wharton Malcolm',
             'Paula Radcliffe "Road to London" live podcast recording',
             'Capture selfie with Paula Radcliffe in real time',
-            'Steph to provide professional photos after for Stories posting',
-            'Accept collab from exec social (Feed post)',
           ]),
           _trainer('Coach Josh', [
-            'Attend Run & Yoga ✅ Required',
-            'Re-share content when tagged by creators',
           ]),
           _trainer('Coach Scott', [
-            'Attend Podcast Recording ✅ Required — Audience',
-            'Accept collab from exec social (Feed post)',
           ]),
           _trainer('Coach Dice', [
-            'Attend Run & Yoga ✅ Required',
-            'Re-share content when tagged by creators',
           ]),
           _trainer('Coach Brian', [
-            'Attend Run & Yoga ✅ Required',
-            'Re-share content when tagged by creators',
           ]),
           _trainer('Coach Sherica', [
-            'Attend Run & Yoga ✅ Required',
-            'Re-share content when tagged by creators',
           ]),
         ]
       },
       { id: 'l425b', name: 'Creator Cohort Programming', activeTrainer: 0,
         trainers: _coaches([
-          'Attend Creator Cohort Programming ✅ All required',
-          'Re-share content when tagged by creators',
-          'Focus on energy & interaction with creators',
         ])
       },
       { id: 'l425c', name: '5KM Run', activeTrainer: 0,
@@ -1135,218 +1165,33 @@ const INITIAL_DAYS = [
           'Finish line — coaches crossing',
           'Post-run group celebration',
         ])
+      },      { id: 'd0425_photos', name: '📷 Daily Photos', activeTrainer: 0,
+        trainers: _dailyPhotos('Apple Brompton Store')
+      },
+      { id: 'd0425_battersea', name: '📍 Apple Battersea — End of Day', mapsUrl: 'https://maps.apple.com/?q=Apple+Battersea+Power+Station+London&ll=51.4836,-0.1441', activeTrainer: 0,
+        trainers: [_trainer('General', [
+          'Upload content to Box at Apple Battersea',
+          'Back up footage to both hard drives',
+          'Choose selects for the day',
+        ])]
       },
     ],
+      { id: 'd0425_parkhyatt', name: '📍 Return to Base Camp — Park Hyatt London River, 7 Nine Elms Lane, London SW8 5PH', mapsUrl: 'https://maps.apple.com/?q=Park+Hyatt+London+River&ll=51.4855,-0.1258', activeTrainer: 0,
+        trainers: [_trainer('General', ['Return to Park Hyatt London River', 'Debrief on the day'])]
+      },
+      { id: 'd0425_prep', name: 'Production Prep (PM)', activeTrainer: 0,
+        trainers: [_trainer('General', [
+          'Clint to check gear & charge all devices',
+          'Format cards / back up footage',
+          'Review footage from today',
+        ])]
+      },
     eod: [false, false, false]
   },
   {
     id: 'd0426', label: 'Sunday, 26 April — Race Day 🏃', tab: 'Sun 26',
-    calltime: '', weather: 'Overcast, 44–59°F, 26% rain', meetAt: '',
+    calltime: '', weather: 'Overcast, 44–59°F, 26% rain', meetAt: '', dri: '', locationAddress: 'Victoria Embankment, London WC2N 5DJ & The Mall, London SW1A 1AA',
     locations: [
-      { id: 'l426a', name: 'Blackheath — Start Line (Mile 0)', mapsUrl: 'https://maps.apple.com/?q=Blackheath+Common+London&ll=51.4739,-0.0076', activeTrainer: 0,
-        trainers: [
-          _trainer('Coach Jamie-Ray', [
-            'Jamie-Ray at the start line — wide & close-up',            'Jamie-Ray warming up in start pens',
-            'Jamie-Ray race bib & kit detail shots',
-            'Jamie-Ray heading into the start corral',
-            'Jamie-Ray crossing the start line — wide & tight',
-          ]),
-          _trainer('Coach Sherica', [
-            'Sherica at the start line — wide & close-up',
-            'Sherica warming up in start pens',
-            'Sherica race bib & kit detail shots',
-            'Sherica heading into the start corral',
-            'Sherica crossing the start line — wide & tight',
-          ]),
-          _trainer('Gemma', [
-            'Gemma at the start line — wide & close-up',
-            'Gemma warming up in start pens',
-            'Gemma race bib & kit detail shots',
-            'Gemma heading into the start corral',
-            'Gemma crossing the start line — wide & tight',
-          ]),
-          _trainer('Coach Kim', [
-            'Wide establishing shot — start line & pens',
-            'Mass start crowd — sweeping wide angle',
-            'Starter\'s gun / race begins moment',
-            'Runners flooding out of the start pens',
-            'Nervous energy & atmosphere B-roll',
-          ]),
-          _trainer('Coach Cory', [
-            'Wide establishing shot — start line & pens',
-            'Mass start crowd — sweeping wide angle',
-            'Starter\'s gun / race begins moment',
-            'Aerial / elevated overview of start',
-          ]),
-          _trainer('Coach Josh', [
-            'Wide establishing shot — start line & pens',
-            'Runners flooding out of the start pens',
-            'Atmosphere B-roll',
-          ]),
-          _trainer('Coach Scott', [
-            'Wide establishing shot — start line & pens',
-            'Atmosphere B-roll',
-          ]),
-          _trainer('Coach Dice', [
-            'Wide establishing shot — start line & pens',
-            'Mass start crowd — sweeping wide angle',
-            'Starter\'s gun / race begins moment',
-          ]),
-          _trainer('Coach Brian', [
-            'Wide establishing shot — start line & pens',
-            'Atmosphere B-roll',
-          ]),
-        ]
-      },
-      { id: 'l426b', name: 'Cutty Sark — Greenwich (Mile 6)', mapsUrl: 'https://maps.apple.com/?q=Cutty+Sark+Greenwich+London&ll=51.4832,-0.0098', activeTrainer: 0,
-        trainers: [
-          _trainer('Coach Jamie-Ray', [
-            'Jamie-Ray running through Greenwich — wide & tight',
-            'Jamie-Ray close-up — expression & focus at Mile 6',
-            'Jamie-Ray passing Cutty Sark — iconic backdrop shot',
-          ]),
-          _trainer('Coach Sherica', [
-            'Sherica running through Greenwich — wide & tight',
-            'Sherica close-up — expression & focus at Mile 6',
-            'Sherica passing Cutty Sark — iconic backdrop shot',
-          ]),
-          _trainer('Coach Kim', ['Wide shot — runners passing Cutty Sark', 'Crowd support & spectator energy', 'Pace groups B-roll']),
-          _trainer('Coach Cory', ['Wide shot — runners passing Cutty Sark', 'Crowd support & spectator energy']),
-          _trainer('Coach Josh', ['Crowd support & spectator energy B-roll']),
-          _trainer('Coach Scott', ['Crowd support & spectator energy B-roll']),
-          _trainer('Coach Dice', ['Wide shot — runners passing Cutty Sark', 'Close-up — athlete expressions']),
-          _trainer('Coach Brian', ['Crowd support & spectator energy B-roll']),
-        ]
-      },
-      { id: 'l426c', name: 'Tower Bridge (Mile 13)', mapsUrl: 'https://maps.apple.com/?q=Tower+Bridge+London&ll=51.5055,-0.0754', activeTrainer: 0,
-        trainers: [
-          _trainer('Coach Jamie-Ray', [
-            'Jamie-Ray crossing Tower Bridge — hero wide shot',
-            'Jamie-Ray on bridge — low angle close-up',
-            'Jamie-Ray at halfway — expression & determination',
-          ]),
-          _trainer('Coach Sherica', [
-            'Sherica crossing Tower Bridge — hero wide shot',
-            'Sherica on bridge — low angle close-up',
-            'Sherica at halfway — expression & determination',
-          ]),
-          _trainer('Coach Kim', ['Hero wide shot — runners on Tower Bridge', 'Crowd lining bridge railings B-roll', 'Compressed telephoto — stream of runners']),
-          _trainer('Coach Cory', ['Hero wide shot — runners on Tower Bridge', 'Tower Bridge + city skyline establishing']),
-          _trainer('Coach Josh', ['Crowd lining bridge railings B-roll']),
-          _trainer('Coach Scott', ['Crowd lining bridge railings B-roll']),
-          _trainer('Coach Dice', ['Hero wide shot — runners on Tower Bridge', 'Halfway marker reaction shots']),
-          _trainer('Coach Brian', ['Crowd lining bridge railings B-roll']),
-        ]
-      },
-      { id: 'l426d', name: 'Canary Wharf (Mile 18)', mapsUrl: 'https://maps.apple.com/?q=Canary+Wharf+London&ll=51.5054,-0.0235', activeTrainer: 0,
-        trainers: [
-          _trainer('Coach Jamie-Ray', [
-            'Jamie-Ray through Canary Wharf — wide & tight',
-            'Jamie-Ray close-up — digging deep at Mile 18',
-            'Jamie-Ray taking on water / nutrition',
-          ]),
-          _trainer('Coach Sherica', [
-            'Sherica through Canary Wharf — wide & tight',
-            'Sherica close-up — digging deep at Mile 18',
-            'Sherica taking on water / nutrition',
-          ]),
-          _trainer('Coach Kim', ['Runners through Canary Wharf glass towers', 'Urban tunnel / underpass section', 'Crowd support tunnel atmosphere']),
-          _trainer('Coach Cory', ['Wide — skyscraper backdrop with runners', 'Crowd support tunnel atmosphere']),
-          _trainer('Coach Josh', ['Crowd support tunnel atmosphere B-roll']),
-          _trainer('Coach Scott', ['Crowd support tunnel atmosphere B-roll']),
-          _trainer('Coach Dice', ['Runners through Canary Wharf glass towers', 'Athletes taking on water / nutrition']),
-          _trainer('Coach Brian', ['Crowd support tunnel atmosphere B-roll']),
-        ]
-      },
-      { id: 'l426e', name: 'Victoria Embankment (Mile 23–24)', mapsUrl: 'https://maps.apple.com/?q=Victoria+Embankment+London&ll=51.5074,-0.1228', activeTrainer: 0,
-        trainers: [
-          _trainer('Coach Jamie-Ray', [
-            'Jamie-Ray on the Embankment — final miles wide shot',
-            'Jamie-Ray close-up — pain & determination',
-            'Jamie-Ray with Big Ben / Westminster backdrop',
-          ]),
-          _trainer('Coach Sherica', [
-            'Sherica on the Embankment — final miles wide shot',
-            'Sherica close-up — pain & determination',
-            'Sherica with Big Ben / Westminster backdrop',
-          ]),
-          _trainer('Coach Kim', ['Skyline shot — Big Ben / Westminster backdrop', 'Spectator crowd energy on Embankment', 'Athletes digging deep — final miles']),
-          _trainer('Coach Cory', ['Skyline shot — Big Ben / Westminster backdrop', 'Medical & support zone B-roll']),
-          _trainer('Coach Josh', ['Spectator crowd energy B-roll']),
-          _trainer('Coach Scott', ['Spectator crowd energy B-roll']),
-          _trainer('Coach Dice', ['Skyline shot — Big Ben / Westminster backdrop', 'Close-up — athlete pain & determination']),
-          _trainer('Coach Brian', ['Spectator crowd energy B-roll']),
-        ]
-      },
-      { id: 'l426f', name: 'The Mall — Finish Line (Mile 26.2)', mapsUrl: 'https://maps.apple.com/?q=The+Mall+London&ll=51.5021,-0.1363', activeTrainer: 0,
-        trainers: [
-          _trainer('Coach Jamie-Ray', [
-            'Jamie-Ray approaching The Mall — final straight',
-            'Jamie-Ray crossing the finish line 🎉',
-            'Jamie-Ray finish line emotion — close-up',
-            'Jamie-Ray arms raised / celebration',
-            'Jamie-Ray receiving medal',
-            'Post-race: Jamie-Ray wrapped in foil blanket',
-          ]),
-          _trainer('Coach Sherica', [
-            'Sherica approaching The Mall — final straight',
-            'Sherica crossing the finish line 🎉',
-            'Sherica finish line emotion — close-up',
-            'Sherica arms raised / celebration',
-            'Sherica receiving medal',
-            'Post-race: Sherica wrapped in foil blanket',
-          ]),
-          _trainer('Coach Kim', ['First finisher crossing the line', 'Elite finishes — wide & tight', 'Arms raised / celebration', 'Medal ceremony B-roll', 'Post-race family reunion moments']),
-          _trainer('Coach Cory', ['Finish line wide establishing', 'Buckingham Palace backdrop with finishers', 'Results board / timing display']),
-          _trainer('Coach Josh', ['Finish line crowd energy B-roll']),
-          _trainer('Coach Scott', ['Finish line crowd energy B-roll']),
-          _trainer('Coach Dice', ['Finishers crossing the line', 'Emotional finish reactions', 'Finishers wrapped in foil blankets']),
-          _trainer('Coach Brian', ['Finish line crowd energy B-roll']),
-        ]
-      },
-      { id: 'l426h', name: '🎉 Cheer Station', mapsUrl: 'https://maps.apple.com/?q=London+Marathon+Cheer+Zone+The+Mall&ll=51.5021,-0.1363', activeTrainer: 0,        trainers: [
-          _trainer('Coach Jamie-Ray', ['Running in race — being cheered on 🏃']),
-          _trainer('Coach Kim', [
-            'Cheer station wide establishing shot',
-            'Coaches cheering & holding signs — group shot',
-            'Close-up — coaches reacting as Jamie-Ray passes',
-            'Close-up — coaches reacting as Sherica passes',
-            'DJ setup & music playing B-roll',
-            'Crowd holding signs — wide & close-up',
-            'Energy & atmosphere B-roll',
-            'Apple Music DJ race course activation',
-          ]),
-          _trainer('Coach Cory', [
-            'Cheering & holding sign — wide & close-up',
-            'Reaction shots as Jamie-Ray & Sherica pass',
-            'Group energy B-roll',
-            'Apple Music DJ race course activation',
-          ]),
-          _trainer('Coach Josh', [
-            'Cheering & holding sign — wide & close-up',
-            'Reaction shots as Jamie-Ray & Sherica pass',
-            'Group energy B-roll',
-          ]),
-          _trainer('Coach Scott', [
-            'Cheering & holding sign — wide & close-up',
-            'Reaction shots as Jamie-Ray & Sherica pass',
-          ]),
-          _trainer('Coach Dice', [
-            'Cheer station wide establishing shot',
-            'Coaches cheering & holding signs — group shot',
-            'Close-up — coaches reacting as Jamie-Ray passes',
-            'Close-up — coaches reacting as Sherica passes',
-            'DJ setup & music playing B-roll',
-            'Crowd holding signs — wide & close-up',
-            'Apple Music DJ race course activation',
-          ]),
-          _trainer('Coach Brian', [
-            'Cheering & holding sign — wide & close-up',
-            'Reaction shots as Jamie-Ray & Sherica pass',
-          ]),
-          _trainer('Coach Sherica', ['Running in race — being cheered on 🏃']),
-        ]
-      },
       { id: 'l426i', name: '🎵 Mile 24 — Apple Music Activation, Victoria Embankment, London WC2N 5DJ', mapsUrl: 'https://maps.apple.com/?q=Victoria+Embankment+London+WC2N+5DJ&ll=51.5033,-0.1195', activeTrainer: 0,
         trainers: [
           _trainer('General', [
@@ -1408,59 +1253,57 @@ const INITIAL_DAYS = [
           ])
         ]
       },
-      { id: 'l426g', name: '📋 Social & Activation: Race Day Tasks', activeTrainer: 0,
+      { id: 'l426f', name: 'The Mall — Finish Line (Mile 26.2)', mapsUrl: 'https://maps.apple.com/?q=The+Mall+London&ll=51.5021,-0.1363', activeTrainer: 0,
         trainers: [
-          _trainer('Coach Jamie-Ray', [
-            'Running in the race 🏃 — Cheering at start & finish',
-            'Kim & Dice to capture crossing finish line',
-            'Group selfies at finish line',
-            'Brand presence at race',
-          ]),
-          _trainer('Coach Kim', [
-            'Capture real-time Stories — crowd racing & enthusiasm ✅',
-            'Tag other trainers in Stories content',
-            'Capture Sherica & Jamie-Ray crossing the finish line',
-            'Group selfies of the energy',
-            'Brand presence at race',
-            'Apple Music DJ race course activation B-roll',
-          ]),
-          _trainer('Coach Cory', [
-            'Cheering at race ✅ Required',
-            'Group selfies of the energy',
-            'Brand presence at race',
-            'Apple Music DJ race course activation B-roll',
-          ]),
-          _trainer('Coach Josh', [
-            'Cheering at race ✅ Required',
-            'Group selfies of the energy',
-            'Brand presence at race',
-          ]),
-          _trainer('Coach Scott', [
-            'Attend Race Day — Cheering',
-            'Group selfies of the energy',
-            'Brand presence at race',
-          ]),
-          _trainer('Coach Dice', [
-            'Capture real-time Stories — crowd racing & enthusiasm ✅',
-            'Tag other trainers in Stories content',
-            'Capture Sherica & Jamie-Ray crossing the finish line',
-            'Group selfies of the energy',
-            'Brand presence at race',
-            'Apple Music DJ race course activation B-roll',
-          ]),
-          _trainer('Coach Brian', [
-            'Attend Race Day',
-            'Group selfies of the energy',
-            'Brand presence at race',
-          ]),
-          _trainer('Coach Sherica', [
-            'Running in the race 🏃',
-            'Kim & Dice to capture crossing finish line',
-            'Group selfies at finish line',
-          ]),
+          _trainer('General', [
+            '— WIDE SHOTS —',
+            'Wide establishing shot — finish line on The Mall',
+            'Wide shot — runners crossing the finish line',
+            'Wide shot — crowds lining The Mall',
+            'Wide shot — Buckingham Palace backdrop with finishers',
+            '— MEDIUM SHOTS —',
+            'Medium shot — finishers crossing the line',
+            'Medium shot — medal ceremony',
+            'Medium shot — finishers wrapped in foil blankets',
+            '— CLOSE-UPS —',
+            'Close-up — finish line timing gantry',
+            'Close-up — runner crossing the line — emotion & reaction',
+            'Close-up — arms raised / celebration moments',
+            'Close-up — tears & emotional finishes',
+            'Close-up — medal being placed around neck',
+            '— RUNNERS —',
+            'Sherica crossing the finish line 🎉',
+            'Sherica — emotion & celebration at finish',
+            'Jamie-Ray crossing the finish line 🎉',
+            'Jamie-Ray — emotion & celebration at finish',
+            'Gemma crossing the finish line 🎉',
+            'Gemma — emotion & celebration at finish',
+            'Post-race — group selfies & celebrations',
+            'Post-race — family reunion moments',
+            'Results board / timing display',
+          ])
         ]
+      },      { id: 'd0426_photos', name: '📷 Daily Photos', activeTrainer: 0,
+        trainers: _dailyPhotos('Victoria Embankment & The Mall')
+      },
+      { id: 'd0426_battersea', name: '📍 Apple Battersea — End of Day', mapsUrl: 'https://maps.apple.com/?q=Apple+Battersea+Power+Station+London&ll=51.4836,-0.1441', activeTrainer: 0,
+        trainers: [_trainer('General', [
+          'Upload content to Box at Apple Battersea',
+          'Back up footage to both hard drives',
+          'Choose selects for the day',
+        ])]
       },
     ],
+      { id: 'd0426_parkhyatt', name: '📍 Return to Base Camp — Park Hyatt London River, 7 Nine Elms Lane, London SW8 5PH', mapsUrl: 'https://maps.apple.com/?q=Park+Hyatt+London+River&ll=51.4855,-0.1258', activeTrainer: 0,
+        trainers: [_trainer('General', ['Return to Park Hyatt London River', 'Debrief on the day'])]
+      },
+      { id: 'd0426_prep', name: 'Production Prep (PM)', activeTrainer: 0,
+        trainers: [_trainer('General', [
+          'Clint to check gear & charge all devices',
+          'Format cards / back up footage',
+          'Review footage from today',
+        ])]
+      },
     eod: [false, false, false]
   }
 ];
@@ -1468,7 +1311,7 @@ const INITIAL_DAYS = [
 const EOD_LABELS = [
   '✅ Choose selects',
   '💾 Upload to both hard drives',
-  '🏢 Upload content to SAN at Apple Battersea'
+  '🏢 Upload to Box at Apple Battersea'
 ];
 
 // ─────────────────────────────────────────
@@ -1507,7 +1350,7 @@ function loadState() {
       }
     } catch(e) {}
   }
-  const saved = localStorage.getItem('lm2026_v24_schedule');
+  const saved = localStorage.getItem('lm2026_v40_schedule');
   if (saved) {
     try {
       const parsed = JSON.parse(saved);
@@ -1547,8 +1390,6 @@ function renderDays() {
   const main = document.getElementById('main');
   main.innerHTML = state.days.map((d, di) => `
     <div class="day-panel ${di === activeDay ? 'active' : ''}" id="panel-${di}">
-      ${renderDayHeader(d, di)}
-      ${renderInfoCard(d, di)}
       <div class="basecamp-card">
         <span class="basecamp-icon">🏨</span>
         <div>
@@ -1556,6 +1397,8 @@ function renderDays() {
           <div class="basecamp-address">Park Hyatt London River &nbsp;·&nbsp; 7 Nine Elms Lane, London GB SW8 5PH</div>
         </div>
       </div>
+      ${renderDayHeader(d, di)}
+      ${renderInfoCard(d, di)}
       <div class="section-label">📍 Locations & Shots</div>
       ${d.locations.map((loc, li) => renderLocation(d, di, loc, li)).join('')}
       <button class="btn-add-location" onclick="addLocation(${di})">＋ Add Location</button>
@@ -1584,8 +1427,8 @@ function renderInfoCard(d, di) {
   return `
     <div class="info-card">
       <div class="info-field">
-        <label><span class="field-icon">⏰</span> Call Time</label>
-        <input type="text" placeholder="e.g. 06:00" value="${esc(d.calltime)}"
+        <label><span class="field-icon">🚗</span> Departure from Hotel</label>
+        <input type="text" placeholder="e.g. 9:00 AM" value="${esc(d.calltime)}"
           oninput="updateInfo(${di},'calltime',this.value)" />
       </div>
       <div class="info-field">
@@ -1594,9 +1437,14 @@ function renderInfoCard(d, di) {
           oninput="updateInfo(${di},'weather',this.value)" />
       </div>
       <div class="info-field">
-        <label><span class="field-icon">📍</span> Meet At</label>
-        <input type="text" placeholder="e.g. Blackheath Station" value="${esc(d.meetAt)}"
+        <label><span class="field-icon">🏨</span> Headed to Location</label>
+        <input type="text" placeholder="e.g. Park Hyatt London River" value="${esc(d.meetAt)}"
           oninput="updateInfo(${di},'meetAt',this.value)" />
+      </div>
+      <div class="info-field">
+        <label><span class="field-icon">📍</span> Location Address</label>
+        <input type="text" placeholder="e.g. 17-27 Brompton Rd, London SW1X 9LF" value="${esc(d.locationAddress||'')}"
+          oninput="updateInfo(${di},'locationAddress',this.value)" />
       </div>
       <div class="info-field">
         <label><span class="field-icon">👤</span> DRI</label>
