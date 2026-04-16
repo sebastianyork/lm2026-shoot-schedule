@@ -1,3 +1,11 @@
+// Error handler - shows errors on page instead of blank screen
+window.onerror = function(msg, url, line, col, err) {
+  var d = document.createElement('div');
+  d.style.cssText = 'padding:20px;font-family:sans-serif;background:#fff;color:#c00;font-size:14px;';
+  d.innerHTML = '<strong>JS Error (line ' + line + '):</strong><br>' + msg + (err ? '<pre style="font-size:11px">' + err.stack + '</pre>' : '');
+  document.body.prepend(d);
+};
+
 
 // ─────────────────────────────────────────
 //  HELPERS  (function declarations → hoisted)
@@ -1120,5 +1128,14 @@ function showToast(msg) {
 // ─────────────────────────────────────────
 //  INIT
 // ─────────────────────────────────────────
-loadState();
-render();
+document.addEventListener('DOMContentLoaded', function() {
+  try {
+    loadState();
+    render();
+  } catch(e) {
+    var d = document.createElement('div');
+    d.style.cssText = 'padding:20px;font-family:sans-serif;background:#fff;color:#c00;font-size:14px;';
+    d.innerHTML = '<strong>Init Error:</strong><br>' + e.message + '<pre style="font-size:11px">' + e.stack + '</pre>';
+    document.body.prepend(d);
+  }
+});
