@@ -1128,14 +1128,12 @@ function showToast(msg) {
 // ─────────────────────────────────────────
 //  INIT
 // ─────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', function() {
-  try {
-    loadState();
-    render();
-  } catch(e) {
-    var d = document.createElement('div');
-    d.style.cssText = 'padding:20px;font-family:sans-serif;background:#fff;color:#c00;font-size:14px;';
-    d.innerHTML = '<strong>Init Error:</strong><br>' + e.message + '<pre style="font-size:11px">' + e.stack + '</pre>';
-    document.body.prepend(d);
-  }
-});
+try {
+  loadState();
+  render();
+} catch(e) {
+  var d = document.createElement('div');
+  d.style.cssText = 'padding:20px;font-family:sans-serif;background:#fff;color:#c00;font-size:14px;';
+  d.innerHTML = '<strong>Init Error:</strong><br>' + e.message + '<pre style="font-size:11px">' + e.stack + '</pre>';
+  document.body.prepend(d);
+}
