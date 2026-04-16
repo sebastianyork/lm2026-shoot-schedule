@@ -664,14 +664,14 @@ const INITIAL_DAYS = [
           _trainer('Coach Kim', [
             '⚠️ DO NOT FILM students wearing WHITE WRISTBANDS',
             'Close-up shots of Coach Kim',
-            'DO NOT post any content — event includes minors',
-            'ONLY exception: if Joe Wicks takes a close-up selfie (no one identifiable) — re-share only',
+            'Coach Kim working out with kids',
+            'Close-up shot of Kim on stage talking',
           ]),
           _trainer('Coach Cory', [
             '⚠️ DO NOT FILM students wearing WHITE WRISTBANDS',
             'Close-up shots of Coach Cory',
-            'DO NOT post any content — event includes minors',
-            'ONLY exception: if Joe Wicks takes a close-up selfie (no one identifiable) — re-share only',
+            'Coach Kim working out with kids',
+            'Close-up shot of Kim on stage talking',
           ]),
         ]
       },      { id: 'd0417_photos', name: '📷 Daily Photos', activeTrainer: 0,
@@ -766,16 +766,24 @@ const INITIAL_DAYS = [
   },
   {
     id: 'd0422', label: 'Wednesday, 22 April', tab: 'Wed 22',
-    calltime: '9:00 AM', weather: 'Light drizzle, 45–53°F, 21% rain', meetAt: 'Battersea Power Station', locationAddress: 'Battersea Power Station, Circus Rd West, London SW11 8EZ',
+    calltime: '8:00 AM', weather: 'Light drizzle, 45–53°F, 21% rain', meetAt: 'Battersea Power Station', locationAddress: 'Battersea Power Station, Circus Rd West, London SW11 8EZ',
     locations: [
-      { id: 'l422a', name: 'Battersea Power Station — Apple Watch Run Experience (9 AM – 6:30 PM)', activeTrainer: 0,
-        trainers: _selectedCoaches(['Coach Brian','Coach Cory','Coach Josh','Coach Scott','Coach Sherica'], [
+      { id: 'l422_general', name: 'General Shots', activeTrainer: 0,
+        trainers: [_trainer('General', [
           'Brief 60–70 influencers',
           'New-to and switchers activation',
-          'Social posts highlighting key Apple Watch features for runners',
           'Trainer interview pull-asides',
           'B-roll: Battersea Power Station exterior & event setup',
           'Wide establishing — full event floor',
+          'Shots of Craig and other leadership team',
+        ])]
+      },
+      { id: 'l422a', name: 'Battersea Power Station — Apple Watch Run Experience (9 AM – 6:30 PM)', activeTrainer: 0,
+        trainers: _selectedCoaches(['Coach Brian','Coach Cory','Coach Josh','Coach Scott','Coach Sherica'], [
+          'Shots of trainer greeting guests',
+          'Close-up shots of trainers briefing runners',
+          'Shots of trainers explaining watch running features',
+          'Trainers and guests running together',
         ])
       },
       { id: 'l422b', name: '📋 Social: Apple Watch Experience Tasks', activeTrainer: 0,
