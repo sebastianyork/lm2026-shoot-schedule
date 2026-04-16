@@ -594,20 +594,6 @@
 <div class="toast" id="toast"></div>
 
 <script>
-document.body.style.background="#f2f2f7"; document.body.innerHTML += '<div id="probe" style="padding:10px;background:green;color:white;font-family:sans-serif">Script loading...</div>';
-
-// Error handler - shows errors on page instead of blank screen
-window.onerror = function(msg, url, line, col, err) {
-  var d = document.createElement('div');
-  d.style.cssText = 'padding:20px;font-family:sans-serif;background:#fff;color:#c00;font-size:14px;';
-  d.innerHTML = '<strong>JS Error (line ' + line + '):</strong><br>' + msg + (err ? '<pre style="font-size:11px">' + err.stack + '</pre>' : '');
-  document.body.prepend(d);
-};
-
-
-// ─────────────────────────────────────────
-//  HELPERS  (function declarations → hoisted)
-// ─────────────────────────────────────────
 function _id()  { return 'x' + Math.random().toString(36).slice(2,9); }
 function _shots(arr) { return arr.map(t => ({ id: _id(), text: t, done: false })); }
 function _trainer(name, arr) { return { id: _id(), name, shots: _shots(arr) }; }
@@ -1351,36 +1337,56 @@ function migrateState(s) {
 function loadState() {
   const hash = window.location.hash.slice(1);
   if (hash) {
+    loadState();
+render();
+
+loadState();
+render();
+
+let state;
+let activeDay = 0;
+let saveTimer = null;
+
+function loadState() {
+  // Check URL hash first (shared link)
+  const hash = window.location.hash.slice(1);
+  if (hash) {
     try {
       const decoded = JSON.parse(decodeURIComponent(atob(hash)));
       if (decoded && decoded.days) {
-        state = migrateState(decoded);
+        state = decoded;
         showToast('📎 Loaded shared schedule');
         window.location.hash = '';
         return;
       }
     } catch(e) {}
   }
-  const saved = localStorage.getItem('lm2026_v40_schedule');
+  // Check localStorage
+  const saved = localStorage.getItem('lm2025_schedule');
   if (saved) {
     try {
       const parsed = JSON.parse(saved);
-      if (parsed && parsed.days) { state = migrateState(parsed); return; }
+      if (parsed && parsed.days) { state = parsed; return; }
     } catch(e) {}
   }
+  // Fresh start
   state = { days: JSON.parse(JSON.stringify(INITIAL_DAYS)) };
 }
 
 function saveState() {
   clearTimeout(saveTimer);
   saveTimer = setTimeout(() => {
-    localStorage.setItem('lm2026_v16_schedule', JSON.stringify(state));
+    localStorage.setItem('lm2025_schedule', JSON.stringify(state));
   }, 300);
 }
 
 // ─────────────────────────────────────────
 //  RENDER
 // ─────────────────────────────────────────
+function uid() {
+  return 'id_' + Math.random().toString(36).slice(2,9);
+}
+
 function render() {
   renderTabs();
   renderDays();
@@ -1389,10 +1395,12 @@ function render() {
 function renderTabs() {
   const bar = document.getElementById('tabbar');
   bar.innerHTML = state.days.map((d, i) => {
-    const shots = allShotsForDay(d);
-    const hasContent = d.calltime || d.weather || d.meetAt || shots.some(s => s.done);
-    return `<button class="tab-btn ${i === activeDay ? 'active' : ''}" onclick="switchDay(${i})">
-      ${d.tab}<span class="tab-dot ${hasContent ? 'filled' : ''}"></span>
+    const hasContent = d.calltime || d.weather || d.meetAt ||
+      d.locations.some(l => l.shots.some(s => s.done));
+    return `<button class="tab-btn ${i === activeDay ? 'active' : ''}"
+      onclick="switchDay(${i})">
+      ${d.tab}
+      <span class="tab-dot ${hasContent ? 'filled' : ''}"></span>
     </button>`;
   }).join('');
 }
@@ -1401,18 +1409,13 @@ function renderDays() {
   const main = document.getElementById('main');
   main.innerHTML = state.days.map((d, di) => `
     <div class="day-panel ${di === activeDay ? 'active' : ''}" id="panel-${di}">
-      <div class="basecamp-card">
-        <span class="basecamp-icon">🏨</span>
-        <div>
-          <div class="basecamp-label">Base Camp</div>
-          <div class="basecamp-address">Park Hyatt London River &nbsp;·&nbsp; 7 Nine Elms Lane, London GB SW8 5PH</div>
-        </div>
-      </div>
       ${renderDayHeader(d, di)}
       ${renderInfoCard(d, di)}
       <div class="section-label">📍 Locations & Shots</div>
       ${d.locations.map((loc, li) => renderLocation(d, di, loc, li)).join('')}
-      <button class="btn-add-location" onclick="addLocation(${di})">＋ Add Location</button>
+      <button class="btn-add-location" onclick="addLocation(${di})">
+        ＋ Add Location
+      </button>
       <div class="section-label">🌙 End of Day Checklist</div>
       ${renderEOD(d, di)}
     </div>
@@ -1420,10 +1423,10 @@ function renderDays() {
 }
 
 function renderDayHeader(d, di) {
-  const allShots = allShotsForDay(d);
+  const allShots = d.locations.flatMap(l => l.shots);
   const total = allShots.length;
-  const done  = allShots.filter(s => s.done).length;
-  const pct   = total > 0 ? Math.round((done / total) * 100) : 0;
+  const done = allShots.filter(s => s.done).length;
+  const pct = total > 0 ? Math.round((done / total) * 100) : 0;
   return `
     <div class="day-header">
       <h2>${d.label}</h2>
@@ -1438,81 +1441,51 @@ function renderInfoCard(d, di) {
   return `
     <div class="info-card">
       <div class="info-field">
-        <label><span class="field-icon">🚗</span> Departure from Hotel</label>
-        <input type="text" placeholder="e.g. 9:00 AM" value="${esc(d.calltime)}"
+        <label><span class="field-icon">⏰</span> Call Time</label>
+        <input type="text" placeholder="e.g. 06:00" value="${esc(d.calltime)}"
           oninput="updateInfo(${di},'calltime',this.value)" />
       </div>
       <div class="info-field">
         <label><span class="field-icon">🌤</span> Weather Forecast</label>
-        <input type="text" placeholder="e.g. Cloudy, 65°F" value="${esc(d.weather)}"
+        <input type="text" placeholder="e.g. Cloudy, 12°C" value="${esc(d.weather)}"
           oninput="updateInfo(${di},'weather',this.value)" />
       </div>
       <div class="info-field">
-        <label><span class="field-icon">🏨</span> Headed to Location</label>
-        <input type="text" placeholder="e.g. Park Hyatt London River" value="${esc(d.meetAt)}"
+        <label><span class="field-icon">📍</span> Meet At</label>
+        <input type="text" placeholder="e.g. Blackheath Station" value="${esc(d.meetAt)}"
           oninput="updateInfo(${di},'meetAt',this.value)" />
-      </div>
-      <div class="info-field">
-        <label><span class="field-icon">📍</span> Location Address</label>
-        <input type="text" placeholder="e.g. 17-27 Brompton Rd, London SW1X 9LF" value="${esc(d.locationAddress||'')}"
-          oninput="updateInfo(${di},'locationAddress',this.value)" />
-      </div>
-      <div class="info-field">
-        <label><span class="field-icon">👤</span> DRI</label>
-        <input type="text" placeholder="Directly Responsible Individual" value="${esc(d.dri||'')}"
-          oninput="updateInfo(${di},'dri',this.value)" />
       </div>
     </div>`;
 }
 
 function renderLocation(d, di, loc, li) {
-  const at      = loc.activeTrainer || 0;
-  const trainer = loc.trainers[at];
   return `
     <div class="location-card" id="loc-${di}-${li}">
-      <div class="location-header">
+      <div class="location-top">
         <span class="loc-pin">📍</span>
         <input class="loc-name-input" type="text" placeholder="Location name…"
-          value="${esc(loc.name)}" oninput="updateLocName(${di},${li},this.value)" />
-        ${loc.mapsUrl ? `<a class="loc-maps-link" href="${loc.mapsUrl}" target="_blank">🗺 Open in Maps</a>` : ''}
+          value="${esc(loc.name)}"
+          oninput="updateLocName(${di},${li},this.value)" />
         <button class="btn-remove-loc" onclick="removeLocation(${di},${li})" title="Remove location">×</button>
       </div>
-      <div class="trainer-tabs-bar">
-        ${loc.trainers.map((t, ti) => `
-          <div class="trainer-tab-wrap ${ti === at ? 'active' : ''}"
-               onclick="switchTrainer(${di},${li},${ti})">
-            <input class="trainer-tab-name ${ti === at ? 'active' : ''}" type="text"
-              value="${esc(t.name)}" placeholder="Trainer…"
-              onclick="event.stopPropagation()"
-              onfocus="switchTrainer(${di},${li},${ti})"
-              oninput="updateTrainerName(${di},${li},${ti},this.value)" />
-            ${loc.trainers.length > 1 ? `
-              <button class="btn-remove-trainer" title="Remove trainer"
-                onclick="event.stopPropagation();removeTrainer(${di},${li},${ti})">×</button>
-            ` : ''}
-          </div>
-        `).join('')}
-        <button class="btn-add-trainer" onclick="addTrainer(${di},${li})">＋ Trainer</button>
+      <div class="shot-list" id="shots-${di}-${li}">
+        ${loc.shots.map((s, si) => renderShot(di, li, s, si)).join('')}
       </div>
-      <div class="location-shots">
-        <div class="shots-heading" id="sh-${di}-${li}">Shots — ${esc(trainer.name)}</div>
-        <div class="shot-list" id="shots-${di}-${li}">
-          ${trainer.shots.map((s, si) => renderShot(di, li, at, s, si)).join('')}
-        </div>
-        <button class="btn-add-shot" onclick="addShot(${di},${li})">＋ Add shot</button>
-      </div>
+      <button class="btn-add-shot" onclick="addShot(${di},${li})">
+        ＋ Add shot
+      </button>
     </div>`;
 }
 
-function renderShot(di, li, ti, s, si) {
+function renderShot(di, li, s, si) {
   return `
-    <div class="shot-item" id="shot-${di}-${li}-${ti}-${si}">
+    <div class="shot-item" id="shot-${di}-${li}-${si}">
       <input type="checkbox" class="shot-cb" ${s.done ? 'checked' : ''}
-        onchange="toggleShot(${di},${li},${ti},${si},this.checked)" />
+        onchange="toggleShot(${di},${li},${si},this.checked)" />
       <input type="text" class="shot-text-input ${s.done ? 'done' : ''}"
         value="${esc(s.text)}" placeholder="Describe the shot…"
-        oninput="updateShotText(${di},${li},${ti},${si},this.value)" />
-      <button class="btn-remove-shot" onclick="removeShot(${di},${li},${ti},${si})" title="Remove">✕</button>
+        oninput="updateShotText(${di},${li},${si},this.value)" />
+      <button class="btn-remove-shot" onclick="removeShot(${di},${li},${si})" title="Remove">✕</button>
     </div>`;
 }
 
@@ -1531,7 +1504,7 @@ function renderEOD(d, di) {
 }
 
 // ─────────────────────────────────────────
-//  ACTIONS — Day
+//  ACTIONS
 // ─────────────────────────────────────────
 function switchDay(i) {
   activeDay = i;
@@ -1545,9 +1518,6 @@ function updateInfo(di, field, val) {
   updateTabDot(di);
 }
 
-// ─────────────────────────────────────────
-//  ACTIONS — Location
-// ─────────────────────────────────────────
 function updateLocName(di, li, val) {
   state.days[di].locations[li].name = val;
   saveState();
@@ -1555,8 +1525,8 @@ function updateLocName(di, li, val) {
 
 function addLocation(di) {
   state.days[di].locations.push({
-    id: _id(), name: '', activeTrainer: 0,
-    trainers: _coaches([''])
+    id: uid(), name: '',
+    shots: [{ id: uid(), text: '', done: false }]
   });
   render();
   saveState();
@@ -1571,78 +1541,36 @@ function removeLocation(di, li) {
   saveState();
 }
 
-// ─────────────────────────────────────────
-//  ACTIONS — Trainer tabs
-// ─────────────────────────────────────────
-function switchTrainer(di, li, ti) {
-  if (state.days[di].locations[li].activeTrainer === ti) return;
-  state.days[di].locations[li].activeTrainer = ti;
-  render();
-  saveState();
-}
-
-function addTrainer(di, li) {
-  const loc = state.days[di].locations[li];
-  // Pre-fill shot list from the first trainer's shot texts (all unchecked)
-  const template = loc.trainers[0].shots.map(s => ({ id: _id(), text: s.text, done: false }));
-  loc.trainers.push({ id: _id(), name: 'Trainer ' + (loc.trainers.length + 1), shots: template });
-  loc.activeTrainer = loc.trainers.length - 1;
-  render();
-  saveState();
-  setTimeout(() => {
-    const tabs = document.querySelectorAll(`#loc-${di}-${li} .trainer-tab-name`);
-    if (tabs.length) { const last = tabs[tabs.length - 1]; last.focus(); last.select(); }
-  }, 50);
-}
-
-function removeTrainer(di, li, ti) {
-  const loc = state.days[di].locations[li];
-  if (loc.trainers.length === 1) { showToast('⚠️ At least one trainer tab required'); return; }
-  loc.trainers.splice(ti, 1);
-  loc.activeTrainer = Math.min(loc.activeTrainer, loc.trainers.length - 1);
-  render();
-  saveState();
-}
-
-function updateTrainerName(di, li, ti, val) {
-  state.days[di].locations[li].trainers[ti].name = val;
-  const heading = document.getElementById(`sh-${di}-${li}`);
-  if (heading && state.days[di].locations[li].activeTrainer === ti) {
-    heading.textContent = 'Shots — ' + val;
-  }
-  saveState();
-}
-
-// ─────────────────────────────────────────
-//  ACTIONS — Shots
-// ─────────────────────────────────────────
 function addShot(di, li) {
-  const loc = state.days[di].locations[li];
-  const ti  = loc.activeTrainer || 0;
-  loc.trainers[ti].shots.push({ id: _id(), text: '', done: false });
+  state.days[di].locations[li].shots.push({ id: uid(), text: '', done: false });
   render();
   saveState();
+  // Focus new shot input
   setTimeout(() => {
     const shots = document.querySelectorAll(`#shots-${di}-${li} .shot-text-input`);
     if (shots.length) shots[shots.length - 1].focus();
   }, 50);
 }
 
-function removeShot(di, li, ti, si) {
-  const shots = state.days[di].locations[li].trainers[ti].shots;
-  if (shots.length === 1) { showToast('⚠️ At least one shot required'); return; }
+function removeShot(di, li, si) {
+  const shots = state.days[di].locations[li].shots;
+  if (shots.length === 1) {
+    showToast('⚠️ At least one shot required'); return;
+  }
   shots.splice(si, 1);
   render();
   saveState();
 }
 
-function toggleShot(di, li, ti, si, checked) {
-  state.days[di].locations[li].trainers[ti].shots[si].done = checked;
-  const input = document.querySelector(`#shot-${di}-${li}-${ti}-${si} .shot-text-input`);
+function toggleShot(di, li, si, checked) {
+  state.days[di].locations[li].shots[si].done = checked;
+  // Update text style live without full re-render
+  const input = document.querySelector(`#shot-${di}-${li}-${si} .shot-text-input`);
   if (input) input.classList.toggle('done', checked);
-  const allShots = allShotsForDay(state.days[di]);
+  // Update progress
+  const allShots = state.days[di].locations.flatMap(l => l.shots);
   const done = allShots.filter(s => s.done).length;
-  const pct  = Math.round((done / allShots.length) * 100);
+  const pct = Math.round((done / allShots.length) * 100);
   const fill = document.querySelector(`#panel-${di} .pbar-fill`);
   const pill = document.querySelector(`#panel-${di} .progress-pill`);
   if (fill) fill.style.width = pct + '%';
@@ -1651,8 +1579,8 @@ function toggleShot(di, li, ti, si, checked) {
   updateTabDot(di);
 }
 
-function updateShotText(di, li, ti, si, val) {
-  state.days[di].locations[li].trainers[ti].shots[si].text = val;
+function updateShotText(di, li, si, val) {
+  state.days[di].locations[li].shots[si].text = val;
   saveState();
 }
 
@@ -1665,8 +1593,8 @@ function toggleEOD(di, i, checked) {
 
 function updateTabDot(di) {
   const d = state.days[di];
-  const shots = allShotsForDay(d);
-  const hasContent = d.calltime || d.weather || d.meetAt || shots.some(s => s.done);
+  const hasContent = d.calltime || d.weather || d.meetAt ||
+    d.locations.some(l => l.shots.some(s => s.done));
   const dot = document.querySelectorAll('.tab-dot')[di];
   if (dot) dot.classList.toggle('filled', !!hasContent);
 }
@@ -1678,7 +1606,9 @@ function shareState() {
   try {
     const encoded = btoa(encodeURIComponent(JSON.stringify(state)));
     const url = `${window.location.origin}${window.location.pathname}#${encoded}`;
-    navigator.clipboard.writeText(url).then(() => showToast('🔗 Shareable link copied!'));
+    navigator.clipboard.writeText(url).then(() => {
+      showToast('🔗 Shareable link copied to clipboard!');
+    });
   } catch(e) { showToast('⚠️ Could not copy link'); }
 }
 
@@ -1686,24 +1616,28 @@ function exportJSON() {
   const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'lm2026-schedule.json';
+  a.download = 'lm2025-schedule.json';
   a.click();
   showToast('⬇ Schedule exported');
 }
 
 function importJSON() {
   const input = document.createElement('input');
-  input.type = 'file'; input.accept = '.json';
+  input.type = 'file';
+  input.accept = '.json';
   input.onchange = e => {
-    const file = e.target.files[0]; if (!file) return;
+    const file = e.target.files[0];
+    if (!file) return;
     const reader = new FileReader();
     reader.onload = ev => {
       try {
         const parsed = JSON.parse(ev.target.result);
         if (parsed && parsed.days) {
-          state = migrateState(parsed); render(); saveState();
+          state = parsed;
+          render();
+          saveState();
           showToast('⬆ Schedule imported');
-        } else showToast('⚠️ Invalid file');
+        } else { showToast('⚠️ Invalid file'); }
       } catch { showToast('⚠️ Could not parse file'); }
     };
     reader.readAsText(file);
@@ -1724,18 +1658,22 @@ function showToast(msg) {
 }
 
 // ─────────────────────────────────────────
-//  INIT
+//  HELPERS
 // ─────────────────────────────────────────
-try {
-  loadState();
-  render();
-} catch(e) {
-  var d = document.createElement('div');
-  d.style.cssText = 'padding:20px;font-family:sans-serif;background:#fff;color:#c00;font-size:14px;';
-  d.innerHTML = '<strong>Init Error:</strong><br>' + e.message + '<pre style="font-size:11px">' + e.stack + '</pre>';
-  document.body.prepend(d);
+function esc(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
 }
 
+// ─────────────────────────────────────────
+//  INIT
+// ─────────────────────────────────────────
+loadState();
+render();
 </script>
 </body>
 </html>
