@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!-- v1776360359 -->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -1317,7 +1317,7 @@ function loadState() {
       }
     } catch(e) {}
   }
-  var saved = null; try { saved = localStorage.getItem('lm2026_v40_schedule');
+  var saved = null; try { saved = localStorage.getItem('lm2026_v99_schedule');
   } catch(e){} if (saved) {
     try {
       const parsed = JSON.parse(saved);
@@ -1330,7 +1330,7 @@ function loadState() {
 function saveState() {
   clearTimeout(saveTimer);
   saveTimer = setTimeout(() => {
-    localStorage.setItem('lm2026_v16_schedule', JSON.stringify(state));
+    localStorage.setItem('lm2026_v99_schedule', JSON.stringify(state));
   }, 300);
 }
 
