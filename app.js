@@ -1,3 +1,5 @@
+document.body.style.background="#f2f2f7"; document.body.innerHTML += '<div id="probe" style="padding:10px;background:green;color:white;font-family:sans-serif">Script loading...</div>';
+
 // Error handler - shows errors on page instead of blank screen
 window.onerror = function(msg, url, line, col, err) {
   var d = document.createElement('div');
