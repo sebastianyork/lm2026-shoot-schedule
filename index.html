@@ -633,63 +633,6 @@ function allShotsForDay(d) {
 // ─────────────────────────────────────────
 const INITIAL_DAYS = [
   {
-    id: 'd0417', label: 'Friday, 17 April', tab: 'Fri 17',
-    calltime: '9:00 AM - Depart Hotel', weather: 'Overcast, 49-63F, 20% rain', meetAt: 'Evolution London, Battersea Park', dri: 'Tanea Jackson', locationAddress: 'Evolution London, Queenstown Rd, Chelsea Brg. London SW11 4NJ',
-    locations: [
-      { id: 'l417_addr', name: 'Evolution London - Queenstown Rd, Chelsea Brg. London SW11 4NJ', mapsUrl: 'https://maps.apple.com/?q=Evolution+London+Battersea+Park', activeTrainer: 0,
-        trainers: [_trainer('General', ['9:00 AM - Depart Hotel (Kim, Cory, Clint & Sebastian)', '9:30 AM - Arrive at Evolution London', 'Shoot runs 9:30 AM to 12:00 PM'])]
-      },
-      { id: 'l417_video', name: 'Community Engagement - Video Shots', activeTrainer: 0,
-        trainers: [_trainer('Video', [
-          'Establishing shots of location - wide, medium, close up',
-          'Joe Wicks greeting Kim and Cory',
-          'Capture plenty of candid shots of Cory and Kim',
-          'Shots of kids arriving - DO NOT film kids with white wristbands',
-          'Shots of Alisha Johnson Wilder opening remarks',
-          'Shots of three trainers being asked to stage',
-          'Fireside Chat Shots - over the shoulder - Moderator Alisha and Trainers',
-          'Joe, trainers and Enable staff member leading warm up exercises',
-          'Shots of Global Community Impact Team',
-          'Kids and Trainers stretching',
-          'Shots of kids cycling through activity zone 1 - Boxing and Mindfulness',
-          'Shots of kids cycling through activity zone 2 - Strength and Core',
-          'Shots of kids cycling through activity zone 3 - Dance, Flexibility and Energy',
-          'Cool Down led by Kim joined by Cory',
-          'Alisha Johnson Wilder closing remarks',
-          'High fiving students as they leave',
-        ])]
-      },
-      { id: 'l417_photos', name: 'Community Engagement - Photo Shots', activeTrainer: 0,
-        trainers: [_trainer('Photos', [
-          '5-10 shots of Location - Interior and Exterior',
-          '5-10 shots of People',
-          'Capture plenty of post shots of Cory and Kim',
-          'Capture shots of Cory, Kim and Alisha',
-        ])]
-      },
-      { id: 'd0417_photos', name: 'Daily Photos', activeTrainer: 0,
-        trainers: [_trainer('General', [
-          'Pristine wide shot - Evolution London',
-          'Pristine detail shot - Evolution London',
-          'Candid shot of people at location',
-          'Portrait of a team member',
-          'Atmosphere and mood shot',
-        ])]
-      },
-      { id: 'd0417_battersea', name: 'Apple Battersea - End of Day', mapsUrl: 'https://maps.apple.com/?q=Apple+Battersea+Power+Station', activeTrainer: 0,
-        trainers: [_trainer('General', ['Upload content to Box at Apple Battersea', 'Back up footage to both hard drives', 'Choose selects for the day'])]
-      },
-      { id: 'd0417_parkhyatt', name: 'Return to Base Camp - Park Hyatt London River, 7 Nine Elms Lane, London SW8 5PH', mapsUrl: 'https://maps.apple.com/?q=Park+Hyatt+London+River', activeTrainer: 0,
-        trainers: [_trainer('General', ['Return to Park Hyatt London River', 'Debrief on the day'])]
-      },
-      { id: 'd0417_prep', name: 'Production Prep (PM)', activeTrainer: 0,
-        trainers: [_trainer('General', ['Clint to check gear and charge all devices', 'Format cards and back up footage', 'Choose selects for the day'])]
-      },
-    ],
-    eod: [false, false, false]
-  },
-
-  {
     id: 'd0420', label: 'Monday, 20 April — Prep / Location Scout Day', tab: 'Mon 20',
     calltime: '', weather: 'Overcast, 41–59°F, 10% rain', meetAt: '', locationAddress: 'Apple Regent Street, 235 Regent St, London W1B 2EL',
     locations: [
@@ -1234,6 +1177,52 @@ const INITIAL_DAYS = [
         trainers: [_trainer('General', ['Upload content to Box at Apple Battersea', 'Back up footage to both hard drives', 'Choose selects for the day'])]
       },
       { id: 'd0426_parkhyatt', name: 'Return to Park Hyatt London River - 7 Nine Elms Lane London SW8 5PH', mapsUrl: 'https://maps.apple.com/?q=Park+Hyatt+London+River', activeTrainer: 0,
+        trainers: [_trainer('General', ['Return to Park Hyatt London River', 'Debrief on the day'])]
+      },
+      { id: 'd0426_prep', name: 'Production Prep', activeTrainer: 0,
+        trainers: [_trainer('General', ['Clint to check gear and charge all devices', 'Format cards and back up footage', 'Choose selects for the day'])]
+      }
+    ],
+    eod: [false, false, false]
+  }
+,
+  {
+    id: 'd0426', label: 'Sunday 26 April - Race Day', tab: 'Sun 26',
+    calltime: '', weather: 'Overcast 44-59F', meetAt: '', dri: '', locationAddress: 'Victoria Embankment London WC2N 5DJ',
+    locations: [
+      { id: 'l426i', name: 'Mile 24 - Apple Music Activation - Victoria Embankment London WC2N 5DJ', mapsUrl: 'https://maps.apple.com/?q=Victoria+Embankment+London', activeTrainer: 0,
+        trainers: [_trainer('General', [
+          '10AM-12PM Tempo Run Club DJs',
+          '12PM-2PM Joel Corry',
+          '2PM-3:30PM Mel C',
+          '3:30PM-5PM Switch Disco',
+          '5PM-7PM NAINA',
+          'Wide shot - Apple Music installation with spectators on either side',
+          'Wide shot - include runners in front of installation',
+          'Wide shot - London backdrop',
+          'Wide shot - full crowd and stage energy',
+          'Medium shot - DJs performing with spectators',
+          'Medium shot - main talent performing',
+          'Medium shot - MCs on stage',
+          'Close-up - talent performing',
+          'Close-up - MCs addressing crowd',
+          'Mel C performing - wide and close-up',
+          'Joel Corry performing - wide and close-up',
+          'Switch Disco performing - wide and close-up',
+          'NAINA performing - wide and close-up',
+          'Cory Wharton Malcolm as MC - wide and close-up',
+          'Rebecca Judd as MC - wide and close-up',
+          'Cory and Rebecca together - MC duo shot',
+          'Group shot - all artists together',
+        ])]
+      },
+      { id: 'd0426_photos', name: 'Daily Photos', activeTrainer: 0,
+        trainers: [_trainer('General', ['Wide shot of location', 'Detail shot', 'Candid of people', 'Portrait of team member', 'Atmosphere shot'])]
+      },
+      { id: 'd0426_battersea', name: 'Apple Battersea - End of Day', mapsUrl: 'https://maps.apple.com/?q=Apple+Battersea', activeTrainer: 0,
+        trainers: [_trainer('General', ['Upload content to Box at Apple Battersea', 'Back up footage to both hard drives', 'Choose selects for the day'])]
+      },
+      { id: 'd0426_parkhyatt', name: 'Return to Park Hyatt London River', mapsUrl: 'https://maps.apple.com/?q=Park+Hyatt+London+River', activeTrainer: 0,
         trainers: [_trainer('General', ['Return to Park Hyatt London River', 'Debrief on the day'])]
       },
       { id: 'd0426_prep', name: 'Production Prep', activeTrainer: 0,
