@@ -1,1148 +1,1225 @@
-<!DOCTYPE html><!-- v1776360359 -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LM 2026 Fit Tech Shoot</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apple Social Shoot Master Schedule — FY'27</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    :root {
-      --red: #C8102E;
-      --red-dark: #a00d24;
-      --red-light: #fff0f2;
-      --bg: #f2f2f7;
-      --card: #ffffff;
-      --text: #1c1c1e;
-      --muted: #6c6c70;
-      --border: #d8d8dc;
-      --green: #30d158;
-      --green-bg: #e6f9ed;
-      --blue: #0071e3;
-      --shadow: 0 2px 12px rgba(0,0,0,0.07);
-      --r: 14px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', sans-serif; }
-
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      font-size: 15px;
-      line-height: 1.5;
-      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Plus Jakarta Sans", "SF Pro Display", "SF Pro Text", sans-serif;
     }
-
-    /* ── Header ── */
-    .header {
-      background: linear-gradient(135deg, #2c2c2e 0%, #1c1c1e 100%);
-      color: white;
-      padding: 30px 20px 20px;
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .glass {
+      background: rgba(18, 24, 38, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .header-inner {
-      max-width: 880px;
-      margin: 0 auto;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 14px;
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
     }
-    .header h1 { font-size: 30px; font-weight: 700; letter-spacing: -0.4px; }
-    .header .sub { font-size: 13px; opacity: 0.8; margin-top: 4px; }
-    .header-actions { display: flex; gap: 8px; flex-wrap: wrap; }
-    .btn-header {
-      background: rgba(255,255,255,0.18);
-      color: white;
-      border: 1px solid rgba(255,255,255,0.32);
-      border-radius: 8px;
-      padding: 7px 14px;
-      font-size: 13px;
-      font-weight: 500;
-      cursor: pointer;
-      font-family: inherit;
-      transition: background 0.15s;
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.2);
     }
-    .btn-header:hover { background: rgba(255,255,255,0.28); }
-
-    /* ── Tab Bar ── */
-    .tabbar-wrap {
-      background: linear-gradient(135deg, #2c2c2e 0%, #1c1c1e 100%);
-      border-bottom: 1px solid rgba(0,0,0,0.15);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .tabbar {
-      max-width: 880px;
-      margin: 0 auto;
-      display: flex;
-      overflow-x: auto;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-      padding: 0 4px;
-    }
-    .tabbar::-webkit-scrollbar { display: none; }
-    .tab-btn {
-      flex-shrink: 0;
-      padding: 11px 13px;
-      background: none;
-      border: none;
-      color: rgba(255,255,255,0.65);
-      font-size: 12.5px;
-      font-weight: 500;
-      cursor: pointer;
-      font-family: inherit;
-      position: relative;
-      transition: color 0.15s;
-      white-space: nowrap;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .tab-btn:hover { color: rgba(255,255,255,0.9); }
-    .tab-btn.active { color: white; font-weight: 700; }
-    .tab-btn.active::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 8px; right: 8px;
-      height: 2.5px;
-      background: white;
-      border-radius: 2px 2px 0 0;
-    }
-    .tab-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.35);
-      flex-shrink: 0;
-    }
-    .tab-dot.filled { background: var(--green); }
-
-    /* ── Main ── */
-    .main {
-      max-width: 880px;
-      margin: 0 auto;
-      padding: 24px 16px 80px;
-    }
-    .day-panel { display: none; }
-    .day-panel.active { display: block; }
-
-    /* ── Day Header ── */
-    .day-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 18px;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .day-header h2 {
-      font-size: 21px;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-    }
-    .progress-pill {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 5px 13px;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-    .progress-pill .pbar {
-      width: 60px;
-      height: 5px;
-      background: var(--border);
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
       border-radius: 3px;
-      overflow: hidden;
     }
-    .progress-pill .pbar-fill {
-      height: 100%;
-      background: var(--green);
-      border-radius: 3px;
-      transition: width 0.3s ease;
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.3);
     }
-
-    /* ── Info Card ── */
-    .info-card {
-      background: var(--card);
-      border-radius: var(--r);
-      padding: 18px;
-      box-shadow: var(--shadow);
-      margin-bottom: 16px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-    @media (max-width: 580px) { .info-card { grid-template-columns: 1fr; } }    .info-field label {
-      display: block;
-      font-size: 10.5px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-    .info-field .field-icon { margin-right: 4px; }
-    .info-field input {
-      width: 100%;
-      border: 1.5px solid var(--border);
-      border-radius: 9px;
-      padding: 8px 11px;
-      font-size: 14px;
-      font-family: inherit;
-      color: var(--text);
-      background: var(--bg);
-      outline: none;
-      transition: border-color 0.15s, box-shadow 0.15s;
-    }
-    .info-field input:focus {
-      border-color: var(--red);
-      box-shadow: 0 0 0 3px rgba(200,16,46,0.1);
-    }
-    .info-field input::placeholder { color: #c0c0c5; }
-
-    /* ── Base Camp ── */
-    .basecamp-card {
-      background: var(--card);
-      border-radius: var(--r);
-      padding: 13px 18px;
-      box-shadow: var(--shadow);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      border-left: 4px solid #2c2c2e;
-    }
-    .basecamp-icon { font-size: 20px; flex-shrink: 0; }
-    .basecamp-label {
-      font-size: 10.5px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      color: var(--muted);
-      margin-bottom: 3px;
-    }
-    .basecamp-address {
-      font-size: 13.5px;
-      font-weight: 600;
-      color: var(--text);
-      line-height: 1.4;
-    }
-
-    /* ── Section label ── */
-    .section-label {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      color: var(--muted);
-      margin: 20px 0 10px;
-      padding-left: 2px;
-    }
-
-    /* ── Location Card ── */
-    .location-card {
-      background: var(--card);
-      border-radius: var(--r);
-      box-shadow: var(--shadow);
-      margin-bottom: 16px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-    .location-header {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      background: #f2f2f7;
-      border-bottom: 1px solid var(--border);
-      padding: 11px 16px;
-      flex-wrap: wrap;
-    }
-    .loc-maps-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 11.5px;
-      font-weight: 500;
-      color: #0071e3;
-      text-decoration: none;
-      background: #e8f0fe;
-      border-radius: 6px;
-      padding: 3px 9px;
-      white-space: nowrap;
-      flex-shrink: 0;
-      transition: background 0.15s;
-    }
-    .loc-maps-link:hover { background: #d0e4ff; }
-    .loc-pin { font-size: 15px; flex-shrink: 0; }
-    .loc-name-input {
-      flex: 1;
-      border: none;
-      padding: 0;
-      font-size: 14px;
-      font-weight: 700;
-      font-family: inherit;
-      color: var(--text);
-      background: transparent;
-      outline: none;
-      letter-spacing: 0.1px;
-    }
-    .loc-name-input::placeholder { color: #bbb; font-weight: 400; }
-    .btn-remove-loc {
-      background: none;
-      border: none;
-      color: #c0c0c5;
-      font-size: 18px;
-      cursor: pointer;
-      padding: 2px 5px;
-      border-radius: 5px;
-      line-height: 1;
-      flex-shrink: 0;
-      transition: color 0.15s;
-    }
-    .btn-remove-loc:hover { color: var(--red); }
-    /* ── Trainer Tab Bar ── */
-    .trainer-tabs-bar {
-      display: flex;
-      align-items: center;
-      gap: 2px;
-      padding: 0 12px;
-      border-bottom: 1px solid var(--border);
-      background: #fafafa;
-      overflow-x: auto;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-      min-height: 40px;
-    }
-    .trainer-tabs-bar::-webkit-scrollbar { display: none; }
-    .trainer-tab-wrap {
-      display: flex;
-      align-items: center;
-      gap: 3px;
-      padding: 8px 10px 6px;
-      border-bottom: 2.5px solid transparent;
-      cursor: pointer;
-      flex-shrink: 0;
-      transition: border-color 0.15s;
-      position: relative;
-    }
-    .trainer-tab-wrap.active {
-      border-bottom-color: var(--red);
-    }
-    .trainer-tab-name {
-      border: none;
-      background: transparent;
-      font-size: 13px;
-      font-weight: 500;
-      font-family: inherit;
-      color: var(--muted);
-      outline: none;
-      cursor: pointer;
-      min-width: 60px;
-      max-width: 120px;
-      padding: 0;
-      transition: color 0.15s;
-    }
-    .trainer-tab-name.active {
-      color: var(--red);
-      font-weight: 700;
-    }
-    .trainer-tab-name::placeholder { color: #ccc; }
-    .btn-remove-trainer {
-      background: none;
-      border: none;
-      color: #ccc;
-      font-size: 13px;
-      cursor: pointer;
-      padding: 1px 2px;
-      border-radius: 3px;
-      line-height: 1;
-      flex-shrink: 0;
-      transition: color 0.15s;
-    }
-    .btn-remove-trainer:hover { color: var(--red); }
-    .btn-add-trainer {
-      flex-shrink: 0;
-      margin-left: 4px;
-      padding: 5px 10px;
-      background: none;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--muted);
-      cursor: pointer;
-      font-family: inherit;
-      white-space: nowrap;
-      transition: all 0.15s;
-    }
-    .btn-add-trainer:hover {
-      border-color: var(--red);
-      color: var(--red);
-      background: var(--red-light);
-    }
-
-    .location-shots {
-      padding: 12px 16px 14px;
-    }
-    .shots-heading {
-      font-size: 10.5px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-
-    /* ── Shot Items ── */
-    .shot-list { margin-bottom: 8px; }
-    .shot-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 5px 4px;
-      border-radius: 7px;
-      transition: background 0.1s;
-    }
-    .shot-item:hover { background: #f9f9fb; }
-    .shot-cb {
-      width: 18px;
-      height: 18px;
-      flex-shrink: 0;
-      cursor: pointer;
-      accent-color: var(--green);
-    }
-    .shot-text-input {
-      flex: 1;
-      border: none;
-      background: transparent;
-      font-size: 14px;
-      font-family: inherit;
-      color: var(--text);
-      outline: none;
-      padding: 2px 0;
-      transition: color 0.2s;
-      min-width: 0;
-    }
-    .shot-text-input.done {
-      text-decoration: line-through;
-      color: var(--muted);
-    }
-    .shot-text-input::placeholder { color: #c8c8cc; }
-    .btn-remove-shot {
-      background: none;
-      border: none;
-      color: transparent;
-      cursor: pointer;
-      font-size: 16px;
-      padding: 2px 5px;
-      border-radius: 5px;
-      line-height: 1;
-      flex-shrink: 0;
-      transition: color 0.15s;
-    }
-    .shot-item:hover .btn-remove-shot { color: #ccc; }
-    .btn-remove-shot:hover { color: var(--red) !important; }
-
-    /* ── Add Buttons ── */
-    .btn-add-shot {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      width: 100%;
-      padding: 7px 10px;
-      background: none;
-      border: 1.5px dashed var(--border);
-      border-radius: 8px;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 500;
-      font-family: inherit;
-      cursor: pointer;
-      transition: all 0.15s;
-      margin-top: 4px;
-    }
-    .btn-add-shot:hover {
-      border-color: var(--red);
-      color: var(--red);
-      background: var(--red-light);
-    }
-    .btn-add-location {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
-      padding: 13px;
-      background: var(--card);
-      border: 1.5px dashed var(--border);
-      border-radius: var(--r);
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 500;
-      font-family: inherit;
-      cursor: pointer;
-      margin-bottom: 16px;
-      transition: all 0.15s;
-      box-shadow: var(--shadow);
-    }
-    .btn-add-location:hover {
-      border-color: var(--red);
-      color: var(--red);
-      background: var(--red-light);
-    }
-
-    /* ── End of Day ── */
-    .eod-card {
-      background: var(--card);
-      border-radius: var(--r);
-      padding: 18px 20px;
-      box-shadow: var(--shadow);
-      border-left: 4px solid var(--red);
-    }
-    .eod-heading {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.7px;
-      color: var(--red);
-      margin-bottom: 14px;
-    }
-    .eod-item {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      padding: 9px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .eod-item:last-child { border-bottom: none; }
-    .eod-cb {
-      width: 18px;
-      height: 18px;
-      flex-shrink: 0;
-      cursor: pointer;
-      accent-color: var(--red);
-    }
-    .eod-label {
-      font-size: 14px;
-      cursor: pointer;
-      user-select: none;
-      transition: color 0.2s;
-    }
-    .eod-item.checked .eod-label {
-      text-decoration: line-through;
-      color: var(--muted);
-    }
-
-    /* ── Toast ── */
-    .toast {
-      position: fixed;
-      bottom: 28px;
-      left: 50%;
-      transform: translateX(-50%) translateY(90px);
-      background: #1c1c1e;
-      color: white;
-      padding: 11px 22px;
-      border-radius: 22px;
-      font-size: 13.5px;
-      font-weight: 500;
-      z-index: 9999;
-      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
-      white-space: nowrap;
-      pointer-events: none;
-    }
-    .toast.show { transform: translateX(-50%) translateY(0); }
-
-    /* ── Print ── */
     @media print {
-      .tabbar-wrap, .header-actions, .btn-add-shot, .btn-add-location,
-      .btn-remove-shot, .btn-remove-loc, .toast { display: none !important; }
-      .day-panel { display: block !important; page-break-after: always; }
-      body { background: white; font-size: 12px; }
-      .header { background: var(--red) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body * { visibility: hidden; }
+      #printable-callsheet, #printable-callsheet * { visibility: visible; }
+      #printable-callsheet { position: absolute; left: 0; top: 0; width: 100%; color: black !important; background: white !important; }
     }
-  
-@media print {
-  body { background: white !important; font-family: -apple-system, sans-serif; }
-  .header, .tab-bar, .action-bar, .shot-input-row, .add-btn, .remove-btn,
-  button, .toast { display: none !important; }
-  .day-panel { display: block !important; page-break-after: always; padding: 20px; }
-  .day-panel:last-child { page-break-after: avoid; }
-  .day-header { background: #1c1c1e !important; color: white !important; 
-    -webkit-print-color-adjust: exact; print-color-adjust: exact;
-    padding: 16px; border-radius: 8px; margin-bottom: 16px; }
-  .location-card { border: 1px solid #ddd; margin-bottom: 12px; border-radius: 8px; padding: 12px; }
-  .trainer-tabs, .trainer-tab { display: none !important; }
-  .trainer-panel { display: block !important; }
-  .shot-item { padding: 4px 0; border-bottom: 1px solid #eee; font-size: 12px; }
-  .info-card { background: #f5f5f7; padding: 12px; border-radius: 8px; margin-bottom: 12px; font-size: 12px; }
-  h2 { font-size: 18px; margin: 0 0 8px 0; }
-  h3 { font-size: 14px; margin: 8px 0 4px 0; }
-}
-</style>
+  </style>
 </head>
-<body>
+<body class="bg-[#0b0f19] text-slate-100 min-h-screen flex flex-col custom-scrollbar">
 
-<header class="header">
-  <div class="header-inner">
-    <div>
-      <h1>LM 2026 Fit Tech Shoot</h1>
-      <p class="sub">Fit Tech Shoot &nbsp;·&nbsp; 17–26 April 2026</p>
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-40 glass border-b border-slate-800/80 px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#fa233b] to-[#fb5c74] flex items-center justify-center shadow-lg shadow-red-500/20">
+        <i class="fa-solid fa-video text-white text-sm"></i>
+      </div>
+      <div>
+        <div class="flex items-center space-x-2">
+          <h1 class="font-bold text-base tracking-tight text-white">Apple Social Production</h1>
+          <span class="text-xs px-2 py-0.5 rounded-full bg-red-500/10 text-red-400 font-mono border border-red-500/20">FY'27 Schedule</span>
+        </div>
+        <p class="text-xs text-slate-400">Master Production Calendar • 7 World Marathon Majors • 28 Fitness+ Trainers</p>
+      </div>
     </div>
-    <div class="header-actions">
-      <button class="btn-header" onclick="shareState()">🔗 Share Link</button>
-      <button class="btn-header" onclick="exportJSON()">⬇ Export</button>
-      <button class="btn-header" onclick="importJSON()">⬆ Import</button>
-      <button class="btn-header" onclick="window.print()">🖨 Print</button>
+
+    <!-- Top Action Buttons -->
+    <div class="flex items-center space-x-3">
+      <button onclick="openNewShootModal()" class="flex items-center space-x-2 bg-gradient-to-r from-red-500 to-rose-600 hover:from-red-600 hover:to-rose-700 text-white text-xs font-semibold px-3.5 py-2 rounded-lg shadow-lg shadow-rose-900/30 transition-all">
+        <i class="fa-solid fa-plus text-[10px]"></i>
+        <span>New Shoot Schedule</span>
+      </button>
+      <button onclick="exportShootsCSV()" class="flex items-center space-x-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium px-3 py-2 rounded-lg border border-slate-700 transition">
+        <i class="fa-solid fa-file-arrow-down text-[11px] text-slate-400"></i>
+        <span>Export CSV</span>
+      </button>
+      <button onclick="toggleTrainerDrawer()" class="flex items-center space-x-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium px-3 py-2 rounded-lg border border-slate-700 transition">
+        <i class="fa-solid fa-users text-[11px] text-emerald-400"></i>
+        <span>Trainers (28)</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Metric Badges -->
+  <section class="px-6 py-4 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3">
+    <div class="glass p-3 rounded-xl border border-slate-800">
+      <div class="text-[11px] font-medium text-slate-400 flex items-center justify-between">
+        <span>Fiscal Year</span>
+        <i class="fa-solid fa-calendar-days text-slate-500 text-xs"></i>
+      </div>
+      <div class="text-lg font-bold text-white mt-1">FY’27</div>
+      <div class="text-[10px] text-slate-500">Oct 2026 – Sep 2027</div>
+    </div>
+    <div class="glass p-3 rounded-xl border border-slate-800">
+      <div class="text-[11px] font-medium text-slate-400 flex items-center justify-between">
+        <span>Marathon Majors</span>
+        <i class="fa-solid fa-medal text-amber-400 text-xs"></i>
+      </div>
+      <div class="text-lg font-bold text-amber-300 mt-1">7 Races</div>
+      <div class="text-[10px] text-slate-500">Incl. Sydney & Berlin</div>
+    </div>
+    <div class="glass p-3 rounded-xl border border-slate-800">
+      <div class="text-[11px] font-medium text-slate-400 flex items-center justify-between">
+        <span>Fitness+ Talent</span>
+        <i class="fa-solid fa-dumbbell text-rose-400 text-xs"></i>
+      </div>
+      <div class="text-lg font-bold text-rose-300 mt-1">28 Active</div>
+      <div class="text-[10px] text-slate-500">Full roster mapped</div>
+    </div>
+    <div class="glass p-3 rounded-xl border border-slate-800">
+      <div class="text-[11px] font-medium text-slate-400 flex items-center justify-between">
+        <span>Scheduled Shoots</span>
+        <i class="fa-solid fa-clapperboard text-cyan-400 text-xs"></i>
+      </div>
+      <div class="text-lg font-bold text-cyan-300 mt-1" id="stat-shoots-count">10 Shoots</div>
+      <div class="text-[10px] text-slate-500" id="stat-shoots-status">5 On-Loc / 5 Studio</div>
+    </div>
+    <div class="glass p-3 rounded-xl border border-slate-800">
+      <div class="text-[11px] font-medium text-slate-400 flex items-center justify-between">
+        <span>Next Milestone</span>
+        <i class="fa-solid fa-flag-checkered text-emerald-400 text-xs"></i>
+      </div>
+      <div class="text-sm font-bold text-emerald-300 mt-1 truncate">Chicago '26</div>
+      <div class="text-[10px] text-slate-500">Oct 11, 2026</div>
+    </div>
+    <div class="glass p-3 rounded-xl border border-slate-800">
+      <div class="text-[11px] font-medium text-slate-400 flex items-center justify-between">
+        <span>Deliverables</span>
+        <i class="fa-solid fa-photo-film text-purple-400 text-xs"></i>
+      </div>
+      <div class="text-lg font-bold text-purple-300 mt-1">24+ Assets</div>
+      <div class="text-[10px] text-slate-500">Reels, Shorts, Carousels</div>
+    </div>
+  </section>
+
+  <!-- Filter & Controls Toolbar -->
+  <section class="px-6 pb-4">
+    <div class="glass p-3 rounded-xl border border-slate-800 flex flex-wrap items-center justify-between gap-3">
+      <!-- Search input -->
+      <div class="relative flex-1 min-w-[240px]">
+        <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-xs text-slate-500"></i>
+        <input id="search-input" oninput="applyFilters()" type="text" placeholder="Search shoots, marathons, trainers, locations..." class="w-full bg-slate-900/90 border border-slate-700/80 rounded-lg pl-8 pr-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-red-500">
+      </div>
+
+      <!-- Quarter Filter -->
+      <div class="flex items-center space-x-1 bg-slate-900/80 p-1 rounded-lg border border-slate-800 text-xs">
+        <button onclick="setQuarter('ALL')" class="q-filter-btn px-2.5 py-1 rounded-md text-xs font-semibold bg-red-500 text-white transition" data-q="ALL">All FY'27</button>
+        <button onclick="setQuarter('Q1')" class="q-filter-btn px-2.5 py-1 rounded-md text-xs font-medium text-slate-400 hover:text-white transition" data-q="Q1">Q1 (Oct-Dec)</button>
+        <button onclick="setQuarter('Q2')" class="q-filter-btn px-2.5 py-1 rounded-md text-xs font-medium text-slate-400 hover:text-white transition" data-q="Q2">Q2 (Jan-Mar)</button>
+        <button onclick="setQuarter('Q3')" class="q-filter-btn px-2.5 py-1 rounded-md text-xs font-medium text-slate-400 hover:text-white transition" data-q="Q3">Q3 (Apr-Jun)</button>
+        <button onclick="setQuarter('Q4')" class="q-filter-btn px-2.5 py-1 rounded-md text-xs font-medium text-slate-400 hover:text-white transition" data-q="Q4">Q4 (Jul-Sep)</button>
+      </div>
+
+      <!-- Category Filter -->
+      <select id="category-select" onchange="applyFilters()" class="bg-slate-900/90 border border-slate-700/80 rounded-lg px-3 py-1.5 text-xs text-slate-300 focus:outline-none focus:border-red-500">
+        <option value="ALL">All Categories</option>
+        <option value="World Marathon Major">🏃 World Marathon Majors (7)</option>
+        <option value="Fitness+ Campaign">🔥 Fitness+ Campaigns</option>
+        <option value="Apple Marketing Beat">🍎 Apple Marketing Beats</option>
+        <option value="Apple Activity Challenge">🏅 Activity Challenges</option>
+        <option value="Apple Milestone">⚡ Apple Milestones (WWDC/Keynote)</option>
+      </select>
+
+      <!-- View Switcher -->
+      <div class="flex items-center space-x-1 bg-slate-900/80 p-1 rounded-lg border border-slate-800 text-xs">
+        <button onclick="switchView('shoots')" id="view-btn-shoots" class="px-2.5 py-1 rounded-md text-xs font-semibold bg-slate-800 text-white transition">
+          <i class="fa-solid fa-list-check mr-1.5 text-red-400"></i>Shoots
+        </button>
+        <button onclick="switchView('events')" id="view-btn-events" class="px-2.5 py-1 rounded-md text-xs font-medium text-slate-400 hover:text-white transition">
+          <i class="fa-solid fa-calendar mr-1.5 text-amber-400"></i>Master Events
+        </button>
+        <button onclick="switchView('trainers')" id="view-btn-trainers" class="px-2.5 py-1 rounded-md text-xs font-medium text-slate-400 hover:text-white transition">
+          <i class="fa-solid fa-user-group mr-1.5 text-rose-400"></i>Talent Matrix
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main View Area -->
+  <main class="flex-1 px-6 pb-8 overflow-y-auto custom-scrollbar">
+
+    <!-- SHOOTS VIEW (Default) -->
+    <div id="view-shoots" class="space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-sm font-bold text-slate-200 tracking-wide uppercase flex items-center space-x-2">
+          <span>Active Production Schedules</span>
+          <span id="shoots-badge" class="px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 text-[11px] font-mono">10</span>
+        </h2>
+        <span class="text-xs text-slate-500">Click any shoot to view the individual shooting schedule & call sheet</span>
+      </div>
+
+      <div id="shoots-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- MASTER EVENTS VIEW -->
+    <div id="view-events" class="hidden space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-sm font-bold text-slate-200 tracking-wide uppercase flex items-center space-x-2">
+          <span>FY’27 Master Apple & Marathon Calendar</span>
+          <span id="events-badge" class="px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 text-[11px] font-mono">22</span>
+        </h2>
+        <span class="text-xs text-slate-500">Anchor dates around which social production shoots are scheduled</span>
+      </div>
+
+      <div class="glass rounded-xl border border-slate-800 overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="bg-slate-900/90 text-slate-400 border-b border-slate-800 font-medium">
+                <th class="py-3 px-4">Date</th>
+                <th class="py-3 px-4">Quarter</th>
+                <th class="py-3 px-4">Event Name</th>
+                <th class="py-3 px-4">Category</th>
+                <th class="py-3 px-4">Location</th>
+                <th class="py-3 px-4">Talent Focus</th>
+                <th class="py-3 px-4 text-right">Action</th>
+              </tr>
+            </thead>
+            <tbody id="events-table-body" class="divide-y divide-slate-800/60">
+              <!-- Rendered by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TALENT MATRIX VIEW -->
+    <div id="view-trainers" class="hidden space-y-4">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-sm font-bold text-slate-200 tracking-wide uppercase flex items-center space-x-2">
+            <span>Fitness+ Trainer Roster (28 Official Talent)</span>
+          </h2>
+          <p class="text-xs text-slate-400 mt-0.5">Filter shoots by clicking on any trainer</p>
+        </div>
+        <span class="text-xs text-slate-400 font-mono">28 / 28 Active</span>
+      </div>
+
+      <div id="trainers-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Shoot Detail & Call Sheet Modal -->
+  <div id="shoot-detail-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="glass bg-[#101626] border border-slate-700 w-full max-w-4xl max-h-[90vh] rounded-2xl flex flex-col shadow-2xl overflow-hidden">
+      <!-- Modal Header -->
+      <div class="px-6 py-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/80">
+        <div class="flex items-center space-x-3">
+          <span id="modal-status-badge" class="px-2.5 py-1 rounded-full text-xs font-semibold bg-rose-500/20 text-rose-300 border border-rose-500/30">Pre-Production</span>
+          <div>
+            <h3 id="modal-shoot-title" class="text-base font-bold text-white">NYC Marathon - Cheer Zone & Street Interviews</h3>
+            <p id="modal-shoot-meta" class="text-xs text-slate-400">Oct 31, 2026 • Central Park & Brooklyn NY</p>
+          </div>
+        </div>
+        <div class="flex items-center space-x-2">
+          <button onclick="printCallSheet()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs px-3 py-1.5 rounded-lg border border-slate-700 transition flex items-center space-x-1.5">
+            <i class="fa-solid fa-print"></i>
+            <span>Print Call Sheet</span>
+          </button>
+          <button onclick="closeShootDetailModal()" class="text-slate-400 hover:text-white text-lg w-8 h-8 rounded-lg hover:bg-slate-800 flex items-center justify-center">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-6 overflow-y-auto custom-scrollbar space-y-6 flex-1 text-xs">
+        <!-- Top overview grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-800">
+            <span class="text-slate-500 font-medium block">Lead Producer</span>
+            <span id="modal-producer" class="text-slate-200 font-semibold text-sm mt-0.5 block">Sebastian York</span>
+          </div>
+          <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-800">
+            <span class="text-slate-500 font-medium block">Director / DP</span>
+            <span id="modal-dp" class="text-slate-200 font-semibold text-sm mt-0.5 block">TBD DP</span>
+          </div>
+          <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-800">
+            <span class="text-slate-500 font-medium block">Linked Milestone</span>
+            <span id="modal-linked-event" class="text-slate-200 font-semibold text-sm mt-0.5 block">TCS NYC Marathon</span>
+          </div>
+          <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-800">
+            <span class="text-slate-500 font-medium block">Shoot Type</span>
+            <span id="modal-shoot-type" class="text-slate-200 font-semibold text-sm mt-0.5 block">On-Location</span>
+          </div>
+        </div>
+
+        <!-- Assigned Talent Section -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-2 flex items-center space-x-1.5">
+            <i class="fa-solid fa-user-check text-rose-400"></i>
+            <span>Assigned Fitness+ Trainers</span>
+          </h4>
+          <div id="modal-talent-tags" class="flex flex-wrap gap-2">
+            <!-- Badges -->
+          </div>
+        </div>
+
+        <!-- Individual Day-Of Shooting Schedule (Run of Show) -->
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center space-x-1.5">
+              <i class="fa-solid fa-clock text-amber-400"></i>
+              <span>Individual Shooting Schedule (Run-of-Show)</span>
+            </h4>
+            <button onclick="addScheduleRow()" class="text-red-400 hover:text-red-300 text-xs font-medium flex items-center space-x-1">
+              <i class="fa-solid fa-plus text-[10px]"></i>
+              <span>Add Time Block</span>
+            </button>
+          </div>
+          <div class="border border-slate-800 rounded-xl overflow-hidden bg-slate-900/70">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-slate-800/60 text-slate-400 border-b border-slate-800 text-[11px]">
+                  <th class="py-2 px-3 w-24">Time</th>
+                  <th class="py-2 px-3 w-40">Segment / Scene</th>
+                  <th class="py-2 px-3">Description & Talent Cue</th>
+                  <th class="py-2 px-3 w-32">Location / Setup</th>
+                </tr>
+              </thead>
+              <tbody id="modal-schedule-body" class="divide-y divide-slate-800/60 text-slate-300">
+                <!-- Schedule items -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Deliverables Specs for this shoot -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-2 flex items-center space-x-1.5">
+            <i class="fa-solid fa-film text-purple-400"></i>
+            <span>Deliverables & Social Asset Cuts</span>
+          </h4>
+          <div id="modal-deliverables-list" class="space-y-2">
+            <!-- Deliverables items -->
+          </div>
+        </div>
+
+        <!-- Notes / Logistics -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-2 flex items-center space-x-1.5">
+            <i class="fa-solid fa-clipboard-list text-cyan-400"></i>
+            <span>Production Notes & Logistics</span>
+          </h4>
+          <p id="modal-notes" class="bg-slate-900/60 p-3 rounded-xl border border-slate-800 text-slate-300 leading-relaxed"></p>
+        </div>
+      </div>
     </div>
   </div>
-</header>
 
-<div class="tabbar-wrap">
-  <div class="tabbar" id="tabbar"></div>
-</div>
+  <!-- Create New Shoot Modal -->
+  <div id="new-shoot-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="glass bg-[#101626] border border-slate-700 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col">
+      <div class="px-6 py-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/80">
+        <h3 class="text-base font-bold text-white flex items-center space-x-2">
+          <i class="fa-solid fa-calendar-plus text-red-400"></i>
+          <span>Schedule New Social Shoot</span>
+        </h3>
+        <button onclick="closeNewShootModal()" class="text-slate-400 hover:text-white text-lg w-8 h-8 rounded-lg hover:bg-slate-800 flex items-center justify-center">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
 
-<div class="main" id="main"></div>
+      <form id="new-shoot-form" onsubmit="handleCreateShoot(event)" class="p-6 space-y-4 text-xs overflow-y-auto max-h-[75vh] custom-scrollbar">
+        <div>
+          <label class="block font-medium text-slate-300 mb-1">Shoot Title *</label>
+          <input id="input-title" required type="text" placeholder="e.g. Sydney Marathon - Harbor Bridge Sunrise Run" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-red-500">
+        </div>
 
-<div class="toast" id="toast"></div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-medium text-slate-300 mb-1">Shoot Date *</label>
+            <input id="input-date" required type="date" value="2026-11-01" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-slate-100 focus:outline-none focus:border-red-500">
+          </div>
+          <div>
+            <label class="block font-medium text-slate-300 mb-1">Shoot Type *</label>
+            <select id="input-type" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-slate-100 focus:outline-none focus:border-red-500">
+              <option value="On-Location">On-Location</option>
+              <option value="Studio Production">Studio Production</option>
+              <option value="Field Run">Field Run</option>
+              <option value="Live Event Activation">Live Event Activation</option>
+            </select>
+          </div>
+        </div>
 
-<script>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-medium text-slate-300 mb-1">Linked Event / Marathon</label>
+            <select id="input-linked-event" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-slate-100 focus:outline-none focus:border-red-500">
+              <!-- Populated by JS -->
+            </select>
+          </div>
+          <div>
+            <label class="block font-medium text-slate-300 mb-1">Location</label>
+            <input id="input-location" type="text" placeholder="e.g. Sydney Opera House & Quay" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-slate-100 focus:outline-none focus:border-red-500">
+          </div>
+        </div>
 
-// Error handler - shows errors on page instead of blank screen
+        <div>
+          <label class="block font-medium text-slate-300 mb-1">Assign Fitness+ Trainers (Select multiple from the 28 active)</label>
+          <div id="trainer-selection-box" class="grid grid-cols-2 sm:grid-cols-3 gap-1.5 p-2 bg-slate-900 border border-slate-700 rounded-lg max-h-36 overflow-y-auto custom-scrollbar">
+            <!-- Checkboxes generated by JS -->
+          </div>
+        </div>
 
-// -----------------------------------------
-//  HELPERS  (function declarations  hoisted)
-// -----------------------------------------
-function _id()  { return 'x' + Math.random().toString(36).slice(2,9); }
-function _shots(arr) { return arr.map(t => ({ id: _id(), text: t, done: false })); }
-function _trainer(name, arr) { return { id: _id(), name, shots: _shots(arr) }; }
-function _coaches(arr) {
-  return ['Coach Jamie-Ray','Coach Kim','Coach Cory','Coach Josh','Coach Scott','Coach Dice','Coach Brian','Coach Sherica']
-    .map(n => _trainer(n, arr));
-}
-function _selectedCoaches(names, arr) {
-  return names.map(n => _trainer(n, arr));
-}
-function _dailyPhotos(location) {
-  return [_trainer('General', [
-    `Pristine wide shot - ${location}`,
-    `Pristine detail/texture shot - ${location}`,
-    'Candid shot of people at location - natural & unposed',
-    'Portrait / close-up of a team member or subject',
-    'Atmosphere & mood shot - light, environment, energy',
-  ])];
-}
-function uid()  { return _id(); }
-function esc(str) {
-  if (!str) return '';
-  return String(str).replace(/&/g,'and').replace(/"/g,'&quot;').replace(/</g,'<').replace(/>/g,'>');
-}
-function allShotsForDay(d) {
-  return d.locations.flatMap(l => l.trainers.flatMap(t => t.shots));
-}
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-medium text-slate-300 mb-1">Lead Producer</label>
+            <input id="input-producer" type="text" value="Sebastian York" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-slate-100 focus:outline-none focus:border-red-500">
+          </div>
+          <div>
+            <label class="block font-medium text-slate-300 mb-1">Status</label>
+            <select id="input-status" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-slate-100 focus:outline-none focus:border-red-500">
+              <option value="Planning">Planning</option>
+              <option value="Pre-Production">Pre-Production</option>
+              <option value="Confirmed">Confirmed</option>
+              <option value="In-Production">In-Production</option>
+            </select>
+          </div>
+        </div>
 
-// -----------------------------------------
-//  INITIAL DATA
-// -----------------------------------------
-const INITIAL_DAYS = [
-  {
-    id: 'd0421', label: 'Tuesday 21 April - Prep Day', tab: 'Tue 21',
-    calltime: '', weather: 'Overcast 43-59F', meetAt: '', dri: '', locationAddress: 'London',
-    locations: [
-      { id: 'l421a', name: 'Prep Day', activeTrainer: 0,
-        trainers: [_trainer('General', ['Check all gear', 'Charge all batteries', 'Format all cards', 'Plan shots for the week'])]
+        <div>
+          <label class="block font-medium text-slate-300 mb-1">Production Notes & Key Deliverables</label>
+          <textarea id="input-notes" rows="3" placeholder="Key shots, equipment, aerial requirements, 9:16 vertical cuts, etc." class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-slate-100 focus:outline-none focus:border-red-500"></textarea>
+        </div>
+
+        <div class="pt-2 flex justify-end space-x-2">
+          <button type="button" onclick="closeNewShootModal()" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded-lg bg-red-500 hover:bg-red-600 text-white font-semibold shadow-lg shadow-red-500/20">Save Shoot Schedule</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Printable Call Sheet Container (Hidden on screen, visible during window.print) -->
+  <div id="printable-callsheet" class="hidden p-8 text-black bg-white font-sans">
+    <!-- Populated during print -->
+  </div>
+
+  <!-- Application Logic -->
+  <script>
+    // Full 28 Active Trainers
+    const TRAINERS = [
+      { name: "Anja Garcia", modalities: ["Rowing", "HIIT"], base: "Los Angeles", role: "Trainer" },
+      { name: "Bakari Williams", modalities: ["HIIT", "Cycling", "Strength"], base: "Los Angeles", role: "Trainer" },
+      { name: "Ben Allen", modalities: ["Dance", "Mindful Cooldown"], base: "Los Angeles", role: "Trainer" },
+      { name: "Brian Cochrane", modalities: ["HIIT", "Strength"], base: "Los Angeles", role: "Trainer" },
+      { name: "Christian Howard", modalities: ["Yoga", "Mindful Cooldown"], base: "Los Angeles", role: "Trainer" },
+      { name: "Cory Wharton-Malcolm", modalities: ["Time to Run", "Treadmill"], base: "London / LA", role: "Running Lead" },
+      { name: "Darryl Whiting", modalities: ["Strength", "Core"], base: "Los Angeles", role: "Trainer" },
+      { name: "Dice Iida-Klein", modalities: ["Yoga", "Mindful Cooldown"], base: "Los Angeles", role: "Trainer" },
+      { name: "Emily Fayette", modalities: ["Treadmill", "Cycling"], base: "Los Angeles", role: "Trainer" },
+      { name: "Gregg Cook", modalities: ["Strength", "Cycling"], base: "Los Angeles", role: "Trainer" },
+      { name: "Jamie-Ray Hartshorne", modalities: ["Treadmill", "HIIT"], base: "Los Angeles", role: "Trainer" },
+      { name: "Jenn Lau", modalities: ["Strength", "Core"], base: "London / LA", role: "Trainer" },
+      { name: "Jessica Skye", modalities: ["Yoga", "Mindful Cooldown"], base: "London / LA", role: "Trainer" },
+      { name: "Jhon Gonzalez", modalities: ["Dance", "Mindful Cooldown"], base: "Los Angeles", role: "Trainer" },
+      { name: "Joanna Hardy", modalities: ["Core", "Strength"], base: "Los Angeles", role: "Trainer" },
+      { name: "Jonelle Lewis", modalities: ["Yoga", "Mindful Cooldown"], base: "London / LA", role: "Trainer" },
+      { name: "Josh Crosby", modalities: ["Rowing", "HIIT"], base: "Los Angeles", role: "Trainer" },
+      { name: "Kim Ngo", modalities: ["HIIT", "Strength"], base: "London / LA", role: "Trainer" },
+      { name: "Kyle Ardill", modalities: ["Strength", "Core"], base: "Los Angeles", role: "Trainer" },
+      { name: "Kym Perfetto", modalities: ["Cycling", "HIIT"], base: "Los Angeles", role: "Trainer" },
+      { name: "LaShawn Jones", modalities: ["Dance", "Mindful Cooldown"], base: "Los Angeles", role: "Trainer" },
+      { name: "Marimba Gold-Watts", modalities: ["Pilates", "Core"], base: "New York / LA", role: "Trainer" },
+      { name: "Molly Fox", modalities: ["Yoga", "Mindful Cooldown"], base: "Los Angeles", role: "Trainer" },
+      { name: "Nez Dally", modalities: ["Kickboxing", "HIIT"], base: "London / LA", role: "Trainer" },
+      { name: "Sam Sanchez", modalities: ["Strength", "Core", "Treadmill"], base: "Los Angeles", role: "Trainer" },
+      { name: "Scott Carvin", modalities: ["Treadmill", "Time to Run"], base: "Los Angeles", role: "Trainer" },
+      { name: "Sherica Holmon", modalities: ["Cycling", "Mindful Cooldown"], base: "Los Angeles", role: "Trainer" },
+      { name: "Tyrell Désean", modalities: ["Cycling", "Dance"], base: "Los Angeles", role: "Trainer" }
+    ];
+
+    // Master Events Data (FY'27 Anchor Beats)
+    const MASTER_EVENTS = [
+      { id: "EVT-2701", name: "Chicago Marathon 2026", quarter: "Q1", date: "2026-10-11", category: "World Marathon Major", location: "Chicago, IL", talent: "Cory Wharton-Malcolm, Emily Fayette", desc: "Abbott World Marathon Major. On-course cheer capture." },
+      { id: "EVT-2702", name: "Apple Watch Fall Push", quarter: "Q1", date: "2026-10-20", category: "Apple Marketing Beat", location: "Worldwide / Digital", talent: "All Trainers", desc: "Fall hardware & Fitness+ integration social campaign." },
+      { id: "EVT-2703", name: "TCS New York City Marathon 2026", quarter: "Q1", date: "2026-11-01", category: "World Marathon Major", location: "New York City, NY", talent: "Cory Wharton-Malcolm, Scott Carvin, Emily Fayette", desc: "Abbott World Marathon Major. Manhattan/Brooklyn street & aerial shoot." },
+      { id: "EVT-2704", name: "Ring In The New Year Campaign Prep", quarter: "Q1", date: "2026-12-08", category: "Fitness+ Campaign", location: "Los Angeles, CA", talent: "Bakari Williams, Kim Ngo, Anja Garcia", desc: "Studio production for January resolution campaign." },
+      { id: "EVT-2705", name: "Ring In The New Year Challenge", quarter: "Q2", date: "2027-01-01", category: "Apple Activity Challenge", location: "Worldwide / Digital", talent: "Bakari Williams, Kim Ngo", desc: "Close all 3 rings for 7 consecutive days." },
+      { id: "EVT-2706", name: "Black History Month Spotlight", quarter: "Q2", date: "2027-02-01", category: "Apple Marketing Beat", location: "Los Angeles, CA", talent: "Bakari Williams, LaShawn Jones, Darryl Whiting, Sherica Holmon", desc: "Trainer roundtable and cultural music playlists." },
+      { id: "EVT-2707", name: "Heart Month Challenge", quarter: "Q2", date: "2027-02-14", category: "Apple Activity Challenge", location: "Worldwide / Digital", talent: "Anja Garcia, Kym Perfetto", desc: "Valentine's Heart Month cardio award badge." },
+      { id: "EVT-2708", name: "Tokyo Marathon 2027", quarter: "Q2", date: "2027-03-07", category: "World Marathon Major", location: "Tokyo, Japan", talent: "Cory Wharton-Malcolm, Dice Iida-Klein", desc: "Abbott World Marathon Major. Tokyo Time to Run episode drop." },
+      { id: "EVT-2709", name: "International Women's Day", quarter: "Q2", date: "2027-03-08", category: "Apple Marketing Beat", location: "Worldwide / Digital", talent: "Jenn Lau, Jessica Skye, Nez Dally", desc: "Spotlighting female strength and leadership." },
+      { id: "EVT-2710", name: "Boston Marathon 2027", quarter: "Q3", date: "2027-04-19", category: "World Marathon Major", location: "Boston, MA", talent: "Scott Carvin, Emily Fayette, Josh Crosby", desc: "131st Boston Marathon on Patriots' Day." },
+      { id: "EVT-2711", name: "Earth Day Activity Challenge", quarter: "Q3", date: "2027-04-22", category: "Apple Activity Challenge", location: "Outdoor / California", talent: "Kyle Ardill, Sam Sanchez", desc: "20-minute outdoor workout challenge capture." },
+      { id: "EVT-2712", name: "TCS London Marathon 2027", quarter: "Q3", date: "2027-04-25", category: "World Marathon Major", location: "London, UK", talent: "Cory Wharton-Malcolm, Jenn Lau, Jessica Skye", desc: "Abbott World Marathon Major. London trainer takeover." },
+      { id: "EVT-2713", name: "International Dance Day", quarter: "Q3", date: "2027-04-29", category: "Fitness+ Campaign", location: "Los Angeles, CA", talent: "Ben Allen, Jhon Gonzalez, LaShawn Jones, Tyrell Désean", desc: "Viral choreography tutorials and social duets." },
+      { id: "EVT-2714", name: "Global Accessibility Awareness Day", quarter: "Q3", date: "2027-05-20", category: "Apple Marketing Beat", location: "Worldwide / Digital", talent: "Molly Fox, Joanna Hardy", desc: "Spotlight on ASL, wheelchair & modified movements." },
+      { id: "EVT-2715", name: "Close Your Rings / Fitness Month", quarter: "Q3", date: "2027-05-01", category: "Apple Activity Challenge", location: "Worldwide", talent: "All Trainers", desc: "Global consumer & employee CYRC challenge." },
+      { id: "EVT-2716", name: "Global Running Day", quarter: "Q3", date: "2027-06-02", category: "Fitness+ Campaign", location: "Worldwide / Outdoor", talent: "Cory Wharton-Malcolm, Emily Fayette, Scott Carvin", desc: "Time to Run celebration & virtual community run." },
+      { id: "EVT-2717", name: "WWDC 2027", quarter: "Q3", date: "2027-06-07", category: "Apple Milestone", location: "Cupertino, CA", talent: "Selected Leads", desc: "New watchOS & iOS fitness platform announcements." },
+      { id: "EVT-2718", name: "International Yoga Day", quarter: "Q3", date: "2027-06-21", category: "Fitness+ Campaign", location: "Los Angeles, CA", talent: "Dice Iida-Klein, Jessica Skye, Jonelle Lewis", desc: "Solstice flow and breathwork series." },
+      { id: "EVT-2719", name: "National Parks Summer Challenge", quarter: "Q4", date: "2027-08-25", category: "Apple Activity Challenge", location: "US National Parks", talent: "Josh Crosby, Kyle Ardill", desc: "Outdoor hiking and trail run content." },
+      { id: "EVT-2720", name: "Sydney Marathon 2027", quarter: "Q4", date: "2027-08-29", category: "World Marathon Major", location: "Sydney, Australia", talent: "Cory Wharton-Malcolm, Sam Sanchez", desc: "7th Abbott World Marathon Major. Harbor Bridge sunrise run." },
+      { id: "EVT-2721", name: "Apple Fall Keynote 2027", quarter: "Q4", date: "2027-09-08", category: "Apple Milestone", location: "Cupertino, CA", talent: "Key Lead Trainers", desc: "Apple Watch Series & Ultra fitness feature releases." },
+      { id: "EVT-2722", name: "BMW Berlin Marathon 2027", quarter: "Q4", date: "2027-09-26", category: "World Marathon Major", location: "Berlin, Germany", talent: "Cory Wharton-Malcolm, Scott Carvin, Emily Fayette", desc: "Fastest marathon major. Brandenburg Gate celebration." }
+    ];
+
+    // Initial Shoots (Editable & Persistent in localStorage)
+    const DEFAULT_SHOOTS = [
+      {
+        id: "SHT-001",
+        title: "NYC Marathon - Pre-Race Cheer Zone & Community Run",
+        date: "2026-10-31",
+        type: "On-Location",
+        location: "Central Park & Brooklyn, NY",
+        quarter: "Q1",
+        linkedEventId: "EVT-2703",
+        status: "Pre-Production",
+        producer: "Sebastian York",
+        dp: "Field DP Unit",
+        trainers: ["Cory Wharton-Malcolm", "Emily Fayette", "Scott Carvin"],
+        notes: "Capture runner energy before race day; aerial b-roll over Central Park finish area; athlete interviews.",
+        schedule: [
+          { time: "06:30", scene: "Crew Call & Gear Check", desc: "Sound, camera check, wireless mic sync at basecamp", loc: "Columbus Circle" },
+          { time: "07:30", scene: "Central Park Shakeout Run", desc: "Follow-vehicle & Ronin capture with Cory & Emily", loc: "Central Park Loop" },
+          { time: "10:00", scene: "Community Street Interviews", desc: "Quick-fire Q&A with first-time marathoners", loc: "Brooklyn Mile" },
+          { time: "13:30", scene: "Finish Line Walkthrough", desc: "Scenic walk with Scott Carvin discussing pacing", loc: "Tavern on the Green" },
+          { time: "15:30", scene: "Wrap & Media Dump", desc: "Cards transferred to DIT & proxies pushed", loc: "Production Van" }
+        ],
+        deliverables: [
+          { title: "NYC Marathon 24-Hr Hype Reel", format: "9:16 Vertical", platform: "IG Reels / TikTok", deadline: "Oct 31, 2026" },
+          { title: "Shakeout Photo Carousel (10 Slides)", format: "4:5 Portrait", platform: "Instagram", deadline: "Oct 31, 2026" }
+        ]
       },
-      { id: 'l421b', name: 'Apple Battersea - End of Day', activeTrainer: 0,
-        trainers: [_trainer('General', ['Upload content to Box at Apple Battersea', 'Back up footage to both hard drives', 'Choose selects for the day'])]
+      {
+        id: "SHT-002",
+        title: "NYC Marathon - Race Day Live Stories & Finish Line",
+        date: "2026-11-01",
+        type: "On-Location",
+        location: "Tavern on the Green / Finish Line, NY",
+        quarter: "Q1",
+        linkedEventId: "EVT-2703",
+        status: "Pre-Production",
+        producer: "Sebastian York",
+        dp: "TBD DP",
+        trainers: ["Cory Wharton-Malcolm", "Emily Fayette"],
+        notes: "Finish line emotional reactions, medal reveals, live social drops.",
+        schedule: [
+          { time: "08:00", scene: "Finish Line Live Setup", desc: "Audio feed and direct wireless link verification", loc: "Media Zone" },
+          { time: "11:00", scene: "Lead Runner Celebrations", desc: "Cory Wharton-Malcolm on-camera reactions", loc: "Finish Gantry" },
+          { time: "14:00", scene: "Everyday Athlete Hugs & Tears", desc: "Slow motion 120fps emotion portraits", loc: "Post-Race Chute" }
+        ],
+        deliverables: [
+          { title: "Raw Emotion Cut", format: "9:16 Vertical", platform: "TikTok / Shorts", deadline: "Nov 2, 2026" }
+        ]
+      },
+      {
+        id: "SHT-003",
+        title: "Ring In The New Year - High-Energy Studio Anthem",
+        date: "2026-12-08",
+        type: "Studio Production",
+        location: "Fitness+ Studio, Los Angeles CA",
+        quarter: "Q1",
+        linkedEventId: "EVT-2704",
+        status: "Planning",
+        producer: "Sebastian York",
+        dp: "Studio Director",
+        trainers: ["Bakari Williams", "Kim Ngo", "Brian Cochrane", "Anja Garcia"],
+        notes: "High tempo 9:16 vertical hooks for resolution momentum.",
+        schedule: [
+          { time: "08:00", scene: "Lighting Grid & Neon Test", desc: "Setting dynamic accent colors for cardio vibe", loc: "Stage A" },
+          { time: "09:30", scene: "Bakari & Kim HIIT Duo", desc: "Explosive movement routines with motion camera", loc: "Main Floor" },
+          { time: "13:00", scene: "Trainer Advice Talking Heads", desc: "'How to stick to your 2027 goal' 15s bites", loc: "Lounge Set" }
+        ],
+        deliverables: [
+          { title: "Resolution Anthem Video", format: "9:16 & 16:9", platform: "IG / TikTok / YouTube", deadline: "Dec 24, 2026" }
+        ]
+      },
+      {
+        id: "SHT-004",
+        title: "Black History Month - Roundtable & Music Workouts",
+        date: "2027-01-14",
+        type: "Studio Production",
+        location: "Fitness+ Studio, Los Angeles CA",
+        quarter: "Q2",
+        linkedEventId: "EVT-2706",
+        status: "Planning",
+        producer: "Sebastian York",
+        dp: "Studio Director",
+        trainers: ["Bakari Williams", "LaShawn Jones", "Darryl Whiting", "Sherica Holmon"],
+        notes: "Panel discussion, cultural music spotlight, dynamic choreography snippets.",
+        schedule: [
+          { time: "09:00", scene: "Roundtable Discussion", desc: "Warm conversation on heritage, music & movement", loc: "Studio Lounge" },
+          { time: "13:30", scene: "Choreography & Cycling Hooks", desc: "High energy snippets synced to spotlight track", loc: "Stage B" }
+        ],
+        deliverables: [
+          { title: "BHM Roundtable Highlights", format: "16:9 & 9:16", platform: "LinkedIn / IG / X", deadline: "Jan 25, 2027" }
+        ]
+      },
+      {
+        id: "SHT-005",
+        title: "Tokyo Marathon - Time to Run Social Teaser",
+        date: "2027-03-05",
+        type: "On-Location",
+        location: "Shinjuku & Asakusa, Tokyo Japan",
+        quarter: "Q2",
+        linkedEventId: "EVT-2708",
+        status: "Planning",
+        producer: "Sebastian York",
+        dp: "Field Crew Japan",
+        trainers: ["Cory Wharton-Malcolm", "Dice Iida-Klein"],
+        notes: "Tokyo city running aesthetics, traditional and modern contrast, morning light.",
+        schedule: [
+          { time: "05:45", scene: "Sunrise Temple Run", desc: "Dice & Cory running through historic Asakusa", loc: "Sensō-ji" },
+          { time: "11:00", scene: "Shinjuku Neon Street Stride", desc: "Fast-shutter cinematic run cuts", loc: "Shinjuku Crossing" }
+        ],
+        deliverables: [
+          { title: "Tokyo City Run Vignette", format: "9:16 Vertical", platform: "IG Reels / TikTok", deadline: "Mar 6, 2027" }
+        ]
+      },
+      {
+        id: "SHT-006",
+        title: "Earth Day - Topanga Canyon Trail & Mindfulness",
+        date: "2027-04-10",
+        type: "On-Location",
+        location: "Topanga Canyon, CA",
+        quarter: "Q3",
+        linkedEventId: "EVT-2711",
+        status: "Planning",
+        producer: "Sebastian York",
+        dp: "Field DP",
+        trainers: ["Kyle Ardill", "Sam Sanchez", "Christian Howard"],
+        notes: "Apple Watch Ultra GPS trail features, natural California spring flora, mindful breathwork.",
+        schedule: [
+          { time: "06:30", scene: "Ridge Trail Ascent", desc: "Kyle & Sam tempo run on dirt trail", loc: "Eagle Rock Trail" },
+          { time: "09:30", scene: "Christian Mountain Yoga", desc: "Restorative outdoor poses with ocean backdrop", loc: "Summit Viewpoint" }
+        ],
+        deliverables: [
+          { title: "Trail Running Earth Day Reel", format: "9:16 Vertical", platform: "Instagram Reels", deadline: "Apr 20, 2027" }
+        ]
+      },
+      {
+        id: "SHT-007",
+        title: "London Marathon - River Thames Shakeout Run",
+        date: "2027-04-23",
+        type: "On-Location",
+        location: "South Bank & Tower Bridge, London UK",
+        quarter: "Q3",
+        linkedEventId: "EVT-2712",
+        status: "Planning",
+        producer: "Sebastian York",
+        dp: "London Production Unit",
+        trainers: ["Cory Wharton-Malcolm", "Jenn Lau", "Jessica Skye", "Jonelle Lewis"],
+        notes: "UK trainer contingent takeover, fan meetup, race route walkthrough.",
+        schedule: [
+          { time: "07:00", scene: "Tower Bridge Sunrise Run", desc: "4 trainers running across empty bridge", loc: "Tower Bridge" },
+          { time: "11:00", scene: "South Bank Community Coffee Run", desc: "Casual chats with local running clubs", loc: "South Bank" }
+        ],
+        deliverables: [
+          { title: "London Crew Takeover", format: "9:16 Vertical", platform: "IG Reels / TikTok", deadline: "Apr 24, 2027" }
+        ]
+      },
+      {
+        id: "SHT-008",
+        title: "International Dance Day - Viral Duet Challenge",
+        date: "2027-04-20",
+        type: "Studio Production",
+        location: "Fitness+ Studio, Los Angeles CA",
+        quarter: "Q3",
+        linkedEventId: "EVT-2713",
+        status: "Planning",
+        producer: "Sebastian York",
+        dp: "Studio Director",
+        trainers: ["Ben Allen", "Jhon Gonzalez", "LaShawn Jones", "Tyrell Désean"],
+        notes: "Short-form sync routines designed for TikTok and Instagram Remix / Duets.",
+        schedule: [
+          { time: "10:00", scene: "Sync Routine 1: Pop/Funk", desc: "Ben & LaShawn lead routine", loc: "Stage A" },
+          { time: "13:00", scene: "Sync Routine 2: Latin Groove", desc: "Jhon & Tyrell lead routine", loc: "Stage B" }
+        ],
+        deliverables: [
+          { title: "Dance Day Duet Starter", format: "9:16 Vertical", platform: "TikTok / IG Reels", deadline: "Apr 28, 2027" }
+        ]
+      },
+      {
+        id: "SHT-009",
+        title: "Sydney Marathon - 7th Major Celebration Run",
+        date: "2027-08-28",
+        type: "On-Location",
+        location: "Sydney Harbour Bridge & Opera House, Australia",
+        quarter: "Q4",
+        linkedEventId: "EVT-2720",
+        status: "Planning",
+        producer: "Sebastian York",
+        dp: "Sydney Production Unit",
+        trainers: ["Cory Wharton-Malcolm", "Sam Sanchez"],
+        notes: "Celebrating Sydney's induction as the 7th Abbott World Marathon Major.",
+        schedule: [
+          { time: "06:00", scene: "Harbour Bridge Sunrise Golden Hour", desc: "Sweeping runner perspective", loc: "Harbour Bridge Walkway" },
+          { time: "08:30", scene: "Opera House Forecourt Sprints", desc: "Fast pacing clips against iconic architecture", loc: "Bennelong Point" }
+        ],
+        deliverables: [
+          { title: "Sydney 7th Major Anthem", format: "9:16 Vertical", platform: "IG / TikTok / Shorts", deadline: "Aug 29, 2027" }
+        ]
+      },
+      {
+        id: "SHT-010",
+        title: "Berlin Marathon - Brandenburg Gate Finale",
+        date: "2027-09-25",
+        type: "On-Location",
+        location: "Brandenburg Gate, Berlin Germany",
+        quarter: "Q4",
+        linkedEventId: "EVT-2722",
+        status: "Planning",
+        producer: "Sebastian York",
+        dp: "EU Production Unit",
+        trainers: ["Cory Wharton-Malcolm", "Scott Carvin", "Emily Fayette"],
+        notes: "Fastest course on earth hype, fan signs, finish line celebration.",
+        schedule: [
+          { time: "07:30", scene: "Brandenburg Gate Morning Stride", desc: "Iconic landmark run through the columns", loc: "Pariser Platz" },
+          { time: "11:00", scene: "Tiergarten Shakeout", desc: "Park running with German running community", loc: "Tiergarten" }
+        ],
+        deliverables: [
+          { title: "Berlin Speed Capital Reel", format: "9:16 Vertical", platform: "IG Reels / TikTok", deadline: "Sep 25, 2027" }
+        ]
       }
-    ],
-    eod: [false, false, false]
-  },
-  {
-    id: 'd0422', label: 'Wednesday 22 April', tab: 'Wed 22',
-    calltime: '8:00 AM', weather: 'Light drizzle 45-53F', meetAt: 'Battersea Power Station', dri: '', locationAddress: 'Battersea Power Station, Circus Rd West, London SW11 8EZ',
-    locations: [
-      { id: 'l422a', name: 'Battersea Power Station - Circus Rd West London SW11 8EZ', activeTrainer: 0,
-        trainers: [_trainer('General', ['Wide establishing shot of Battersea Power Station', 'Brief 60-70 influencer run', 'Medium shots of coaches leading run', 'Close-up shots of runners', 'Action shots during workout', 'Post shots of coaches and athletes'])]
-      },
-      { id: 'l422b', name: 'Apple Battersea - End of Day', activeTrainer: 0,
-        trainers: [_trainer('General', ['Upload content to Box at Apple Battersea', 'Back up footage to both hard drives', 'Choose selects for the day'])]
-      }
-    ],
-    eod: [false, false, false]
-  },
-  {
-    id: 'd0423', label: 'Thursday 23 April', tab: 'Thu 23',
-    calltime: '', weather: 'Overcast 42-66F', meetAt: '', dri: '', locationAddress: 'Apple Brompton, 17-27 Brompton Rd, London SW1X 9LF',
-    locations: [
-      { id: 'l423a', name: 'Apple Brompton - 17-27 Brompton Rd London SW1X 9LF', activeTrainer: 0,
-        trainers: [_trainer('General', ['Morning walkthrough of Apple Brompton', 'Wide shot of store exterior', 'Interior shots of store', 'Shots of coaches in store', 'Product shots'])]
-      },
-      { id: 'l423b', name: 'Apple Battersea - End of Day', activeTrainer: 0,
-        trainers: [_trainer('General', ['Upload content to Box at Apple Battersea', 'Back up footage to both hard drives', 'Choose selects for the day'])]
-      }
-    ],
-    eod: [false, false, false]
-  },
-  {
-    id: 'd0424', label: 'Friday 24 April', tab: 'Fri 24',
-    calltime: '', weather: 'Overcast 46-52F', meetAt: '', dri: '', locationAddress: 'SoHo London and Battersea Power Station SW11 8EZ',
-    locations: [
-      { id: 'l424a', name: 'SoHo - Strava Breakfast 9:30 AM to 11:30 AM', activeTrainer: 0,
-        trainers: [_trainer('General', ['Wide shot of venue exterior', 'Shots of coaches arriving', 'Breakfast setup shots', 'Candid shots of coaches and athletes', 'Group shots'])]
-      },
-      { id: 'l424b', name: '1 Boiler House - Battersea Power Station SW11 8EZ', activeTrainer: 0,
-        trainers: [_trainer('General', ['Wide shot of Boiler House exterior', 'Interior shots', 'Shots of event setup', 'Action shots during workout'])]
-      },
-      { id: 'l424c', name: 'Apple Battersea - End of Day', activeTrainer: 0,
-        trainers: [_trainer('General', ['Upload content to Box at Apple Battersea', 'Back up footage to both hard drives', 'Choose selects for the day'])]
-      }
-    ],
-    eod: [false, false, false]
-  },
-  {
-    id: 'd0425', label: 'Saturday 25 April', tab: 'Sat 25',
-    calltime: '9:15 AM', weather: 'Partly cloudy 40-61F', meetAt: 'Apple Brompton', dri: '', locationAddress: 'Apple Brompton, 17-27 Brompton Rd, London SW1X 9LF',
-    locations: [
-      { id: 'l425a', name: 'Apple Brompton - 17-27 Brompton Rd London SW1X 9LF', activeTrainer: 0,
-        trainers: [_trainer('General', ['9:15 AM meet at Apple Brompton', 'Wide shot of store exterior', 'Shots of coaches and athletes at store', 'Interior shots', 'Group shots outside store'])]
-      },
-      { id: 'l425b', name: 'Apple Battersea - End of Day', activeTrainer: 0,
-        trainers: [_trainer('General', ['Upload content to Box at Apple Battersea', 'Back up footage to both hard drives', 'Choose selects for the day'])]
-      }
-    ],
-    eod: [false, false, false]
-  },
-  {
-    id: 'd0426', label: 'Sunday 26 April - Race Day', tab: 'Sun 26',
-    calltime: '', weather: 'Overcast 44-59F', meetAt: '', dri: '', locationAddress: 'Victoria Embankment London WC2N 5DJ',
-    locations: [
-      { id: 'l426_sched', name: 'Race Day - Performance Schedule', activeTrainer: 0,
-        trainers: [_trainer('General', ['10AM to 12PM - Tempo Run Club DJs', '12PM to 2PM - Joel Corry', '2PM to 3:30PM - Mel C', '3:30PM to 5PM - Switch Disco', '5PM to 7PM - NAINA'])]
-      },
-      { id: 'l426_wide', name: 'Race Day - Wide Shots', activeTrainer: 0,
-        trainers: [_trainer('General', ['Wide shot - Apple Music installation with spectators', 'Wide shot - runners in front of installation', 'Wide shot - London backdrop', 'Wide shot - full crowd and stage energy'])]
-      },
-      { id: 'l426_med', name: 'Race Day - Medium and Close-up Shots', activeTrainer: 0,
-        trainers: [_trainer('General', ['Medium shot - DJs performing with spectators', 'Medium shot - main talent performing', 'Medium shot - MCs on stage', 'Close-up - talent performing', 'Close-up - MCs addressing crowd'])]
-      },
-      { id: 'l426_talent', name: 'Race Day - Talent Shots', activeTrainer: 0,
-        trainers: [_trainer('General', ['Mel C performing - wide and close-up', 'Joel Corry performing - wide and close-up', 'Switch Disco performing - wide and close-up', 'NAINA performing - wide and close-up', 'Cory Wharton Malcolm as MC', 'Rebecca Judd as MC', 'Cory and Rebecca together - MC duo shot', 'Group shot - all artists together'])]
-      },
-      { id: 'l426_eod', name: 'End of Day', activeTrainer: 0,
-        trainers: [_trainer('General', ['Upload content to Box at Apple Battersea', 'Back up footage to both hard drives', 'Choose selects for the day', 'Return to Park Hyatt London River', 'Debrief on the day'])]
-      }
-    ],
-    eod: [false, false, false]
-  }
-];
+    ];
 
-const EOD_LABELS = [
-  '[x] Choose selects',
-  ' Upload to both hard drives',
-  ' Upload to Box at Apple Battersea'
-];
+    // State
+    let shootsData = JSON.parse(localStorage.getItem('apple_fy27_shoots') || 'null') || DEFAULT_SHOOTS;
+    let currentQuarter = 'ALL';
+    let currentCategory = 'ALL';
+    let currentTrainerFilter = null;
+    let activeShootForModal = null;
 
-// -----------------------------------------
-//  STATE
-// -----------------------------------------
-let state;
-let activeDay = 0;
-let saveTimer = null;
+    function saveState() {
+      localStorage.setItem('apple_fy27_shoots', JSON.stringify(shootsData));
+      updateMetrics();
+    }
 
-// Migrate old data (location.shots[])  new (location.trainers[])
-function migrateState(s) {
-  if (s && s.days) {
-    s.days.forEach(day => {
-      (day.locations || []).forEach(loc => {
-        if (loc.shots && !loc.trainers) {
-          loc.trainers = [{ id: _id(), name: 'General', shots: loc.shots }];
-          delete loc.shots;
-        }
-        if (loc.activeTrainer === undefined) loc.activeTrainer = 0;
+    function updateMetrics() {
+      document.getElementById('stat-shoots-count').innerText = `${shootsData.length} Shoots`;
+      const onLoc = shootsData.filter(s => s.type === 'On-Location').length;
+      const studio = shootsData.filter(s => s.type === 'Studio Production').length;
+      document.getElementById('stat-shoots-status').innerText = `${onLoc} On-Loc / ${studio} Studio`;
+      document.getElementById('shoots-badge').innerText = shootsData.length;
+    }
+
+    // View Switching
+    function switchView(viewName) {
+      ['shoots', 'events', 'trainers'].forEach(v => {
+        document.getElementById(`view-${v}`).classList.add('hidden');
+        const btn = document.getElementById(`view-btn-${v}`);
+        btn.classList.remove('bg-slate-800', 'text-white');
+        btn.classList.add('text-slate-400');
       });
-    });
-  }
-  return s;
-}
+      document.getElementById(`view-${viewName}`).classList.remove('hidden');
+      const activeBtn = document.getElementById(`view-btn-${viewName}`);
+      activeBtn.classList.add('bg-slate-800', 'text-white');
+      activeBtn.classList.remove('text-slate-400');
+    }
 
-function loadState() {
-  try {
-    var saved = localStorage.getItem('lm2026_v102_schedule');
-    if (saved) {
-      var parsed = JSON.parse(saved);
-      if (parsed && Array.isArray(parsed.days) && parsed.days.length > 0) {
-        state = migrateState(parsed);
+    function setQuarter(q) {
+      currentQuarter = q;
+      document.querySelectorAll('.q-filter-btn').forEach(btn => {
+        if (btn.dataset.q === q) {
+          btn.className = "q-filter-btn px-2.5 py-1 rounded-md text-xs font-semibold bg-red-500 text-white transition";
+        } else {
+          btn.className = "q-filter-btn px-2.5 py-1 rounded-md text-xs font-medium text-slate-400 hover:text-white transition";
+        }
+      });
+      applyFilters();
+    }
+
+    function applyFilters() {
+      const query = document.getElementById('search-input').value.toLowerCase().trim();
+      currentCategory = document.getElementById('category-select').value;
+      renderShoots(query);
+      renderEvents(query);
+    }
+
+    // Render Shoots
+    function renderShoots(searchQuery = '') {
+      const container = document.getElementById('shoots-grid');
+      container.innerHTML = '';
+
+      const filtered = shootsData.filter(shoot => {
+        // Quarter
+        if (currentQuarter !== 'ALL' && shoot.quarter !== currentQuarter) return false;
+
+        // Trainer filter
+        if (currentTrainerFilter && !shoot.trainers.includes(currentTrainerFilter)) return false;
+
+        // Search query
+        if (searchQuery) {
+          const matchTitle = shoot.title.toLowerCase().includes(searchQuery);
+          const matchLoc = shoot.location.toLowerCase().includes(searchQuery);
+          const matchTrainers = shoot.trainers.some(t => t.toLowerCase().includes(searchQuery));
+          if (!matchTitle && !matchLoc && !matchTrainers) return false;
+        }
+
+        // Category filter (if linked event matches category)
+        if (currentCategory !== 'ALL') {
+          const linked = MASTER_EVENTS.find(e => e.id === shoot.linkedEventId);
+          if (linked && linked.category !== currentCategory) return false;
+        }
+
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-12 text-center text-slate-500">
+            <i class="fa-solid fa-film text-3xl mb-3 text-slate-600 block"></i>
+            <p class="text-sm font-medium">No shoots found matching your filters</p>
+            <button onclick="resetFilters()" class="mt-3 text-xs text-red-400 underline">Reset all filters</button>
+          </div>
+        `;
         return;
       }
-    }
-  } catch(e) {
-    try { localStorage.removeItem('lm2026_v102_schedule'); } catch(e2) {}
-  }
-  state = { days: JSON.parse(JSON.stringify(INITIAL_DAYS)) };
-}
-function saveState() {
-  clearTimeout(saveTimer);
-  saveTimer = setTimeout(() => {
-    localStorage.setItem('lm2026_v102_schedule', JSON.stringify(state));
-  }, 300);
-}
 
-// -----------------------------------------
-//  RENDER
-// -----------------------------------------
-function render() {
-  renderTabs();
-  renderDays();
-}
+      filtered.forEach(shoot => {
+        const linkedEvent = MASTER_EVENTS.find(e => e.id === shoot.linkedEventId);
+        const isMajor = linkedEvent && linkedEvent.category === 'World Marathon Major';
 
-function renderTabs() {
-  const bar = document.getElementById('tabbar');
-  bar.innerHTML = state.days.map((d, i) => {
-    const shots = allShotsForDay(d);
-    const hasContent = d.calltime || d.weather || d.meetAt || shots.some(s => s.done);
-    return `<button class="tab-btn ${i === activeDay ? 'active' : ''}" onclick="switchDay(${i})">
-      ${d.tab}<span class="tab-dot ${hasContent ? 'filled' : ''}"></span>
-    </button>`;
-  }).join('');
-}
+        const card = document.createElement('div');
+        card.className = "glass p-4 rounded-xl border border-slate-800 hover:border-slate-700 transition cursor-pointer flex flex-col justify-between group";
+        card.onclick = () => openShootDetail(shoot.id);
 
-function renderDays() {
-  const main = document.getElementById('main');
-  main.innerHTML = state.days.map((d, di) => `
-    <div class="day-panel ${di === activeDay ? 'active' : ''}" id="panel-${di}">
-      <div class="basecamp-card">
-        <span class="basecamp-icon"></span>
-        <div>
-          <div class="basecamp-label">Base Camp</div>
-          <div class="basecamp-address">Park Hyatt London River &nbsp;&nbsp; 7 Nine Elms Lane, London GB SW8 5PH</div>
-        </div>
-      </div>
-      ${renderDayHeader(d, di)}
-      ${renderInfoCard(d, di)}
-      <div class="section-label"> Locations & Shots</div>
-      ${d.locations.map((loc, li) => renderLocation(d, di, loc, li)).join('')}
-      <button class="btn-add-location" onclick="addLocation(${di})"> Add Location</button>
-      <div class="section-label"> End of Day Checklist</div>
-      ${renderEOD(d, di)}
-    </div>
-  `).join('');
-}
+        let typeColor = shoot.type === 'On-Location' ? 'bg-amber-500/10 text-amber-300 border-amber-500/20' : 'bg-purple-500/10 text-purple-300 border-purple-500/20';
 
-function renderDayHeader(d, di) {
-  const allShots = allShotsForDay(d);
-  const total = allShots.length;
-  const done  = allShots.filter(s => s.done).length;
-  const pct   = total > 0 ? Math.round((done / total) * 100) : 0;
-  return `
-    <div class="day-header">
-      <h2>${d.label}</h2>
-      <div class="progress-pill">
-        <div class="pbar"><div class="pbar-fill" style="width:${pct}%"></div></div>
-        ${done}/${total} shots
-      </div>
-    </div>`;
-}
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center space-x-1.5">
+                <span class="text-[10px] px-2 py-0.5 rounded-md font-mono ${typeColor} border">${shoot.type}</span>
+                <span class="text-[10px] px-2 py-0.5 rounded-md font-mono bg-slate-800 text-slate-400 border border-slate-700">${shoot.quarter}</span>
+                ${isMajor ? '<span class="text-[10px] px-1.5 py-0.5 rounded-md font-semibold bg-red-500/20 text-red-300 border border-red-500/30">🏃 Major</span>' : ''}
+              </div>
+              <span class="text-[11px] font-mono text-slate-400">${shoot.date}</span>
+            </div>
 
-function renderInfoCard(d, di) {
-  return `
-    <div class="info-card">
-      <div class="info-field">
-        <label><span class="field-icon"></span> Departure from Hotel</label>
-        <input type="text" placeholder="e.g. 9:00 AM" value="${esc(d.calltime)}"
-          oninput="updateInfo(${di},'calltime',this.value)" />
-      </div>
-      <div class="info-field">
-        <label><span class="field-icon"></span> Weather Forecast</label>
-        <input type="text" placeholder="e.g. Cloudy, 65FF" value="${esc(d.weather)}"
-          oninput="updateInfo(${di},'weather',this.value)" />
-      </div>
-      <div class="info-field">
-        <label><span class="field-icon"></span> Headed to Location</label>
-        <input type="text" placeholder="e.g. Park Hyatt London River" value="${esc(d.meetAt)}"
-          oninput="updateInfo(${di},'meetAt',this.value)" />
-      </div>
-      <div class="info-field">
-        <label><span class="field-icon"></span> Location Address</label>
-        <input type="text" placeholder="e.g. 17-27 Brompton Rd, London SW1X 9LF" value="${esc(d.locationAddress||'')}"
-          oninput="updateInfo(${di},'locationAddress',this.value)" />
-      </div>
-      <div class="info-field">
-        <label><span class="field-icon"></span> DRI</label>
-        <input type="text" placeholder="Directly Responsible Individual" value="${esc(d.dri||'')}"
-          oninput="updateInfo(${di},'dri',this.value)" />
-      </div>
-    </div>`;
-}
+            <h3 class="font-bold text-sm text-white group-hover:text-red-400 transition leading-snug">${shoot.title}</h3>
+            
+            <div class="flex items-center space-x-1.5 text-xs text-slate-400 mt-1.5">
+              <i class="fa-solid fa-location-dot text-slate-500 text-[10px]"></i>
+              <span class="truncate">${shoot.location}</span>
+            </div>
 
-function renderLocation(d, di, loc, li) {
-  const at      = loc.activeTrainer || 0;
-  const trainer = loc.trainers[at];
-  return `
-    <div class="location-card" id="loc-${di}-${li}">
-      <div class="location-header">
-        <span class="loc-pin"></span>
-        <input class="loc-name-input" type="text" placeholder="Location name"
-          value="${esc(loc.name)}" oninput="updateLocName(${di},${li},this.value)" />
-        ${loc.mapsUrl ? `<a class="loc-maps-link" href="${loc.mapsUrl}" target="_blank"> Open in Maps</a>` : ''}
-        <button class="btn-remove-loc" onclick="removeLocation(${di},${li})" title="Remove location"></button>
-      </div>
-      <div class="trainer-tabs-bar">
-        ${loc.trainers.map((t, ti) => `
-          <div class="trainer-tab-wrap ${ti === at ? 'active' : ''}"
-               onclick="switchTrainer(${di},${li},${ti})">
-            <input class="trainer-tab-name ${ti === at ? 'active' : ''}" type="text"
-              value="${esc(t.name)}" placeholder="Trainer"
-              onclick="event.stopPropagation()"
-              onfocus="switchTrainer(${di},${li},${ti})"
-              oninput="updateTrainerName(${di},${li},${ti},this.value)" />
-            ${loc.trainers.length > 1 ? `
-              <button class="btn-remove-trainer" title="Remove trainer"
-                onclick="event.stopPropagation();removeTrainer(${di},${li},${ti})"></button>
-            ` : ''}
+            <!-- Talent Badges -->
+            <div class="mt-3 flex flex-wrap gap-1">
+              ${shoot.trainers.map(t => `<span class="text-[10px] bg-slate-800/90 text-slate-300 px-2 py-0.5 rounded-md border border-slate-700/60">${t}</span>`).join('')}
+            </div>
           </div>
-        `).join('')}
-        <button class="btn-add-trainer" onclick="addTrainer(${di},${li})"> Trainer</button>
-      </div>
-      <div class="location-shots">
-        <div class="shots-heading" id="sh-${di}-${li}">Shots - ${esc(trainer.name)}</div>
-        <div class="shot-list" id="shots-${di}-${li}">
-          ${trainer.shots.map((s, si) => renderShot(di, li, at, s, si)).join('')}
+
+          <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px]">
+            <span class="text-slate-500 flex items-center space-x-1">
+              <i class="fa-solid fa-clock-rotate-left text-[10px]"></i>
+              <span>${shoot.schedule ? shoot.schedule.length : 0} time blocks</span>
+            </span>
+            <span class="text-slate-400 group-hover:text-white font-medium flex items-center space-x-1 transition">
+              <span>View Run-of-Show</span>
+              <i class="fa-solid fa-chevron-right text-[9px]"></i>
+            </span>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Render Master Events
+    function renderEvents(searchQuery = '') {
+      const tbody = document.getElementById('events-table-body');
+      tbody.innerHTML = '';
+
+      const filtered = MASTER_EVENTS.filter(evt => {
+        if (currentQuarter !== 'ALL' && evt.quarter !== currentQuarter) return false;
+        if (currentCategory !== 'ALL' && evt.category !== currentCategory) return false;
+        if (searchQuery) {
+          const matchName = evt.name.toLowerCase().includes(searchQuery);
+          const matchLoc = evt.location.toLowerCase().includes(searchQuery);
+          const matchTalent = evt.talent.toLowerCase().includes(searchQuery);
+          if (!matchName && !matchLoc && !matchTalent) return false;
+        }
+        return true;
+      });
+
+      document.getElementById('events-badge').innerText = filtered.length;
+
+      filtered.forEach(evt => {
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-slate-800/40 transition";
+
+        let catBadge = "bg-slate-800 text-slate-300";
+        if (evt.category === 'World Marathon Major') catBadge = "bg-amber-500/10 text-amber-300 border border-amber-500/20";
+        else if (evt.category === 'Apple Marketing Beat') catBadge = "bg-red-500/10 text-red-300 border border-red-500/20";
+        else if (evt.category === 'Apple Activity Challenge') catBadge = "bg-emerald-500/10 text-emerald-300 border border-emerald-500/20";
+        else if (evt.category === 'Apple Milestone') catBadge = "bg-blue-500/10 text-blue-300 border border-blue-500/20";
+
+        tr.innerHTML = `
+          <td class="py-3 px-4 font-mono text-slate-300">${evt.date}</td>
+          <td class="py-3 px-4 font-mono text-slate-400">${evt.quarter}</td>
+          <td class="py-3 px-4 font-semibold text-white">
+            ${evt.name}
+            <span class="block text-[11px] text-slate-500 font-normal mt-0.5">${evt.desc}</span>
+          </td>
+          <td class="py-3 px-4"><span class="px-2 py-0.5 rounded-full text-[10px] font-medium ${catBadge}">${evt.category}</span></td>
+          <td class="py-3 px-4 text-slate-400">${evt.location}</td>
+          <td class="py-3 px-4 text-slate-300 text-[11px]">${evt.talent}</td>
+          <td class="py-3 px-4 text-right">
+            <button onclick="scheduleShootForEvent('${evt.id}')" class="text-xs bg-slate-800 hover:bg-red-500 text-slate-300 hover:text-white px-2.5 py-1 rounded border border-slate-700 transition">
+              + Shoot
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Render Trainers Roster
+    function renderTrainers() {
+      const grid = document.getElementById('trainers-grid');
+      grid.innerHTML = '';
+
+      TRAINERS.forEach(trainer => {
+        // Count active shoots for this trainer
+        const shootCount = shootsData.filter(s => s.trainers.includes(trainer.name)).length;
+        const isFiltered = currentTrainerFilter === trainer.name;
+
+        const card = document.createElement('div');
+        card.className = `glass p-3 rounded-xl border transition cursor-pointer ${isFiltered ? 'border-rose-500 bg-rose-500/10' : 'border-slate-800 hover:border-slate-700'}`;
+        card.onclick = () => filterByTrainer(trainer.name);
+
+        card.innerHTML = `
+          <div class="flex items-start justify-between">
+            <div>
+              <h4 class="font-bold text-sm text-white">${trainer.name}</h4>
+              <span class="text-[10px] text-slate-400">${trainer.base}</span>
+            </div>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded-full ${shootCount > 0 ? 'bg-red-500/20 text-red-300 border border-red-500/30' : 'bg-slate-800 text-slate-500'}">
+              ${shootCount} shoot${shootCount === 1 ? '' : 's'}
+            </span>
+          </div>
+          <div class="mt-2.5 flex flex-wrap gap-1">
+            ${trainer.modalities.map(m => `<span class="text-[9px] bg-slate-900/90 text-slate-300 px-1.5 py-0.5 rounded border border-slate-800">${m}</span>`).join('')}
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function filterByTrainer(trainerName) {
+      if (currentTrainerFilter === trainerName) {
+        currentTrainerFilter = null;
+      } else {
+        currentTrainerFilter = trainerName;
+        switchView('shoots');
+      }
+      renderTrainers();
+      applyFilters();
+    }
+
+    function resetFilters() {
+      currentQuarter = 'ALL';
+      currentCategory = 'ALL';
+      currentTrainerFilter = null;
+      document.getElementById('search-input').value = '';
+      document.getElementById('category-select').value = 'ALL';
+      setQuarter('ALL');
+      applyFilters();
+      renderTrainers();
+    }
+
+    // Modal Details
+    function openShootDetail(shootId) {
+      const shoot = shootsData.find(s => s.id === shootId);
+      if (!shoot) return;
+      activeShootForModal = shoot;
+
+      document.getElementById('modal-shoot-title').innerText = shoot.title;
+      document.getElementById('modal-shoot-meta').innerText = `${shoot.date} • ${shoot.location} • ${shoot.quarter}`;
+      document.getElementById('modal-status-badge').innerText = shoot.status;
+      document.getElementById('modal-producer').innerText = shoot.producer || 'Sebastian York';
+      document.getElementById('modal-dp').innerText = shoot.dp || 'Production Unit';
+      
+      const linked = MASTER_EVENTS.find(e => e.id === shoot.linkedEventId);
+      document.getElementById('modal-linked-event').innerText = linked ? linked.name : 'Independent Shoot';
+      document.getElementById('modal-shoot-type').innerText = shoot.type;
+      document.getElementById('modal-notes').innerText = shoot.notes || 'No logistics notes entered.';
+
+      // Talent
+      const talentContainer = document.getElementById('modal-talent-tags');
+      talentContainer.innerHTML = shoot.trainers.map(t => `
+        <span class="bg-rose-500/20 text-rose-300 border border-rose-500/30 px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center space-x-1">
+          <i class="fa-solid fa-user-check text-[10px]"></i>
+          <span>${t}</span>
+        </span>
+      `).join('');
+
+      // Run of show
+      const schedBody = document.getElementById('modal-schedule-body');
+      schedBody.innerHTML = '';
+      const schedule = shoot.schedule || [];
+      if (schedule.length === 0) {
+        schedBody.innerHTML = `<tr><td colspan="4" class="py-4 text-center text-slate-500">No time blocks added yet. Click "+ Add Time Block" above.</td></tr>`;
+      } else {
+        schedule.forEach((item, idx) => {
+          const row = document.createElement('tr');
+          row.className = "hover:bg-slate-800/30";
+          row.innerHTML = `
+            <td class="py-2.5 px-3 font-mono text-amber-300 font-semibold">${item.time}</td>
+            <td class="py-2.5 px-3 font-medium text-white">${item.scene}</td>
+            <td class="py-2.5 px-3 text-slate-300">${item.desc}</td>
+            <td class="py-2.5 px-3 text-slate-400 font-mono text-[11px]">${item.loc}</td>
+          `;
+          schedBody.appendChild(row);
+        });
+      }
+
+      // Deliverables
+      const delivContainer = document.getElementById('modal-deliverables-list');
+      delivContainer.innerHTML = '';
+      const deliverables = shoot.deliverables || [];
+      if (deliverables.length === 0) {
+        delivContainer.innerHTML = `<p class="text-slate-500">Standard 9:16 vertical social cut and photo asset pack.</p>`;
+      } else {
+        deliverables.forEach(d => {
+          const dItem = document.createElement('div');
+          dItem.className = "flex items-center justify-between p-2.5 bg-slate-900/60 rounded-lg border border-slate-800";
+          dItem.innerHTML = `
+            <div class="flex items-center space-x-2">
+              <i class="fa-solid fa-video text-purple-400 text-xs"></i>
+              <span class="font-medium text-white">${d.title}</span>
+              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-300">${d.format}</span>
+            </div>
+            <div class="flex items-center space-x-3 text-slate-400 font-mono text-[11px]">
+              <span>${d.platform}</span>
+              <span class="text-slate-500">Due: ${d.deadline}</span>
+            </div>
+          `;
+          delivContainer.appendChild(dItem);
+        });
+      }
+
+      document.getElementById('shoot-detail-modal').classList.remove('hidden');
+    }
+
+    function closeShootDetailModal() {
+      document.getElementById('shoot-detail-modal').classList.add('hidden');
+    }
+
+    function addScheduleRow() {
+      if (!activeShootForModal) return;
+      const time = prompt("Enter time (e.g. 14:00):", "14:00");
+      if (!time) return;
+      const scene = prompt("Enter scene/segment title:", "B-Roll Running Sequences");
+      const desc = prompt("Enter description:", "Slow motion camera track with handheld stabilizer");
+      const loc = prompt("Enter location setup:", "Course mile 18");
+
+      if (!activeShootForModal.schedule) activeShootForModal.schedule = [];
+      activeShootForModal.schedule.push({ time, scene, desc, loc });
+      saveState();
+      openShootDetail(activeShootForModal.id);
+    }
+
+    // Create New Shoot Modal
+    function openNewShootModal() {
+      // Populate events dropdown
+      const sel = document.getElementById('input-linked-event');
+      sel.innerHTML = '<option value="">-- None / Independent Shoot --</option>';
+      MASTER_EVENTS.forEach(e => {
+        sel.innerHTML += `<option value="${e.id}">${e.name} (${e.date})</option>`;
+      });
+
+      // Populate trainers checkboxes
+      const tBox = document.getElementById('trainer-selection-box');
+      tBox.innerHTML = '';
+      TRAINERS.forEach(t => {
+        tBox.innerHTML += `
+          <label class="flex items-center space-x-1.5 text-slate-300 hover:text-white cursor-pointer py-0.5">
+            <input type="checkbox" name="trainer_pick" value="${t.name}" class="rounded bg-slate-800 border-slate-700 text-red-500 focus:ring-0">
+            <span class="text-[11px] truncate">${t.name}</span>
+          </label>
+        `;
+      });
+
+      document.getElementById('new-shoot-modal').classList.remove('hidden');
+    }
+
+    function closeNewShootModal() {
+      document.getElementById('new-shoot-modal').classList.add('hidden');
+    }
+
+    function scheduleShootForEvent(eventId) {
+      openNewShootModal();
+      document.getElementById('input-linked-event').value = eventId;
+      const evt = MASTER_EVENTS.find(e => e.id === eventId);
+      if (evt) {
+        document.getElementById('input-title').value = `${evt.name} - Production Shoot`;
+        document.getElementById('input-date').value = evt.date;
+        document.getElementById('input-location').value = evt.location;
+      }
+    }
+
+    function handleCreateShoot(e) {
+      e.preventDefault();
+      const title = document.getElementById('input-title').value;
+      const date = document.getElementById('input-date').value;
+      const type = document.getElementById('input-type').value;
+      const linkedEventId = document.getElementById('input-linked-event').value;
+      const location = document.getElementById('input-location').value || 'Location TBD';
+      const producer = document.getElementById('input-producer').value || 'Sebastian York';
+      const status = document.getElementById('input-status').value;
+      const notes = document.getElementById('input-notes').value;
+
+      // Quarter calculation
+      const month = new Date(date).getMonth() + 1; // 1-12
+      let quarter = "Q1";
+      if (month >= 10 && month <= 12) quarter = "Q1";
+      else if (month >= 1 && month <= 3) quarter = "Q2";
+      else if (month >= 4 && month <= 6) quarter = "Q3";
+      else quarter = "Q4";
+
+      // Selected trainers
+      const checkboxes = document.querySelectorAll('input[name="trainer_pick"]:checked');
+      const selectedTrainers = Array.from(checkboxes).map(cb => cb.value);
+
+      const newId = `SHT-0${shootsData.length + 1}`;
+      const newShoot = {
+        id: newId,
+        title,
+        date,
+        type,
+        location,
+        quarter,
+        linkedEventId,
+        status,
+        producer,
+        dp: "TBD DP",
+        trainers: selectedTrainers.length > 0 ? selectedTrainers : ["Cory Wharton-Malcolm"],
+        notes,
+        schedule: [
+          { time: "07:00", scene: "Crew Call & Safety Briefing", desc: "Basecamp check-in and camera staging", loc: location },
+          { time: "08:30", scene: "Talent Golden Hour Capture", desc: "Hero running sequences and soundbites", loc: location },
+          { time: "12:00", scene: "Wrap & Digital Asset Backup", desc: "Primary footage ingest", loc: "Basecamp" }
+        ],
+        deliverables: [
+          { title: `${title} - Social Cut`, format: "9:16 Vertical", platform: "IG Reels / TikTok", deadline: date }
+        ]
+      };
+
+      shootsData.unshift(newShoot);
+      saveState();
+      closeNewShootModal();
+      applyFilters();
+      renderTrainers();
+      alert(`Shoot schedule '${title}' created successfully!`);
+    }
+
+    // Export CSV
+    function exportShootsCSV() {
+      let csv = "Shoot ID,Shoot Title,Shoot Date,Quarter,Type,Location,Producer,Status,Trainers,Notes\n";
+      shootsData.forEach(s => {
+        const trainersStr = s.trainers.join('; ');
+        const notesStr = (s.notes || '').replace(/,/g, ' ');
+        csv += `${s.id},"${s.title}",${s.date},${s.quarter},${s.type},"${s.location}","${s.producer}",${s.status},"${trainersStr}","${notesStr}"\n`;
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "Apple_Social_Shooting_Schedule_FY27.csv";
+      link.click();
+    }
+
+    // Call sheet printable
+    function printCallSheet() {
+      if (!activeShootForModal) return;
+      const s = activeShootForModal;
+      const printDiv = document.getElementById('printable-callsheet');
+      printDiv.innerHTML = `
+        <div style="border-bottom: 2px solid #000; padding-bottom: 12px; margin-bottom: 20px;">
+          <h1 style="font-size: 24px; font-weight: bold; margin: 0;">APPLE FITNESS+ SOCIAL PRODUCTION CALL SHEET</h1>
+          <h2 style="font-size: 16px; margin: 4px 0 0 0; color: #333;">${s.title}</h2>
+          <p style="font-size: 12px; margin: 4px 0 0 0; color: #666;">Date: ${s.date} | Location: ${s.location} | Producer: ${s.producer}</p>
         </div>
-        <button class="btn-add-shot" onclick="addShot(${di},${li})"> Add shot</button>
-      </div>
-    </div>`;
-}
 
-function renderShot(di, li, ti, s, si) {
-  return `
-    <div class="shot-item" id="shot-${di}-${li}-${ti}-${si}">
-      <input type="checkbox" class="shot-cb" ${s.done ? 'checked' : ''}
-        onchange="toggleShot(${di},${li},${ti},${si},this.checked)" />
-      <input type="text" class="shot-text-input ${s.done ? 'done' : ''}"
-        value="${esc(s.text)}" placeholder="Describe the shot"
-        oninput="updateShotText(${di},${li},${ti},${si},this.value)" />
-      <button class="btn-remove-shot" onclick="removeShot(${di},${li},${ti},${si})" title="Remove"></button>
-    </div>`;
-}
-
-function renderEOD(d, di) {
-  return `
-    <div class="eod-card">
-      <div class="eod-heading"> Wrap Checklist</div>
-      ${EOD_LABELS.map((lbl, i) => `
-        <div class="eod-item ${d.eod[i] ? 'checked' : ''}" id="eod-${di}-${i}">
-          <input type="checkbox" class="eod-cb" id="eodcb-${di}-${i}" ${d.eod[i] ? 'checked' : ''}
-            onchange="toggleEOD(${di},${i},this.checked)" />
-          <label class="eod-label" for="eodcb-${di}-${i}">${lbl}</label>
+        <div style="margin-bottom: 20px;">
+          <h3 style="font-size: 14px; font-weight: bold; border-bottom: 1px solid #ccc; padding-bottom: 4px;">ASSIGNED TALENT</h3>
+          <p style="font-size: 13px;">${s.trainers.join(', ')}</p>
         </div>
-      `).join('')}
-    </div>`;
-}
 
-// -----------------------------------------
-//  ACTIONS - Day
-// -----------------------------------------
-function switchDay(i) {
-  activeDay = i;
-  render();
-  document.getElementById('main').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
+        <div style="margin-bottom: 20px;">
+          <h3 style="font-size: 14px; font-weight: bold; border-bottom: 1px solid #ccc; padding-bottom: 4px;">RUN OF SHOW / SHOOTING SCHEDULE</h3>
+          <table style="width: 100%; text-align: left; border-collapse: collapse; font-size: 12px; margin-top: 8px;">
+            <thead>
+              <tr style="background: #f0f0f0;">
+                <th style="padding: 6px; border: 1px solid #ddd;">Time</th>
+                <th style="padding: 6px; border: 1px solid #ddd;">Scene / Segment</th>
+                <th style="padding: 6px; border: 1px solid #ddd;">Description</th>
+                <th style="padding: 6px; border: 1px solid #ddd;">Location</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${(s.schedule || []).map(item => `
+                <tr>
+                  <td style="padding: 6px; border: 1px solid #ddd; font-weight: bold;">${item.time}</td>
+                  <td style="padding: 6px; border: 1px solid #ddd;">${item.scene}</td>
+                  <td style="padding: 6px; border: 1px solid #ddd;">${item.desc}</td>
+                  <td style="padding: 6px; border: 1px solid #ddd;">${item.loc}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
 
-function updateInfo(di, field, val) {
-  state.days[di][field] = val;
-  saveState();
-  updateTabDot(di);
-}
+        <div style="margin-bottom: 20px;">
+          <h3 style="font-size: 14px; font-weight: bold; border-bottom: 1px solid #ccc; padding-bottom: 4px;">PRODUCTION NOTES & DELIVERABLES</h3>
+          <p style="font-size: 12px; line-height: 1.5;">${s.notes || 'None specified'}</p>
+        </div>
+      `;
+      window.print();
+    }
 
-// -----------------------------------------
-//  ACTIONS - Location
-// -----------------------------------------
-function updateLocName(di, li, val) {
-  state.days[di].locations[li].name = val;
-  saveState();
-}
+    function toggleTrainerDrawer() {
+      switchView('trainers');
+    }
 
-function addLocation(di) {
-  state.days[di].locations.push({
-    id: _id(), name: '', activeTrainer: 0,
-    trainers: _coaches([''])
-  });
-  render();
-  saveState();
-}
-
-function removeLocation(di, li) {
-  if (state.days[di].locations.length === 1) {
-    showToast(' At least one location is required'); return;
-  }
-  state.days[di].locations.splice(li, 1);
-  render();
-  saveState();
-}
-
-// -----------------------------------------
-//  ACTIONS - Trainer tabs
-// -----------------------------------------
-function switchTrainer(di, li, ti) {
-  if (state.days[di].locations[li].activeTrainer === ti) return;
-  state.days[di].locations[li].activeTrainer = ti;
-  render();
-  saveState();
-}
-
-function addTrainer(di, li) {
-  const loc = state.days[di].locations[li];
-  // Pre-fill shot list from the first trainer's shot texts (all unchecked)
-  const template = loc.trainers[0].shots.map(s => ({ id: _id(), text: s.text, done: false }));
-  loc.trainers.push({ id: _id(), name: 'Trainer ' + (loc.trainers.length + 1), shots: template });
-  loc.activeTrainer = loc.trainers.length - 1;
-  render();
-  saveState();
-  setTimeout(() => {
-    const tabs = document.querySelectorAll(`#loc-${di}-${li} .trainer-tab-name`);
-    if (tabs.length) { const last = tabs[tabs.length - 1]; last.focus(); last.select(); }
-  }, 50);
-}
-
-function removeTrainer(di, li, ti) {
-  const loc = state.days[di].locations[li];
-  if (loc.trainers.length === 1) { showToast(' At least one trainer tab required'); return; }
-  loc.trainers.splice(ti, 1);
-  loc.activeTrainer = Math.min(loc.activeTrainer, loc.trainers.length - 1);
-  render();
-  saveState();
-}
-
-function updateTrainerName(di, li, ti, val) {
-  state.days[di].locations[li].trainers[ti].name = val;
-  const heading = document.getElementById(`sh-${di}-${li}`);
-  if (heading && state.days[di].locations[li].activeTrainer === ti) {
-    heading.textContent = 'Shots - ' + val;
-  }
-  saveState();
-}
-
-// -----------------------------------------
-//  ACTIONS - Shots
-// -----------------------------------------
-function addShot(di, li) {
-  const loc = state.days[di].locations[li];
-  const ti  = loc.activeTrainer || 0;
-  loc.trainers[ti].shots.push({ id: _id(), text: '', done: false });
-  render();
-  saveState();
-  setTimeout(() => {
-    const shots = document.querySelectorAll(`#shots-${di}-${li} .shot-text-input`);
-    if (shots.length) shots[shots.length - 1].focus();
-  }, 50);
-}
-
-function removeShot(di, li, ti, si) {
-  const shots = state.days[di].locations[li].trainers[ti].shots;
-  if (shots.length === 1) { showToast(' At least one shot required'); return; }
-  shots.splice(si, 1);
-  render();
-  saveState();
-}
-
-function toggleShot(di, li, ti, si, checked) {
-  state.days[di].locations[li].trainers[ti].shots[si].done = checked;
-  const input = document.querySelector(`#shot-${di}-${li}-${ti}-${si} .shot-text-input`);
-  if (input) input.classList.toggle('done', checked);
-  const allShots = allShotsForDay(state.days[di]);
-  const done = allShots.filter(s => s.done).length;
-  const pct  = Math.round((done / allShots.length) * 100);
-  const fill = document.querySelector(`#panel-${di} .pbar-fill`);
-  const pill = document.querySelector(`#panel-${di} .progress-pill`);
-  if (fill) fill.style.width = pct + '%';
-  if (pill) pill.lastChild.textContent = ` ${done}/${allShots.length} shots`;
-  saveState();
-  updateTabDot(di);
-}
-
-function updateShotText(di, li, ti, si, val) {
-  state.days[di].locations[li].trainers[ti].shots[si].text = val;
-  saveState();
-}
-
-function toggleEOD(di, i, checked) {
-  state.days[di].eod[i] = checked;
-  const item = document.getElementById(`eod-${di}-${i}`);
-  if (item) item.classList.toggle('checked', checked);
-  saveState();
-}
-
-function updateTabDot(di) {
-  const d = state.days[di];
-  const shots = allShotsForDay(d);
-  const hasContent = d.calltime || d.weather || d.meetAt || shots.some(s => s.done);
-  const dot = document.querySelectorAll('.tab-dot')[di];
-  if (dot) dot.classList.toggle('filled', !!hasContent);
-}
-
-// -----------------------------------------
-//  SHARE / EXPORT / IMPORT
-// -----------------------------------------
-function shareState() {
-  try {
-    const encoded = btoa(encodeURIComponent(JSON.stringify(state)));
-    const url = `${window.location.origin}${window.location.pathname}#${encoded}`;
-    navigator.clipboard.writeText(url).then(() => showToast(' Shareable link copied!'));
-  } catch(e) { showToast(' Could not copy link'); }
-}
-
-function exportJSON() {
-  const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'lm2026-schedule.json';
-  a.click();
-  showToast(' Schedule exported');
-}
-
-function importJSON() {
-  const input = document.createElement('input');
-  input.type = 'file'; input.accept = '.json';
-  input.onchange = e => {
-    const file = e.target.files[0]; if (!file) return;
-    const reader = new FileReader();
-    reader.onload = ev => {
-      try {
-        const parsed = JSON.parse(ev.target.result);
-        if (parsed && parsed.days) {
-          state = migrateState(parsed); render(); saveState();
-          showToast(' Schedule imported');
-        } else showToast(' Invalid file');
-      } catch { showToast(' Could not parse file'); }
-    };
-    reader.readAsText(file);
-  };
-  input.click();
-}
-
-// -----------------------------------------
-//  TOAST
-// -----------------------------------------
-let toastTimer;
-function showToast(msg) {
-  const el = document.getElementById('toast');
-  el.textContent = msg;
-  el.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => el.classList.remove('show'), 2800);
-}
-
-// -----------------------------------------
-//  INIT
-// -----------------------------------------
-loadState();
-render();
-</script>
+    // Init
+    window.addEventListener('DOMContentLoaded', () => {
+      renderShoots();
+      renderEvents();
+      renderTrainers();
+      updateMetrics();
+    });
+  </script>
 </body>
 </html>
