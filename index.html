@@ -332,6 +332,146 @@
           </div>
         </div>
 
+        <!-- Travel & Hotel Details Section -->
+        <div class="border border-slate-800/80 rounded-xl p-4 bg-slate-900/50">
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 flex items-center space-x-1.5">
+              <i class="fa-solid fa-plane-departure text-sky-400"></i>
+              <span>Travel & Lodging Logistics</span>
+            </h4>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-sky-500/10 text-sky-300 border border-sky-500/20">Production Logistics</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-800">
+              <div class="flex items-center space-x-1.5 text-slate-400 font-semibold mb-1">
+                <i class="fa-solid fa-plane text-sky-400 text-[11px]"></i>
+                <span>Flights & Transport</span>
+              </div>
+              <p id="modal-travel-flights" class="text-slate-300 text-[11px] leading-relaxed"></p>
+            </div>
+            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-800">
+              <div class="flex items-center space-x-1.5 text-slate-400 font-semibold mb-1">
+                <i class="fa-solid fa-hotel text-amber-400 text-[11px]"></i>
+                <span>Hotel & Accommodations</span>
+              </div>
+              <p id="modal-travel-hotel" class="text-slate-300 text-[11px] leading-relaxed"></p>
+            </div>
+            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-800">
+              <div class="flex items-center space-x-1.5 text-slate-400 font-semibold mb-1">
+                <i class="fa-solid fa-van-shuttle text-emerald-400 text-[11px]"></i>
+                <span>Ground Transport</span>
+              </div>
+              <p id="modal-travel-ground" class="text-slate-300 text-[11px] leading-relaxed"></p>
+            </div>
+            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-800">
+              <div class="flex items-center space-x-1.5 text-slate-400 font-semibold mb-1">
+                <i class="fa-solid fa-utensils text-rose-400 text-[11px]"></i>
+                <span>Catering & Per Diem</span>
+              </div>
+              <p id="modal-travel-perdiem" class="text-slate-300 text-[11px] leading-relaxed"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Wardrobe & Styling Section -->
+        <div class="border border-slate-800/80 rounded-xl p-4 bg-slate-900/50">
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 flex items-center space-x-1.5">
+              <i class="fa-solid fa-shirt text-pink-400"></i>
+              <span>Wardrobe & Styling Workflow</span>
+            </h4>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-pink-500/10 text-pink-300 border border-pink-500/20">Styling Pipeline</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs mb-3">
+            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-800 space-y-1.5">
+              <div>
+                <span class="text-slate-500 text-[10px] uppercase font-semibold">Wardrobe Lead:</span>
+                <span id="modal-wardrobe-contact" class="text-slate-200 font-medium block"></span>
+              </div>
+              <div>
+                <span class="text-slate-500 text-[10px] uppercase font-semibold">Pick-up Schedule:</span>
+                <span id="modal-wardrobe-pickup" class="text-amber-300 font-medium block"></span>
+              </div>
+              <div>
+                <span class="text-slate-500 text-[10px] uppercase font-semibold">Steaming & Prep:</span>
+                <span id="modal-wardrobe-steaming" class="text-slate-300 block"></span>
+              </div>
+            </div>
+            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-800">
+              <span class="text-slate-500 text-[10px] uppercase font-semibold block mb-1">Styling Look & Notes:</span>
+              <p id="modal-wardrobe-styling" class="text-slate-300 text-[11px] leading-relaxed"></p>
+            </div>
+          </div>
+
+          <!-- Wardrobe Steps Checklist -->
+          <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-800">
+            <span class="text-slate-400 text-[11px] font-semibold block mb-2">Wardrobe Step-by-Step Tracker:</span>
+            <div id="modal-wardrobe-checklist" class="space-y-1.5">
+              <!-- Checklist checkboxes -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Post-Production & Day-End Ingest Tracker -->
+        <div class="border border-slate-800/80 rounded-xl p-4 bg-slate-900/50">
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-200 flex items-center space-x-1.5">
+              <i class="fa-solid fa-cloud-arrow-up text-indigo-400"></i>
+              <span>End-of-Day Upload & Post-Production Downstream Tracker</span>
+            </h4>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">DIT & Editorial Ingest</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs mb-3">
+            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-800 space-y-1.5">
+              <div>
+                <span class="text-slate-500 text-[10px] uppercase font-semibold">Camera Media & Audio:</span>
+                <span id="modal-post-drives" class="text-slate-200 font-mono text-[11px] block mt-0.5"></span>
+              </div>
+              <div>
+                <span class="text-slate-500 text-[10px] uppercase font-semibold">Server / Volume Destination:</span>
+                <span id="modal-post-server" class="text-cyan-300 font-mono text-[11px] block break-all mt-0.5"></span>
+              </div>
+              <div>
+                <span class="text-slate-500 text-[10px] uppercase font-semibold">Checksum Verification:</span>
+                <span id="modal-post-checksum" class="text-emerald-400 font-medium block mt-0.5"></span>
+              </div>
+            </div>
+
+            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-800 flex flex-col justify-between">
+              <div>
+                <span class="text-slate-500 text-[10px] uppercase font-semibold block mb-1">Downstream Notification Channels:</span>
+                <div id="modal-post-channels" class="flex flex-wrap gap-1 mb-2"></div>
+                <p id="modal-post-notes" class="text-slate-400 text-[11px]"></p>
+              </div>
+
+              <!-- Upload Action Buttons -->
+              <div class="pt-3 border-t border-slate-800 flex items-center space-x-2">
+                <button onclick="toggleUploadStatus('proxies')" id="btn-toggle-proxies" class="flex-1 py-1.5 px-2 rounded text-[11px] font-semibold border transition text-center"></button>
+                <button onclick="toggleUploadStatus('masters')" id="btn-toggle-masters" class="flex-1 py-1.5 px-2 rounded text-[11px] font-semibold border transition text-center"></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Alert Post Team Button & Modal Trigger -->
+          <div class="bg-gradient-to-r from-indigo-950/60 to-purple-950/60 p-3 rounded-lg border border-indigo-800/60 flex items-center justify-between">
+            <div class="flex items-center space-x-2.5">
+              <div class="w-7 h-7 rounded-lg bg-indigo-500/20 text-indigo-300 flex items-center justify-center">
+                <i class="fa-solid fa-bullhorn text-xs"></i>
+              </div>
+              <div>
+                <span class="text-slate-200 font-semibold block text-xs">Alert Post-Production Downstream Partners</span>
+                <span class="text-slate-400 text-[11px]" id="modal-alert-status-text">Drafting notification to editorial, sound & color teams</span>
+              </div>
+            </div>
+            <button onclick="sendPostProductionAlert()" id="btn-send-post-alert" class="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold text-xs px-3.5 py-1.5 rounded-lg shadow-md transition flex items-center space-x-1.5">
+              <i class="fa-solid fa-paper-plane text-[10px]"></i>
+              <span id="btn-post-alert-label">Send Alert to Post Team</span>
+            </button>
+          </div>
+        </div>
+
         <!-- Notes / Logistics -->
         <div>
           <h4 class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-2 flex items-center space-x-1.5">
@@ -495,223 +635,2125 @@
 
     // Initial Shoots (Editable & Persistent in localStorage)
     const DEFAULT_SHOOTS = [
+  {
+    "id": "SHT-001",
+    "title": "Chicago Marathon - Shakeout Run & Course Cheer Capture",
+    "date": "2026-10-10",
+    "type": "On-Location",
+    "location": "Grant Park & Michigan Ave, Chicago IL",
+    "quarter": "Q1",
+    "linkedEventId": "EVT-2701",
+    "status": "Confirmed",
+    "producer": "Sebastian York",
+    "dp": "Chicago Field DP Unit",
+    "trainers": [
+      "Cory Wharton-Malcolm",
+      "Emily Fayette"
+    ],
+    "notes": "Capture runner buzz in Grant Park, Michigan Avenue stride clips, community cheer zones.",
+    "travel": {
+      "flights": "Outbound: UA 1420 LAX -> ORD (Oct 9, 08:30) | Return: UA 1184 ORD -> LAX (Oct 12, 17:15)",
+      "hotel": "The Blackstone Hotel, Michigan Ave (Check-in: Oct 9, Check-out: Oct 12)",
+      "ground": "Production Sprinter Van (Pick-up at ORD Terminal 1, driver: Marcus T.)",
+      "perDiem": "$85/day crew standard"
+    },
+    "wardrobe": {
+      "contact": "Elena Vance (Wardrobe Lead / Stylist)",
+      "fittings": "Virtual fittings completed Oct 2 via Keynote lookbook",
+      "pickup": "Oct 8 at 14:00 from Culver City Costume House (3 rolling racks)",
+      "steaming": "On-site at hotel production room Oct 9 evening",
+      "stylingNotes": "Color-blocked breathable layers; Apple Watch Ultra 2 with Trail Loop; no competing brand logos; rain shells on standby",
+      "checklist": [
+        {
+          "item": "Approve digital wardrobe lookbook",
+          "done": true
+        },
+        {
+          "item": "Schedule wardrobe pick up from costume house",
+          "done": true
+        },
+        {
+          "item": "Pack backup sizes & spare running footwear",
+          "done": true
+        },
+        {
+          "item": "On-site steaming & talent dressing call",
+          "done": false
+        },
+        {
+          "item": "Post-shoot wrap, inventory check & dry cleaning return",
+          "done": false
+        }
+      ]
+    },
+    "schedule": [
       {
-        id: "SHT-001",
-        title: "NYC Marathon - Pre-Race Cheer Zone & Community Run",
-        date: "2026-10-31",
-        type: "On-Location",
-        location: "Central Park & Brooklyn, NY",
-        quarter: "Q1",
-        linkedEventId: "EVT-2703",
-        status: "Pre-Production",
-        producer: "Sebastian York",
-        dp: "Field DP Unit",
-        trainers: ["Cory Wharton-Malcolm", "Emily Fayette", "Scott Carvin"],
-        notes: "Capture runner energy before race day; aerial b-roll over Central Park finish area; athlete interviews.",
-        schedule: [
-          { time: "06:30", scene: "Crew Call & Gear Check", desc: "Sound, camera check, wireless mic sync at basecamp", loc: "Columbus Circle" },
-          { time: "07:30", scene: "Central Park Shakeout Run", desc: "Follow-vehicle & Ronin capture with Cory & Emily", loc: "Central Park Loop" },
-          { time: "10:00", scene: "Community Street Interviews", desc: "Quick-fire Q&A with first-time marathoners", loc: "Brooklyn Mile" },
-          { time: "13:30", scene: "Finish Line Walkthrough", desc: "Scenic walk with Scott Carvin discussing pacing", loc: "Tavern on the Green" },
-          { time: "15:30", scene: "Wrap & Media Dump", desc: "Cards transferred to DIT & proxies pushed", loc: "Production Van" }
-        ],
-        deliverables: [
-          { title: "NYC Marathon 24-Hr Hype Reel", format: "9:16 Vertical", platform: "IG Reels / TikTok", deadline: "Oct 31, 2026" },
-          { title: "Shakeout Photo Carousel (10 Slides)", format: "4:5 Portrait", platform: "Instagram", deadline: "Oct 31, 2026" }
-        ]
+        "time": "06:30",
+        "scene": "Crew Call & Basecamp Setup",
+        "desc": "Camera packages check and wireless audio sync",
+        "loc": "Grant Park South"
       },
       {
-        id: "SHT-002",
-        title: "NYC Marathon - Race Day Live Stories & Finish Line",
-        date: "2026-11-01",
-        type: "On-Location",
-        location: "Tavern on the Green / Finish Line, NY",
-        quarter: "Q1",
-        linkedEventId: "EVT-2703",
-        status: "Pre-Production",
-        producer: "Sebastian York",
-        dp: "TBD DP",
-        trainers: ["Cory Wharton-Malcolm", "Emily Fayette"],
-        notes: "Finish line emotional reactions, medal reveals, live social drops.",
-        schedule: [
-          { time: "08:00", scene: "Finish Line Live Setup", desc: "Audio feed and direct wireless link verification", loc: "Media Zone" },
-          { time: "11:00", scene: "Lead Runner Celebrations", desc: "Cory Wharton-Malcolm on-camera reactions", loc: "Finish Gantry" },
-          { time: "14:00", scene: "Everyday Athlete Hugs & Tears", desc: "Slow motion 120fps emotion portraits", loc: "Post-Race Chute" }
-        ],
-        deliverables: [
-          { title: "Raw Emotion Cut", format: "9:16 Vertical", platform: "TikTok / Shorts", deadline: "Nov 2, 2026" }
-        ]
+        "time": "07:30",
+        "scene": "Michigan Ave Shakeout Run",
+        "desc": "Follow-vehicle tracking with Cory & Emily",
+        "loc": "Michigan Ave & Jackson"
       },
       {
-        id: "SHT-003",
-        title: "Ring In The New Year - High-Energy Studio Anthem",
-        date: "2026-12-08",
-        type: "Studio Production",
-        location: "Fitness+ Studio, Los Angeles CA",
-        quarter: "Q1",
-        linkedEventId: "EVT-2704",
-        status: "Planning",
-        producer: "Sebastian York",
-        dp: "Studio Director",
-        trainers: ["Bakari Williams", "Kim Ngo", "Brian Cochrane", "Anja Garcia"],
-        notes: "High tempo 9:16 vertical hooks for resolution momentum.",
-        schedule: [
-          { time: "08:00", scene: "Lighting Grid & Neon Test", desc: "Setting dynamic accent colors for cardio vibe", loc: "Stage A" },
-          { time: "09:30", scene: "Bakari & Kim HIIT Duo", desc: "Explosive movement routines with motion camera", loc: "Main Floor" },
-          { time: "13:00", scene: "Trainer Advice Talking Heads", desc: "'How to stick to your 2027 goal' 15s bites", loc: "Lounge Set" }
-        ],
-        deliverables: [
-          { title: "Resolution Anthem Video", format: "9:16 & 16:9", platform: "IG / TikTok / YouTube", deadline: "Dec 24, 2026" }
-        ]
+        "time": "10:30",
+        "scene": "Community Runner Soundbites",
+        "desc": "Quick interviews with first-time marathoners",
+        "loc": "Expo Exit / Millennium Park"
       },
       {
-        id: "SHT-004",
-        title: "Black History Month - Roundtable & Music Workouts",
-        date: "2027-01-14",
-        type: "Studio Production",
-        location: "Fitness+ Studio, Los Angeles CA",
-        quarter: "Q2",
-        linkedEventId: "EVT-2706",
-        status: "Planning",
-        producer: "Sebastian York",
-        dp: "Studio Director",
-        trainers: ["Bakari Williams", "LaShawn Jones", "Darryl Whiting", "Sherica Holmon"],
-        notes: "Panel discussion, cultural music spotlight, dynamic choreography snippets.",
-        schedule: [
-          { time: "09:00", scene: "Roundtable Discussion", desc: "Warm conversation on heritage, music & movement", loc: "Studio Lounge" },
-          { time: "13:30", scene: "Choreography & Cycling Hooks", desc: "High energy snippets synced to spotlight track", loc: "Stage B" }
-        ],
-        deliverables: [
-          { title: "BHM Roundtable Highlights", format: "16:9 & 9:16", platform: "LinkedIn / IG / X", deadline: "Jan 25, 2027" }
-        ]
-      },
-      {
-        id: "SHT-005",
-        title: "Tokyo Marathon - Time to Run Social Teaser",
-        date: "2027-03-05",
-        type: "On-Location",
-        location: "Shinjuku & Asakusa, Tokyo Japan",
-        quarter: "Q2",
-        linkedEventId: "EVT-2708",
-        status: "Planning",
-        producer: "Sebastian York",
-        dp: "Field Crew Japan",
-        trainers: ["Cory Wharton-Malcolm", "Dice Iida-Klein"],
-        notes: "Tokyo city running aesthetics, traditional and modern contrast, morning light.",
-        schedule: [
-          { time: "05:45", scene: "Sunrise Temple Run", desc: "Dice & Cory running through historic Asakusa", loc: "Sensō-ji" },
-          { time: "11:00", scene: "Shinjuku Neon Street Stride", desc: "Fast-shutter cinematic run cuts", loc: "Shinjuku Crossing" }
-        ],
-        deliverables: [
-          { title: "Tokyo City Run Vignette", format: "9:16 Vertical", platform: "IG Reels / TikTok", deadline: "Mar 6, 2027" }
-        ]
-      },
-      {
-        id: "SHT-006",
-        title: "Earth Day - Topanga Canyon Trail & Mindfulness",
-        date: "2027-04-10",
-        type: "On-Location",
-        location: "Topanga Canyon, CA",
-        quarter: "Q3",
-        linkedEventId: "EVT-2711",
-        status: "Planning",
-        producer: "Sebastian York",
-        dp: "Field DP",
-        trainers: ["Kyle Ardill", "Sam Sanchez", "Christian Howard"],
-        notes: "Apple Watch Ultra GPS trail features, natural California spring flora, mindful breathwork.",
-        schedule: [
-          { time: "06:30", scene: "Ridge Trail Ascent", desc: "Kyle & Sam tempo run on dirt trail", loc: "Eagle Rock Trail" },
-          { time: "09:30", scene: "Christian Mountain Yoga", desc: "Restorative outdoor poses with ocean backdrop", loc: "Summit Viewpoint" }
-        ],
-        deliverables: [
-          { title: "Trail Running Earth Day Reel", format: "9:16 Vertical", platform: "Instagram Reels", deadline: "Apr 20, 2027" }
-        ]
-      },
-      {
-        id: "SHT-007",
-        title: "London Marathon - River Thames Shakeout Run",
-        date: "2027-04-23",
-        type: "On-Location",
-        location: "South Bank & Tower Bridge, London UK",
-        quarter: "Q3",
-        linkedEventId: "EVT-2712",
-        status: "Planning",
-        producer: "Sebastian York",
-        dp: "London Production Unit",
-        trainers: ["Cory Wharton-Malcolm", "Jenn Lau", "Jessica Skye", "Jonelle Lewis"],
-        notes: "UK trainer contingent takeover, fan meetup, race route walkthrough.",
-        schedule: [
-          { time: "07:00", scene: "Tower Bridge Sunrise Run", desc: "4 trainers running across empty bridge", loc: "Tower Bridge" },
-          { time: "11:00", scene: "South Bank Community Coffee Run", desc: "Casual chats with local running clubs", loc: "South Bank" }
-        ],
-        deliverables: [
-          { title: "London Crew Takeover", format: "9:16 Vertical", platform: "IG Reels / TikTok", deadline: "Apr 24, 2027" }
-        ]
-      },
-      {
-        id: "SHT-008",
-        title: "International Dance Day - Viral Duet Challenge",
-        date: "2027-04-20",
-        type: "Studio Production",
-        location: "Fitness+ Studio, Los Angeles CA",
-        quarter: "Q3",
-        linkedEventId: "EVT-2713",
-        status: "Planning",
-        producer: "Sebastian York",
-        dp: "Studio Director",
-        trainers: ["Ben Allen", "Jhon Gonzalez", "LaShawn Jones", "Tyrell Désean"],
-        notes: "Short-form sync routines designed for TikTok and Instagram Remix / Duets.",
-        schedule: [
-          { time: "10:00", scene: "Sync Routine 1: Pop/Funk", desc: "Ben & LaShawn lead routine", loc: "Stage A" },
-          { time: "13:00", scene: "Sync Routine 2: Latin Groove", desc: "Jhon & Tyrell lead routine", loc: "Stage B" }
-        ],
-        deliverables: [
-          { title: "Dance Day Duet Starter", format: "9:16 Vertical", platform: "TikTok / IG Reels", deadline: "Apr 28, 2027" }
-        ]
-      },
-      {
-        id: "SHT-009",
-        title: "Sydney Marathon - 7th Major Celebration Run",
-        date: "2027-08-28",
-        type: "On-Location",
-        location: "Sydney Harbour Bridge & Opera House, Australia",
-        quarter: "Q4",
-        linkedEventId: "EVT-2720",
-        status: "Planning",
-        producer: "Sebastian York",
-        dp: "Sydney Production Unit",
-        trainers: ["Cory Wharton-Malcolm", "Sam Sanchez"],
-        notes: "Celebrating Sydney's induction as the 7th Abbott World Marathon Major.",
-        schedule: [
-          { time: "06:00", scene: "Harbour Bridge Sunrise Golden Hour", desc: "Sweeping runner perspective", loc: "Harbour Bridge Walkway" },
-          { time: "08:30", scene: "Opera House Forecourt Sprints", desc: "Fast pacing clips against iconic architecture", loc: "Bennelong Point" }
-        ],
-        deliverables: [
-          { title: "Sydney 7th Major Anthem", format: "9:16 Vertical", platform: "IG / TikTok / Shorts", deadline: "Aug 29, 2027" }
-        ]
-      },
-      {
-        id: "SHT-010",
-        title: "Berlin Marathon - Brandenburg Gate Finale",
-        date: "2027-09-25",
-        type: "On-Location",
-        location: "Brandenburg Gate, Berlin Germany",
-        quarter: "Q4",
-        linkedEventId: "EVT-2722",
-        status: "Planning",
-        producer: "Sebastian York",
-        dp: "EU Production Unit",
-        trainers: ["Cory Wharton-Malcolm", "Scott Carvin", "Emily Fayette"],
-        notes: "Fastest course on earth hype, fan signs, finish line celebration.",
-        schedule: [
-          { time: "07:30", scene: "Brandenburg Gate Morning Stride", desc: "Iconic landmark run through the columns", loc: "Pariser Platz" },
-          { time: "11:00", scene: "Tiergarten Shakeout", desc: "Park running with German running community", loc: "Tiergarten" }
-        ],
-        deliverables: [
-          { title: "Berlin Speed Capital Reel", format: "9:16 Vertical", platform: "IG Reels / TikTok", deadline: "Sep 25, 2027" }
-        ]
+        "time": "14:00",
+        "scene": "Wrap & DIT Backup",
+        "desc": "Media offload, proxies to social editorial team",
+        "loc": "Hotel Production Suite"
       }
-    ];
+    ],
+    "deliverables": [
+      {
+        "title": "Chicago 24-Hr Hype Reel",
+        "format": "9:16 Vertical",
+        "platform": "IG Reels / TikTok",
+        "deadline": "2026-10-10"
+      },
+      {
+        "title": "Grant Park Shakeout Carousel",
+        "format": "4:5 Portrait",
+        "platform": "Instagram",
+        "deadline": "2026-10-10"
+      }
+    ],
+    "postProduction": {
+      "drives": "A-Cam CFexpress (512GB), B-Cam CFexpress (512GB), Sound 32-bit float WAVs, Drone ProRes",
+      "serverPath": "smb://apple-social-media.corp.apple.com/FY27/SHT-001_Grant_Park_&_Michigan_Ave/",
+      "checksumStatus": "Verified (Silverstack MD5 Hash Check)",
+      "proxiesUploaded": true,
+      "masterUploaded": true,
+      "alertSent": true,
+      "notes": "All A-Cam and B-Cam media mirrored to LaCie 4TB Rugged Shuttle A & Shuttle B before cloud sync.",
+      "alertChannels": [
+        "#fitness-social-post",
+        "#fy27-deliverables-alerts",
+        "post-supervisors@group.apple.com"
+      ]
+    }
+  },
+  {
+    "id": "SHT-002",
+    "title": "Apple Watch Fall Campaign - Feature Integration Push",
+    "date": "2026-10-20",
+    "type": "Studio Production",
+    "location": "Fitness+ Studio Stage A & B, Los Angeles CA",
+    "quarter": "Q1",
+    "linkedEventId": "EVT-2702",
+    "status": "Confirmed",
+    "producer": "Sebastian York",
+    "dp": "Studio DP",
+    "trainers": [
+      "Bakari Williams",
+      "Jenn Lau",
+      "Kyle Ardill",
+      "Jessica Skye"
+    ],
+    "notes": "Capture tight macro wrist shots, training load metrics, dynamic workout transitions.",
+    "travel": {
+      "flights": "Local LA production (UK talent Jenn Lau & Jessica Skye on BA 269 LHR -> LAX Oct 17)",
+      "hotel": "The Shay, Culver City (Oct 17 - Oct 23 for UK trainers)",
+      "ground": "Studio parking passes & talent black car rides",
+      "perDiem": "Studio catered breakfast & hot lunch"
+    },
+    "wardrobe": {
+      "contact": "Elena Vance (Wardrobe Lead)",
+      "fittings": "Oct 19 at 10:00 (Stage A Dressing Rooms)",
+      "pickup": "Oct 18 at 15:00 from Apple Style Archive",
+      "steaming": "Studio wardrobe department 07:00 shoot morning",
+      "stylingNotes": "High-contrast athletic monochrome to highlight Apple Watch titanium casing and bright band colorways",
+      "checklist": [
+        {
+          "item": "Approve digital wardrobe lookbook",
+          "done": true
+        },
+        {
+          "item": "Schedule wardrobe pick up from costume house",
+          "done": true
+        },
+        {
+          "item": "Pre-screen band colors with lighting gaffer",
+          "done": true
+        },
+        {
+          "item": "Talent morning fitting & micro-adjustments",
+          "done": false
+        },
+        {
+          "item": "Post-shoot wrap, inventory check & dry cleaning return",
+          "done": false
+        }
+      ]
+    },
+    "schedule": [
+      {
+        "time": "08:00",
+        "scene": "Lighting Grid & Macro Lens Prep",
+        "desc": "Calibrate phantom high-speed & probe lenses",
+        "loc": "Stage A"
+      },
+      {
+        "time": "09:30",
+        "scene": "Bakari & Kyle Power Combos",
+        "desc": "High velocity kettlebell & jump rope sequences",
+        "loc": "Stage A Rig"
+      },
+      {
+        "time": "13:00",
+        "scene": "Jenn & Jessica Recovery Flow",
+        "desc": "Subtle, smooth mindful cooldown postures",
+        "loc": "Stage B Cyc"
+      }
+    ],
+    "deliverables": [
+      {
+        "title": "Fall Watch Feature Reel",
+        "format": "9:16 Vertical",
+        "platform": "IG Reels / YouTube",
+        "deadline": "2026-10-24"
+      }
+    ],
+    "postProduction": {
+      "drives": "A-Cam CFexpress (512GB), B-Cam CFexpress (512GB), Sound 32-bit float WAVs, Drone ProRes",
+      "serverPath": "smb://apple-social-media.corp.apple.com/FY27/SHT-002_Fitness+_Studio_Stage_A_&_B/",
+      "checksumStatus": "Verified (Silverstack MD5 Hash Check)",
+      "proxiesUploaded": false,
+      "masterUploaded": false,
+      "alertSent": false,
+      "notes": "All A-Cam and B-Cam media mirrored to LaCie 4TB Rugged Shuttle A & Shuttle B before cloud sync.",
+      "alertChannels": [
+        "#fitness-social-post",
+        "#fy27-deliverables-alerts",
+        "post-supervisors@group.apple.com"
+      ]
+    }
+  },
+  {
+    "id": "SHT-003",
+    "title": "TCS NYC Marathon - Pre-Race Community Shakeout & Aerials",
+    "date": "2026-10-31",
+    "type": "On-Location",
+    "location": "Central Park & Brooklyn NY",
+    "quarter": "Q1",
+    "linkedEventId": "EVT-2703",
+    "status": "Pre-Production",
+    "producer": "Sebastian York",
+    "dp": "NYC DP Unit",
+    "trainers": [
+      "Cory Wharton-Malcolm",
+      "Emily Fayette",
+      "Scott Carvin",
+      "Marimba Gold-Watts"
+    ],
+    "notes": "Capture runner energy before race day; aerial b-roll over Central Park finish area; athlete interviews.",
+    "travel": {
+      "flights": "Outbound: DL 482 LAX -> JFK (Oct 29, 07:00) | Return: DL 520 JFK -> LAX (Nov 2, 18:30)",
+      "hotel": "1 Hotel Central Park (Check-in: Oct 29, Check-out: Nov 2)",
+      "ground": "2x Production SUVs + City parking permits (Brooklyn / Manhattan zones)",
+      "perDiem": "$95/day NYC tier"
+    },
+    "wardrobe": {
+      "contact": "Elena Vance & NY Associate Stylist Marcus Webb",
+      "fittings": "Hotel suite 402 fittings on Oct 30 at 16:00",
+      "pickup": "Oct 29 at 11:00 from Midtown Wardrobe Vault (Garment District)",
+      "steaming": "Wardrobe room 1 Hotel Central Park",
+      "stylingNotes": "NYC autumn palette (navy, olive, deep burgundy). Matching windbreakers for chilly morning shakeout. Apple Watch Ultra trail band.",
+      "checklist": [
+        {
+          "item": "Approve digital wardrobe lookbook",
+          "done": true
+        },
+        {
+          "item": "Schedule wardrobe pick up from costume house",
+          "done": true
+        },
+        {
+          "item": "Fit trainers at hotel production base",
+          "done": false
+        },
+        {
+          "item": "Pack mobile garment steamer for basecamp van",
+          "done": false
+        },
+        {
+          "item": "Post-shoot wrap, inventory check & dry cleaning return",
+          "done": false
+        }
+      ]
+    },
+    "schedule": [
+      {
+        "time": "06:30",
+        "scene": "Crew Call & Gear Check",
+        "desc": "Sound, camera check, wireless mic sync at basecamp",
+        "loc": "Columbus Circle"
+      },
+      {
+        "time": "07:30",
+        "scene": "Central Park Shakeout Run",
+        "desc": "Follow-vehicle & Ronin capture with Cory & Emily",
+        "loc": "Central Park Loop"
+      },
+      {
+        "time": "10:00",
+        "scene": "Community Street Interviews",
+        "desc": "Quick-fire Q&A with first-time marathoners",
+        "loc": "Brooklyn Mile"
+      },
+      {
+        "time": "13:30",
+        "scene": "Finish Line Walkthrough",
+        "desc": "Scenic walk with Scott Carvin discussing pacing",
+        "loc": "Tavern on the Green"
+      },
+      {
+        "time": "15:30",
+        "scene": "Wrap & Media Dump",
+        "desc": "Cards transferred to DIT & proxies pushed",
+        "loc": "Production Van"
+      }
+    ],
+    "deliverables": [
+      {
+        "title": "NYC Marathon 24-Hr Hype Reel",
+        "format": "9:16 Vertical",
+        "platform": "IG Reels / TikTok",
+        "deadline": "2026-10-31"
+      },
+      {
+        "title": "Shakeout Photo Carousel (10 Slides)",
+        "format": "4:5 Portrait",
+        "platform": "Instagram",
+        "deadline": "2026-10-31"
+      }
+    ],
+    "postProduction": {
+      "drives": "A-Cam CFexpress (512GB), B-Cam CFexpress (512GB), Sound 32-bit float WAVs, Drone ProRes",
+      "serverPath": "smb://apple-social-media.corp.apple.com/FY27/SHT-003_Central_Park_&_Brooklyn_NY/",
+      "checksumStatus": "Verified (Silverstack MD5 Hash Check)",
+      "proxiesUploaded": false,
+      "masterUploaded": false,
+      "alertSent": false,
+      "notes": "All A-Cam and B-Cam media mirrored to LaCie 4TB Rugged Shuttle A & Shuttle B before cloud sync.",
+      "alertChannels": [
+        "#fitness-social-post",
+        "#fy27-deliverables-alerts",
+        "post-supervisors@group.apple.com"
+      ]
+    }
+  },
+  {
+    "id": "SHT-004",
+    "title": "Ring In The New Year Campaign - Studio Resolution Anthem",
+    "date": "2026-12-08",
+    "type": "Studio Production",
+    "location": "Fitness+ Studio, Los Angeles CA",
+    "quarter": "Q1",
+    "linkedEventId": "EVT-2704",
+    "status": "Planning",
+    "producer": "Sebastian York",
+    "dp": "Studio Director",
+    "trainers": [
+      "Bakari Williams",
+      "Kim Ngo",
+      "Brian Cochrane",
+      "Anja Garcia"
+    ],
+    "notes": "High tempo 9:16 vertical hooks for resolution momentum.",
+    "travel": {
+      "flights": "Kim Ngo inbound LHR -> LAX (Dec 5, Virgin Atlantic VS 23)",
+      "hotel": "Palihouse Santa Monica (Dec 5 - Dec 11)",
+      "ground": "Local talent transport & LA basecamp staging",
+      "perDiem": "Studio catering & production stipend"
+    },
+    "wardrobe": {
+      "contact": "Elena Vance (Wardrobe Lead)",
+      "fittings": "Dec 7 at 11:00 in Dressing Suite 1-4",
+      "pickup": "Dec 6 at 13:00 from Culver City Archive",
+      "steaming": "Studio wardrobe team 07:00",
+      "stylingNotes": "Vibrant energetic neon accents against clean neutral apparel. Clean white training shoes only.",
+      "checklist": [
+        {
+          "item": "Approve digital wardrobe lookbook",
+          "done": true
+        },
+        {
+          "item": "Schedule wardrobe pick up from costume house",
+          "done": true
+        },
+        {
+          "item": "Verify sweat-wicking materials under high stage lighting",
+          "done": false
+        },
+        {
+          "item": "Studio floor garment check between sets",
+          "done": false
+        },
+        {
+          "item": "Post-shoot wrap, inventory check & dry cleaning return",
+          "done": false
+        }
+      ]
+    },
+    "schedule": [
+      {
+        "time": "08:00",
+        "scene": "Lighting Grid & Neon Test",
+        "desc": "Setting dynamic accent colors for cardio vibe",
+        "loc": "Stage A"
+      },
+      {
+        "time": "09:30",
+        "scene": "Bakari & Kim HIIT Duo",
+        "desc": "Explosive movement routines with motion camera",
+        "loc": "Main Floor"
+      },
+      {
+        "time": "13:00",
+        "scene": "Trainer Advice Talking Heads",
+        "desc": "'How to stick to your 2027 goal' 15s bites",
+        "loc": "Lounge Set"
+      }
+    ],
+    "deliverables": [
+      {
+        "title": "Resolution Anthem Video",
+        "format": "9:16 & 16:9",
+        "platform": "IG / TikTok / YouTube",
+        "deadline": "2026-12-24"
+      }
+    ],
+    "postProduction": {
+      "drives": "A-Cam CFexpress (512GB), B-Cam CFexpress (512GB), Sound 32-bit float WAVs, Drone ProRes",
+      "serverPath": "smb://apple-social-media.corp.apple.com/FY27/SHT-004_Fitness+_Studio/",
+      "checksumStatus": "Verified (Silverstack MD5 Hash Check)",
+      "proxiesUploaded": false,
+      "masterUploaded": false,
+      "alertSent": false,
+      "notes": "All A-Cam and B-Cam media mirrored to LaCie 4TB Rugged Shuttle A & Shuttle B before cloud sync.",
+      "alertChannels": [
+        "#fitness-social-post",
+        "#fy27-deliverables-alerts",
+        "post-supervisors@group.apple.com"
+      ]
+    }
+  },
+  {
+    "id": "SHT-005",
+    "title": "Ring In The New Year Challenge - Social Kickoff Hooks",
+    "date": "2026-12-28",
+    "type": "Studio Production",
+    "location": "Fitness+ Studio Stage C, Los Angeles CA",
+    "quarter": "Q2",
+    "linkedEventId": "EVT-2705",
+    "status": "Planning",
+    "producer": "Sebastian York",
+    "dp": "Social Video DP",
+    "trainers": [
+      "Bakari Williams",
+      "Kim Ngo",
+      "Josh Crosby"
+    ],
+    "notes": "Close all 3 rings challenge teasers for Jan 1 launch day social drops.",
+    "travel": {
+      "flights": "Local LA production",
+      "hotel": "N/A - Local talent and crew",
+      "ground": "Studio lot passes",
+      "perDiem": "Studio breakfast & lunch"
+    },
+    "wardrobe": {
+      "contact": "Elena Vance (Wardrobe Lead)",
+      "fittings": "Dec 22 at 14:00",
+      "pickup": "Dec 27 at 10:00 from Studio Wardrobe Vault",
+      "steaming": "Stage C dressing room 07:30",
+      "stylingNotes": "Color-coded to Activity Rings: Red (Move), Green (Exercise), Blue (Stand)",
+      "checklist": [
+        {
+          "item": "Approve digital wardrobe lookbook",
+          "done": true
+        },
+        {
+          "item": "Schedule wardrobe pick up from costume house",
+          "done": true
+        },
+        {
+          "item": "Match ring colors precisely to hex specifications",
+          "done": true
+        },
+        {
+          "item": "Check talent watches set to correct badge demo screen",
+          "done": false
+        },
+        {
+          "item": "Post-shoot wrap, inventory check & dry cleaning return",
+          "done": false
+        }
+      ]
+    },
+    "schedule": [
+      {
+        "time": "08:30",
+        "scene": "Ring Visual Integration Test",
+        "desc": "Aligning trainer gestures with AR ring overlays",
+        "loc": "Stage C"
+      },
+      {
+        "time": "10:00",
+        "scene": "Bakari 7-Day Streak Callout",
+        "desc": "High energy call to action for Apple Watch owners",
+        "loc": "Infinity Cyc"
+      },
+      {
+        "time": "13:30",
+        "scene": "Josh Crosby Stand Ring Tips",
+        "desc": "Ergonomics & daily movement micro-habits",
+        "loc": "Studio Loft"
+      }
+    ],
+    "deliverables": [
+      {
+        "title": "7-Day Streak Teaser",
+        "format": "9:16 Vertical",
+        "platform": "IG Reels / TikTok",
+        "deadline": "2026-12-31"
+      }
+    ],
+    "postProduction": {
+      "drives": "A-Cam CFexpress (512GB), B-Cam CFexpress (512GB), Sound 32-bit float WAVs, Drone ProRes",
+      "serverPath": "smb://apple-social-media.corp.apple.com/FY27/SHT-005_Fitness+_Studio_Stage_C/",
+      "checksumStatus": "Verified (Silverstack MD5 Hash Check)",
+      "proxiesUploaded": false,
+      "masterUploaded": false,
+      "alertSent": false,
+      "notes": "All A-Cam and B-Cam media mirrored to LaCie 4TB Rugged Shuttle A & Shuttle B before cloud sync.",
+      "alertChannels": [
+        "#fitness-social-post",
+        "#fy27-deliverables-alerts",
+        "post-supervisors@group.apple.com"
+      ]
+    }
+  },
+  {
+    "id": "SHT-006",
+    "title": "Black History Month - Roundtable & Music Workouts",
+    "date": "2027-01-14",
+    "type": "Studio Production",
+    "location": "Fitness+ Studio, Los Angeles CA",
+    "quarter": "Q2",
+    "linkedEventId": "EVT-2706",
+    "status": "Planning",
+    "producer": "Sebastian York",
+    "dp": "Studio Director",
+    "trainers": [
+      "Bakari Williams",
+      "LaShawn Jones",
+      "Darryl Whiting",
+      "Sherica Holmon"
+    ],
+    "notes": "Panel discussion, cultural music spotlight, dynamic choreography snippets.",
+    "travel": {
+      "flights": "Local LA talent",
+      "hotel": "N/A - Studio production",
+      "ground": "Studio parking passes & talent green room riders",
+      "perDiem": "Studio full-day catering"
+    },
+    "wardrobe": {
+      "contact": "Elena Vance & Guest Stylist Kiana Robinson",
+      "fittings": "Jan 12 at 13:00 (Stage B Wardrobe)",
+      "pickup": "Jan 13 at 11:00 from Black-owned designer showrooms in DTLA",
+      "steaming": "Stage B Wardrobe Suite 08:00",
+      "stylingNotes": "Elevated warm tones (terracotta, gold, deep olive, emerald). Sophisticated athleisure for seated roundtable and performance gear for dance/spin.",
+      "checklist": [
+        {
+          "item": "Approve digital wardrobe lookbook",
+          "done": true
+        },
+        {
+          "item": "Schedule wardrobe pick up from costume house",
+          "done": true
+        },
+        {
+          "item": "Check jewelry/microphones compatibility",
+          "done": false
+        },
+        {
+          "item": "Steaming and final camera look tests",
+          "done": false
+        },
+        {
+          "item": "Post-shoot wrap, inventory check & dry cleaning return",
+          "done": false
+        }
+      ]
+    },
+    "schedule": [
+      {
+        "time": "09:00",
+        "scene": "Roundtable Discussion",
+        "desc": "Warm conversation on heritage, music & movement",
+        "loc": "Studio Lounge"
+      },
+      {
+        "time": "13:30",
+        "scene": "Choreography & Cycling Hooks",
+        "desc": "High energy snippets synced to spotlight track",
+        "loc": "Stage B"
+      }
+    ],
+    "deliverables": [
+      {
+        "title": "BHM Roundtable Highlights",
+        "format": "16:9 & 9:16",
+        "platform": "LinkedIn / IG / X",
+        "deadline": "2027-01-25"
+      }
+    ],
+    "postProduction": {
+      "drives": "A-Cam CFexpress (512GB), B-Cam CFexpress (512GB), Sound 32-bit float WAVs, Drone ProRes",
+      "serverPath": "smb://apple-social-media.corp.apple.com/FY27/SHT-006_Fitness+_Studio/",
+      "checksumStatus": "Verified (Silverstack MD5 Hash Check)",
+      "proxiesUploaded": false,
+      "masterUploaded": false,
+      "alertSent": false,
+      "notes": "All A-Cam and B-Cam media mirrored to LaCie 4TB Rugged Shuttle A & Shuttle B before cloud sync.",
+      "alertChannels": [
+        "#fitness-social-post",
+        "#fy27-deliverables-alerts",
+        "post-supervisors@group.apple.com"
+      ]
+    }
+  },
+  {
+    "id": "SHT-007",
+    "title": "Heart Month Activity Challenge - Cardio Cadence Push",
+    "date": "2027-01-28",
+    "type": "Studio Production",
+    "location": "Fitness+ Studio Stage A, Los Angeles CA",
+    "quarter": "Q2",
+    "linkedEventId": "EVT-2707",
+    "status": "Planning",
+    "producer": "Sebastian York",
+    "dp": "Studio DP",
+    "trainers": [
+      "Anja Garcia",
+      "Kym Perfetto"
+    ],
+    "notes": "Valentine's & Heart Month 60-minute exercise badge tie-in.",
+    "travel": {
+      "flights": "Local LA talent",
+      "hotel": "N/A",
+      "ground": "Studio lot passes",
+      "perDiem": "Studio catering"
+    },
+    "wardrobe": {
+      "contact": "Elena Vance (Wardrobe Lead)",
+      "fittings": "Jan 26 at 14:00",
+      "pickup": "Jan 27 at 14:00 from Studio Costume Shop",
+      "steaming": "Stage A Dressing Room 08:00",
+      "stylingNotes": "Crimson and berry athletic performance tops with sleek matte black bottoms. Red Apple Watch sport loops.",
+      "checklist": [
+        {
+          "item": "Approve digital wardrobe lookbook",
+          "done": true
+        },
+        {
+          "item": "Schedule wardrobe pick up from costume house",
+          "done": true
+        },
+        {
+          "item": "Clean footwear soles for cycling pedals & rowers",
+          "done": false
+        },
+        {
+          "item": "Post-shoot wrap, inventory check & dry cleaning return",
+          "done": false
+        }
+      ]
+    },
+    "schedule": [
+      {
+        "time": "08:30",
+        "scene": "Rowing & Spin Lighting Rig",
+        "desc": "Heartbeat pulse lighting sequence test",
+        "loc": "Stage A"
+      },
+      {
+        "time": "10:00",
+        "scene": "Anja Garcia Heart Rate Zones",
+        "desc": "Explaining cardio intervals and recovery zones",
+        "loc": "Rower Set"
+      },
+      {
+        "time": "13:00",
+        "scene": "Kym Perfetto Cadence Tips",
+        "desc": "RPM targets and endurance pacing",
+        "loc": "Spin Deck"
+      }
+    ],
+    "deliverables": [
+      {
+        "title": "Heart Month Cardio Reel",
+        "format": "9:16 Vertical",
+        "platform": "IG Reels / TikTok",
+        "deadline": "2027-02-05"
+      }
+    ],
+    "postProduction": {
+      "drives": "A-Cam CFexpress (512GB), B-Cam CFexpress (512GB), Sound 32-bit float WAVs, Drone ProRes",
+      "serverPath": "smb://apple-social-media.corp.apple.com/FY27/SHT-007_Fitness+_Studio_Stage_A/",
+      "checksumStatus": "Verified (Silverstack MD5 Hash Check)",
+      "proxiesUploaded": false,
+      "masterUploaded": false,
+      "alertSent": false,
+      "notes": "All A-Cam and B-Cam media mirrored to LaCie 4TB Rugged Shuttle A & Shuttle B before cloud sync.",
+      "alertChannels": [
+        "#fitness-social-post",
+        "#fy27-deliverables-alerts",
+        "post-supervisors@group.apple.com"
+      ]
+    }
+  },
+  {
+    "id": "SHT-008",
+    "title": "Tokyo Marathon - Time to Run Social Teaser & Morning Mobility",
+    "date": "2027-03-05",
+    "type": "On-Location",
+    "location": "Sens\u014d-ji (Asakusa) & Shinjuku, Tokyo Japan",
+    "quarter": "Q2",
+    "linkedEventId": "EVT-2708",
+    "status": "Planning",
+    "producer": "Sebastian York",
+    "dp": "Field Crew Japan (Tokyo DP: Kenji Sato)",
+    "trainers": [
+      "Cory Wharton-Malcolm",
+      "Dice Iida-Klein"
+    ],
+    "notes": "Blend ancient and ultra-modern Tokyo running routes; Time to Run episode tie-in.",
+    "travel": {
+      "flights": "Outbound: NH 105 LAX -> HND (Mar 2, 00:05) | Return: NH 106 HND -> LAX (Mar 8, 22:55)",
+      "hotel": "Trunk Hotel Yoyogi Park, Tokyo (Check-in: Mar 3, Check-out: Mar 8)",
+      "ground": "Private HiAce production van + Tokyo bilingual location fixer (Takeshi M.)",
+      "perDiem": "12,000 JPY / day standard international rate"
+    },
+    "wardrobe": {
+      "contact": "Elena Vance & Tokyo Wardrobe Fixer Yumi Takahashi",
+      "fittings": "Hotel suite fitting March 4 at 15:00",
+      "pickup": "March 3 at 14:00 from Harajuku production styling house",
+      "steaming": "Trunk Hotel wardrobe staging suite",
+      "stylingNotes": "Technical Japanese-aesthetic wind layers (monochrome white, slate, charcoal). Reflective accents for early dawn Asakusa streets.",
+      "checklist": [
+        {
+          "item": "Approve digital wardrobe lookbook",
+          "done": true
+        },
+        {
+          "item": "Schedule wardrobe pick up from costume house",
+          "done": true
+        },
+        {
+          "item": "Pack rain/drizzle weather alternatives",
+          "done": false
+        },
+        {
+          "item": "Inspect footwear clean for temple precinct filming permits",
+          "done": false
+        },
+        {
+          "item": "Post-shoot wrap, inventory check & dry cleaning return",
+          "done": false
+        }
+      ]
+    },
+    "schedule": [
+      {
+        "time": "05:45",
+        "scene": "Sunrise Temple Run",
+        "desc": "Dice & Cory running through historic Asakusa",
+        "loc": "Sens\u014d-ji Precinct"
+      },
+      {
+        "time": "11:00",
+        "scene": "Shinjuku Neon Street Stride",
+        "desc": "Fast-shutter cinematic run cuts",
+        "loc": "Shinjuku Crossing"
+      },
+      {
+        "time": "15:00",
+        "scene": "Pre-Race Mobility Stretches",
+        "desc": "Dice leading gentle hips & calves mobility",
+        "loc": "Yoyogi Park"
+      }
+    ],
+    "deliverables": [
+      {
+        "title": "Tokyo City Run Hero Reel",
+        "format": "9:16 Vertical",
+        "platform": "IG Reels / TikTok",
+        "deadline": "2027-03-06"
+      },
+      {
+        "title": "Pre-Race Mindset Short",
+        "format": "9:16 Vertical",
+        "platform": "Shorts / Reels",
+        "deadline": "2027-03-07"
+      }
+    ],
+    "postProduction": {
+      "drives": "A-Cam CFexpress (512GB), B-Cam CFexpress (512GB), Sound 32-bit float WAVs, Drone ProRes",
+      "serverPath": "smb://apple-social-media.corp.apple.com/FY27/SHT-008_Sens\u014d-ji_(Asakusa)_&_Shinjuku/",
+      "checksumStatus": "Verified (Silverstack MD5 Hash Check)",
+      "proxiesUploaded": false,
+      "masterUploaded": false,
+      "alertSent": false,
+      "notes": "All A-Cam and B-Cam media mirrored to LaCie 4TB Rugged Shuttle A & Shuttle B before cloud sync.",
+      "alertChannels": [
+        "#fitness-social-post",
+        "#fy27-deliverables-alerts",
+        "post-supervisors@group.apple.com"
+      ]
+    }
+  },
+  {
+    "id": "SHT-009",
+    "title": "International Women's Day - Strength & Empowerment Series",
+    "date": "2027-02-24",
+    "type": "Studio Production",
+    "location": "Fitness+ Studio Stage B, Los Angeles CA",
+    "quarter": "Q2",
+    "linkedEventId": "EVT-2709",
+    "status": "Planning",
+    "producer": "Sebastian York",
+    "dp": "Studio DP",
+    "trainers": [
+      "Jenn Lau",
+      "Jessica Skye",
+      "Jonelle Lewis",
+      "Nez Dally"
+    ],
+    "notes": "Spotlight female coaches in strength, combat, and mindful leadership.",
+    "travel": {
+      "flights": "Jenn, Jessica, Jonelle, Nez inbound from London (BA 269 LHR -> LAX Feb 21)",
+      "hotel": "Proper Hotel, Santa Monica (Feb 21 - Feb 27)",
+      "ground": "Production transport from Santa Monica to LA Studio",
+      "perDiem": "$85/day crew standard"
+    },
+    "wardrobe": {
+      "contact": "Elena Vance (Wardrobe Lead)",
+      "fittings": "Feb 23 at 11:00 (Stage B Wardrobe Room)",
+      "pickup": "Feb 22 at 15:00 from Studio Costume Shop",
+      "steaming": "Stage B Wardrobe 07:30",
+      "stylingNotes": "Sculptural athletic silhouettes in rich jewel tones (plum, deep teal, sapphire). Clean silver & rose gold Apple Watch finishes.",
+      "checklist": [
+        {
+          "item": "Approve digital wardrobe lookbook",
+          "done": true
+        },
+        {
+          "item": "Schedule wardrobe pick up from costume house",
+          "done": true
+        },
+        {
+          "item": "Confirm kickboxing wraps & gloves color match",
+          "done": false
+        },
+        {
+          "item": "Final look check before director call",
+          "done": false
+        },
+        {
+          "item": "Post-shoot wrap, inventory check & dry cleaning return",
+          "done": false
+        }
+      ]
+    },
+    "schedule": [
+      {
+        "time": "08:30",
+        "scene": "Crew Call & Lighting Setup",
+        "desc": "Dramatic side lighting for strength portraits",
+        "loc": "Stage B"
+      },
+      {
+        "time": "10:00",
+        "scene": "Jenn & Nez Heavy Lifting & Combat",
+        "desc": "Dynamic power moves and bag work",
+        "loc": "Main Platform"
+      },
+      {
+        "time": "13:30",
+        "scene": "Jessica & Jonelle Harmony Flow",
+        "desc": "Synchronized yoga and breathwork",
+        "loc": "Stage B Cyc"
+      }
+    ],
+    "deliverables": [
+      {
+        "title": "IWD Empowerment Reel",
+        "format": "9:16 Vertical",
+        "platform": "IG Reels / TikTok",
+        "deadline": "2027-03-05"
+      }
+    ],
+    "postProduction": {
+      "drives": "A-Cam CFexpress (512GB), B-Cam CFexpress (512GB), Sound 32-bit float WAVs, Drone ProRes",
+      "serverPath": "smb://apple-social-media.corp.apple.com/FY27/SHT-009_Fitness+_Studio_Stage_B/",
+      "checksumStatus": "Verified (Silverstack MD5 Hash Check)",
+      "proxiesUploaded": false,
+      "masterUploaded": false,
+      "alertSent": false,
+      "notes": "All A-Cam and B-Cam media mirrored to LaCie 4TB Rugged Shuttle A & Shuttle B before cloud sync.",
+      "alertChannels": [
+        "#fitness-social-post",
+        "#fy27-deliverables-alerts",
+        "post-supervisors@group.apple.com"
+      ]
+    }
+  },
+  {
+    "id": "SHT-010",
+    "title": "Boston Marathon - Heartbreak Hill & Patriots' Day Historic Run",
+    "date": "2027-04-18",
+    "type": "On-Location",
+    "location": "Boylston St & Heartbreak Hill, Boston MA",
+    "quarter": "Q3",
+    "linkedEventId": "EVT-2710",
+    "status": "Planning",
+    "producer": "Sebastian York",
+    "dp": "Boston DP Unit",
+    "trainers": [
+      "Scott Carvin",
+      "Emily Fayette",
+      "Josh Crosby"
+    ],
+    "notes": "131st Boston Marathon; historic route, iconic finish on Boylston St.",
+    "travel": {
+      "flights": "Outbound: B6 688 LAX -> BOS (Apr 16, 08:00) | Return: B6 787 BOS -> LAX (Apr 20, 18:45)",
+      "hotel": "The Newbury Boston (Check-in: Apr 16, Check-out: Apr 20)",
+      "ground": "Production Sprinter Van + Boston Athletic Association media zone permits",
+      "perDiem": "$90/day Boston rate"
+    },
+    "wardrobe": {
+      "contact": "Elena Vance & East Coast Assistant Stylist",
+      "fittings": "Hotel production suite Apr 17 at 15:00",
+      "pickup": "Apr 15 at 12:00 from Boston Local Studio House",
+      "steaming": "The Newbury Boston Wardrobe Suite",
+      "stylingNotes": "Classic New England navy and golden yellow accents homage to Boston colors. Windproof thermal vests on standby for coastal breeze.",
+      "checklist": [
+        {
+          "item": "Approve digital wardrobe lookbook",
+          "done": true
+        },
+        {
+          "item": "Schedule wardrobe pick up from costume house",
+          "done": true
+        },
+        {
+          "item": "Prep rain gear for unpredictable April New England weather",
+          "done": false
+        },
+        {
+          "item": "Check trainer running shoes broken in for street concrete",
+          "done": false
+        },
+        {
+          "item": "Post-shoot wrap, inventory check & dry cleaning return",
+          "done": false
+        }
+      ]
+    },
+    "schedule": [
+      {
+        "time": "06:30",
+        "scene": "Boylston Street Sunrise Stride",
+        "desc": "Finish line blue and yellow banner stride",
+        "loc": "Boylston St & Copley Sq"
+      },
+      {
+        "time": "10:00",
+        "scene": "Heartbreak Hill Incline Pacing",
+        "desc": "Scott Carvin discussing hill cadence and form",
+        "loc": "Newton / Comm Ave"
+      },
+      {
+        "time": "14:00",
+        "scene": "Josh Crosby Endurance Story",
+        "desc": "Local Boston heritage and rowing-to-running fitness",
+        "loc": "Charles River Esplanade"
+      }
+    ],
+    "deliverables": [
+      {
+        "title": "Boston Historic Route Reel",
+        "format": "9:16 Vertical",
+        "platform": "IG Reels / TikTok",
+        "deadline": "2027-04-18"
+      }
+    ],
+    "postProduction": {
+      "drives": "A-Cam CFexpress (512GB), B-Cam CFexpress (512GB), Sound 32-bit float WAVs, Drone ProRes",
+      "serverPath": "smb://apple-social-media.corp.apple.com/FY27/SHT-010_Boylston_St_&_Heartbreak_Hill/",
+      "checksumStatus": "Verified (Silverstack MD5 Hash Check)",
+      "proxiesUploaded": false,
+      "masterUploaded": false,
+      "alertSent": false,
+      "notes": "All A-Cam and B-Cam media mirrored to LaCie 4TB Rugged Shuttle A & Shuttle B before cloud sync.",
+      "alertChannels": [
+        "#fitness-social-post",
+        "#fy27-deliverables-alerts",
+        "post-supervisors@group.apple.com"
+      ]
+    }
+  },
+  {
+    "id": "SHT-011",
+    "title": "Earth Day - Topanga Canyon Trail & Mindfulness Capture",
+    "date": "2027-04-10",
+    "type": "On-Location",
+    "location": "Topanga Canyon & Eagle Rock, CA",
+    "quarter": "Q3",
+    "linkedEventId": "EVT-2711",
+    "status": "Planning",
+    "producer": "Sebastian York",
+    "dp": "Field DP Unit",
+    "trainers": [
+      "Kyle Ardill",
+      "Sam Sanchez",
+      "Christian Howard"
+    ],
+    "notes": "Natural light, trail GPS features, rugged trail running and mountain yoga.",
+    "travel": {
+      "flights": "Local Southern California production",
+      "hotel": "N/A - Basecamp in Topanga Canyon",
+      "ground": "4WD production vehicles for dirt fire road access",
+      "perDiem": "Catered trail breakfast & box lunches"
+    },
+    "wardrobe": {
+      "contact": "Elena Vance (Wardrobe Lead)",
+      "fittings": "Apr 8 at 14:00 (Studio Wardrobe)",
+      "pickup": "Apr 9 at 11:00 from Culver City Archive",
+      "steaming": "Mobile steamer in production van",
+      "stylingNotes": "Earthy tones (moss, ochre, sand, charcoal). Rugged trail shoes with vibram soles. Apple Watch Ultra trail loop.",
+      "checklist": [
+        {
+          "item": "Approve digital wardrobe lookbook",
+          "done": true
+        },
+        {
+          "item": "Schedule wardrobe pick up from costume house",
+          "done": true
+        },
+        {
+          "item": "Ensure high-friction trail running footwear",
+          "done": false
+        },
+        {
+          "item": "Pack hydration packs & sun protection gear",
+          "done": false
+        },
+        {
+          "item": "Post-shoot wrap, inventory check & dry cleaning return",
+          "done": false
+        }
+      ]
+    },
+    "schedule": [
+      {
+        "time": "06:30",
+        "scene": "Ridge Trail Ascent",
+        "desc": "Kyle & Sam tempo run on dirt trail",
+        "loc": "Eagle Rock Trailhead"
+      },
+      {
+        "time": "09:30",
+        "scene": "Christian Mountain Yoga",
+        "desc": "Restorative outdoor poses with ocean backdrop",
+        "loc": "Summit Viewpoint"
+      },
+      {
+        "time": "12:30",
+        "scene": "Wrap & Card Transfer",
+        "desc": "Footage backup before heat peaks",
+        "loc": "Basecamp Van"
+      }
+    ],
+    "deliverables": [
+      {
+        "title": "Trail Running Earth Day Reel",
+        "format": "9:16 Vertical",
+        "platform": "Instagram Reels",
+        "deadline": "2027-04-20"
+      }
+    ],
+    "postProduction": {
+      "drives": "A-Cam CFexpress (512GB), B-Cam CFexpress (512GB), Sound 32-bit float WAVs, Drone ProRes",
+      "serverPath": "smb://apple-social-media.corp.apple.com/FY27/SHT-011_Topanga_Canyon_&_Eagle_Rock/",
+      "checksumStatus": "Verified (Silverstack MD5 Hash Check)",
+      "proxiesUploaded": false,
+      "masterUploaded": false,
+      "alertSent": false,
+      "notes": "All A-Cam and B-Cam media mirrored to LaCie 4TB Rugged Shuttle A & Shuttle B before cloud sync.",
+      "alertChannels": [
+        "#fitness-social-post",
+        "#fy27-deliverables-alerts",
+        "post-supervisors@group.apple.com"
+      ]
+    }
+  },
+  {
+    "id": "SHT-012",
+    "title": "TCS London Marathon - Tower Bridge Sunrise & UK Crew Shakeout",
+    "date": "2027-04-23",
+    "type": "On-Location",
+    "location": "Tower Bridge & South Bank, London UK",
+    "quarter": "Q3",
+    "linkedEventId": "EVT-2712",
+    "status": "Planning",
+    "producer": "Sebastian York",
+    "dp": "London Production Unit",
+    "trainers": [
+      "Cory Wharton-Malcolm",
+      "Jenn Lau",
+      "Jessica Skye",
+      "Jonelle Lewis"
+    ],
+    "notes": "London-based trainer contingent takeover; dawn run across Tower Bridge; fan meetup.",
+    "travel": {
+      "flights": "Producer travel: BA 268 LAX -> LHR (Apr 20) | Return: BA 269 LHR -> LAX (Apr 27). UK talent local.",
+      "hotel": "Sea Containers London, South Bank (Check-in: Apr 21, Check-out: Apr 27)",
+      "ground": "Mercedes V-Class production van + City of London film permits",
+      "perDiem": "\u00a375 / day London tier"
+    },
+    "wardrobe": {
+      "contact": "Elena Vance & London Stylist Oliver Grant",
+      "fittings": "Sea Containers production suite Apr 22 at 14:00",
+      "pickup": "Apr 21 at 12:00 from London Soho Costume House",
+      "steaming": "Wardrobe room at Sea Containers",
+      "stylingNotes": "High-vis accents for dawn London lighting; sleek weather-resistant shells; matching London team apparel.",
+      "checklist": [
+        {
+          "item": "Approve digital wardrobe lookbook",
+          "done": true
+        },
+        {
+          "item": "Schedule wardrobe pick up from costume house",
+          "done": true
+        },
+        {
+          "item": "Check thermal undergarments for brisk Thames wind",
+          "done": false
+        },
+        {
+          "item": "Mobile garment steamer loaded in production van",
+          "done": false
+        },
+        {
+          "item": "Post-shoot wrap, inventory check & dry cleaning return",
+          "done": false
+        }
+      ]
+    },
+    "schedule": [
+      {
+        "time": "05:00",
+        "scene": "Crew Call & Bridge Permit Verification",
+        "desc": "Police & council liaison check",
+        "loc": "Tower Bridge North Tower"
+      },
+      {
+        "time": "06:00",
+        "scene": "Tower Bridge Golden Hour Stride",
+        "desc": "4 trainers running across empty bridge",
+        "loc": "Tower Bridge Roadway"
+      },
+      {
+        "time": "09:30",
+        "scene": "South Bank Community Coffee Run",
+        "desc": "Casual chats with local running clubs",
+        "loc": "South Bank / Tate Modern"
+      },
+      {
+        "time": "13:30",
+        "scene": "Cutty Sark Finish Preview",
+        "desc": "Course landmarks walkthrough with Cory",
+        "loc": "Greenwich Cutty Sark"
+      }
+    ],
+    "deliverables": [
+      {
+        "title": "London Crew Takeover",
+        "format": "9:16 Vertical",
+        "platform": "IG Reels / TikTok",
+        "deadline": "2027-04-24"
+      }
+    ],
+    "postProduction": {
+      "drives": "A-Cam CFexpress (512GB), B-Cam CFexpress (512GB), Sound 32-bit float WAVs, Drone ProRes",
+      "serverPath": "smb://apple-social-media.corp.apple.com/FY27/SHT-012_Tower_Bridge_&_South_Bank/",
+      "checksumStatus": "Verified (Silverstack MD5 Hash Check)",
+      "proxiesUploaded": false,
+      "masterUploaded": false,
+      "alertSent": false,
+      "notes": "All A-Cam and B-Cam media mirrored to LaCie 4TB Rugged Shuttle A & Shuttle B before cloud sync.",
+      "alertChannels": [
+        "#fitness-social-post",
+        "#fy27-deliverables-alerts",
+        "post-supervisors@group.apple.com"
+      ]
+    }
+  },
+  {
+    "id": "SHT-013",
+    "title": "International Dance Day - Viral Routine & Duet Challenge",
+    "date": "2027-04-20",
+    "type": "Studio Production",
+    "location": "Fitness+ Studio, Los Angeles CA",
+    "quarter": "Q3",
+    "linkedEventId": "EVT-2713",
+    "status": "Planning",
+    "producer": "Sebastian York",
+    "dp": "Studio Director",
+    "trainers": [
+      "Ben Allen",
+      "Jhon Gonzalez",
+      "LaShawn Jones",
+      "Tyrell D\u00e9sean"
+    ],
+    "notes": "Short-form sync routines designed for TikTok and Instagram Remix / Duets.",
+    "travel": {
+      "flights": "Local LA talent",
+      "hotel": "N/A",
+      "ground": "Studio lot passes",
+      "perDiem": "Studio catering"
+    },
+    "wardrobe": {
+      "contact": "Elena Vance & Commercial Dance Stylist Maya Brooks",
+      "fittings": "Apr 18 at 13:00 (Stage A Dressing)",
+      "pickup": "Apr 17 at 15:00 from Downtown Dance Wardrobe Hub",
+      "steaming": "Stage A Dressing Suite 08:00",
+      "stylingNotes": "Streetwear-meets-dance: relaxed track pants, statement graphic athletic jerseys, pristine flat-sole dance sneakers.",
+      "checklist": [
+        {
+          "item": "Approve digital wardrobe lookbook",
+          "done": true
+        },
+        {
+          "item": "Schedule wardrobe pick up from costume house",
+          "done": true
+        },
+        {
+          "item": "Ensure shoes have proper spin/pivot sole traction",
+          "done": false
+        },
+        {
+          "item": "Microphone tape down during high-impact choreography",
+          "done": false
+        },
+        {
+          "item": "Post-shoot wrap, inventory check & dry cleaning return",
+          "done": false
+        }
+      ]
+    },
+    "schedule": [
+      {
+        "time": "09:30",
+        "scene": "Choreography Mark-Through",
+        "desc": "Camera track sync to 128 BPM track",
+        "loc": "Stage A"
+      },
+      {
+        "time": "11:00",
+        "scene": "Pop/Funk Routine Master Take",
+        "desc": "Ben & LaShawn leading fast 8-count breakdown",
+        "loc": "Stage A Rig"
+      },
+      {
+        "time": "14:00",
+        "scene": "Latin Groove Duet Setup",
+        "desc": "Jhon & Tyrell split-screen tutorial take",
+        "loc": "Stage B Cyc"
+      }
+    ],
+    "deliverables": [
+      {
+        "title": "Dance Day Duet Starter",
+        "format": "9:16 Vertical",
+        "platform": "TikTok / IG Reels",
+        "deadline": "2027-04-28"
+      }
+    ],
+    "postProduction": {
+      "drives": "A-Cam CFexpress (512GB), B-Cam CFexpress (512GB), Sound 32-bit float WAVs, Drone ProRes",
+      "serverPath": "smb://apple-social-media.corp.apple.com/FY27/SHT-013_Fitness+_Studio/",
+      "checksumStatus": "Verified (Silverstack MD5 Hash Check)",
+      "proxiesUploaded": false,
+      "masterUploaded": false,
+      "alertSent": false,
+      "notes": "All A-Cam and B-Cam media mirrored to LaCie 4TB Rugged Shuttle A & Shuttle B before cloud sync.",
+      "alertChannels": [
+        "#fitness-social-post",
+        "#fy27-deliverables-alerts",
+        "post-supervisors@group.apple.com"
+      ]
+    }
+  },
+  {
+    "id": "SHT-014",
+    "title": "Global Accessibility Awareness Day (GAAD) - Adaptive Movement Spotlight",
+    "date": "2027-05-10",
+    "type": "Studio Production",
+    "location": "Fitness+ Studio Stage C, Los Angeles CA",
+    "quarter": "Q3",
+    "linkedEventId": "EVT-2714",
+    "status": "Planning",
+    "producer": "Sebastian York",
+    "dp": "Studio DP",
+    "trainers": [
+      "Molly Fox",
+      "Joanna Hardy",
+      "Christian Howard"
+    ],
+    "notes": "Spotlight wheelchair workouts, ASL guest coaches, and adaptive modifications.",
+    "travel": {
+      "flights": "Local LA production",
+      "hotel": "N/A",
+      "ground": "Studio accessible parking & production carts",
+      "perDiem": "Studio catering"
+    },
+    "wardrobe": {
+      "contact": "Elena Vance & Accessibility Consultant Sarah Lin",
+      "fittings": "May 7 at 11:00",
+      "pickup": "May 8 at 14:00 from Culver City Archive",
+      "steaming": "Stage C Dressing 08:00",
+      "stylingNotes": "High contrast solid tops with zero chest graphics to facilitate clear ASL finger spelling and gesture readability on screen.",
+      "checklist": [
+        {
+          "item": "Approve digital wardrobe lookbook",
+          "done": true
+        },
+        {
+          "item": "Schedule wardrobe pick up from costume house",
+          "done": true
+        },
+        {
+          "item": "Contrast test garments against background for visual clarity",
+          "done": false
+        },
+        {
+          "item": "Check sleeve cuffs allow unrestricted wrist movement",
+          "done": false
+        },
+        {
+          "item": "Post-shoot wrap, inventory check & dry cleaning return",
+          "done": false
+        }
+      ]
+    },
+    "schedule": [
+      {
+        "time": "09:00",
+        "scene": "Wheelchair & Seated Posture Setup",
+        "desc": "Multi-angle framing for upper body mobility",
+        "loc": "Stage C"
+      },
+      {
+        "time": "10:30",
+        "scene": "Molly Fox Adaptive Gentle Flow",
+        "desc": "Chair yoga with clear ASL demonstrations",
+        "loc": "Stage C Center"
+      },
+      {
+        "time": "13:30",
+        "scene": "Joanna Hardy Core Mechanics",
+        "desc": "Adaptive core strengthening principles",
+        "loc": "Loft Set"
+      }
+    ],
+    "deliverables": [
+      {
+        "title": "GAAD Adaptive Fitness Reel",
+        "format": "9:16 Vertical",
+        "platform": "Instagram / LinkedIn",
+        "deadline": "2027-05-18"
+      }
+    ],
+    "postProduction": {
+      "drives": "A-Cam CFexpress (512GB), B-Cam CFexpress (512GB), Sound 32-bit float WAVs, Drone ProRes",
+      "serverPath": "smb://apple-social-media.corp.apple.com/FY27/SHT-014_Fitness+_Studio_Stage_C/",
+      "checksumStatus": "Verified (Silverstack MD5 Hash Check)",
+      "proxiesUploaded": false,
+      "masterUploaded": false,
+      "alertSent": false,
+      "notes": "All A-Cam and B-Cam media mirrored to LaCie 4TB Rugged Shuttle A & Shuttle B before cloud sync.",
+      "alertChannels": [
+        "#fitness-social-post",
+        "#fy27-deliverables-alerts",
+        "post-supervisors@group.apple.com"
+      ]
+    }
+  },
+  {
+    "id": "SHT-015",
+    "title": "Close Your Rings Month - 28-Trainer Global Anthem",
+    "date": "2027-04-28",
+    "type": "Studio Production",
+    "location": "Fitness+ Studio Main Campus, Los Angeles CA",
+    "quarter": "Q3",
+    "linkedEventId": "EVT-2715",
+    "status": "Planning",
+    "producer": "Sebastian York",
+    "dp": "Studio Lead Director",
+    "trainers": [
+      "Bakari Williams",
+      "Anja Garcia",
+      "Cory Wharton-Malcolm",
+      "Kyle Ardill",
+      "Kim Ngo",
+      "Kym Perfetto"
+    ],
+    "notes": "Month-long challenge celebration with full trainer energy.",
+    "travel": {
+      "flights": "International trainers flown in for annual brand shoot week",
+      "hotel": "Culver City Hotel & The Shay",
+      "ground": "Chartered production shuttles",
+      "perDiem": "Full craft service & catering"
+    },
+    "wardrobe": {
+      "contact": "Elena Vance + 3 Assistant Stylists",
+      "fittings": "Apr 26 - 27 (Continuous block in Studio 1-6)",
+      "pickup": "Apr 25 at 10:00 (10 rolling racks from Studio Wardrobe)",
+      "steaming": "Full steam team on site 06:30",
+      "stylingNotes": "Curated ring-spectrum collection (Coral red, bright electric green, cyan blue). Unified high-energy aesthetic.",
+      "checklist": [
+        {
+          "item": "Approve digital wardrobe lookbook",
+          "done": true
+        },
+        {
+          "item": "Schedule wardrobe pick up from costume house",
+          "done": true
+        },
+        {
+          "item": "Tag garments by individual trainer names & sizes",
+          "done": true
+        },
+        {
+          "item": "Continuous floor steaming between camera setups",
+          "done": false
+        },
+        {
+          "item": "Post-shoot wrap, inventory check & dry cleaning return",
+          "done": false
+        }
+      ]
+    },
+    "schedule": [
+      {
+        "time": "08:00",
+        "scene": "All-Trainer Group Formation",
+        "desc": "28-trainer dynamic ripple movement take",
+        "loc": "Stage A Arena"
+      },
+      {
+        "time": "11:30",
+        "scene": "Ring Close Hype Vignettes",
+        "desc": "Individual energetic fist pumps & high fives",
+        "loc": "Stage B"
+      },
+      {
+        "time": "15:00",
+        "scene": "Wrap & Team Photo",
+        "desc": "Annual team portrait and social stills",
+        "loc": "Outdoor Courtyard"
+      }
+    ],
+    "deliverables": [
+      {
+        "title": "Close Your Rings Anthem",
+        "format": "9:16 & 16:9",
+        "platform": "All Social Channels",
+        "deadline": "2027-05-01"
+      }
+    ],
+    "postProduction": {
+      "drives": "A-Cam CFexpress (512GB), B-Cam CFexpress (512GB), Sound 32-bit float WAVs, Drone ProRes",
+      "serverPath": "smb://apple-social-media.corp.apple.com/FY27/SHT-015_Fitness+_Studio_Main_Campus/",
+      "checksumStatus": "Verified (Silverstack MD5 Hash Check)",
+      "proxiesUploaded": false,
+      "masterUploaded": false,
+      "alertSent": false,
+      "notes": "All A-Cam and B-Cam media mirrored to LaCie 4TB Rugged Shuttle A & Shuttle B before cloud sync.",
+      "alertChannels": [
+        "#fitness-social-post",
+        "#fy27-deliverables-alerts",
+        "post-supervisors@group.apple.com"
+      ]
+    }
+  },
+  {
+    "id": "SHT-016",
+    "title": "Global Running Day - Pacing Clinic & 5K Virtual Run",
+    "date": "2027-05-27",
+    "type": "On-Location",
+    "location": "Santa Monica Track & Beach Promenade, CA",
+    "quarter": "Q3",
+    "linkedEventId": "EVT-2716",
+    "status": "Planning",
+    "producer": "Sebastian York",
+    "dp": "Field DP Unit",
+    "trainers": [
+      "Cory Wharton-Malcolm",
+      "Emily Fayette",
+      "Scott Carvin",
+      "Jamie-Ray Hartshorne"
+    ],
+    "notes": "Time to Run feature celebration and 5K pacing tips for runners.",
+    "travel": {
+      "flights": "Local Southern California production",
+      "hotel": "N/A",
+      "ground": "Production basecamp at Santa Monica College Track",
+      "perDiem": "Craft service & lunch stipends"
+    },
+    "wardrobe": {
+      "contact": "Elena Vance (Wardrobe Lead)",
+      "fittings": "May 25 at 14:00",
+      "pickup": "May 26 at 11:00 from Culver City Archive",
+      "steaming": "Basecamp mobile unit",
+      "stylingNotes": "Lightweight breathable track singlets, speed split shorts, racing shoes. Matching Apple Watch Sport bands.",
+      "checklist": [
+        {
+          "item": "Approve digital wardrobe lookbook",
+          "done": true
+        },
+        {
+          "item": "Schedule wardrobe pick up from costume house",
+          "done": true
+        },
+        {
+          "item": "Color code singlets by pacing group",
+          "done": false
+        },
+        {
+          "item": "Post-shoot wrap, inventory check & dry cleaning return",
+          "done": false
+        }
+      ]
+    },
+    "schedule": [
+      {
+        "time": "06:30",
+        "scene": "Track Dawn Intervals",
+        "desc": "High shutter speed track sprint drills",
+        "loc": "SMC Running Track"
+      },
+      {
+        "time": "09:30",
+        "scene": "Ocean View Tempo Run",
+        "desc": "Cory & Emily leading pacing tips",
+        "loc": "Palisades Park"
+      },
+      {
+        "time": "12:00",
+        "scene": "5K Countdown Soundbites",
+        "desc": "Motivation for global virtual runners",
+        "loc": "Santa Monica Pier Base"
+      }
+    ],
+    "deliverables": [
+      {
+        "title": "Global Running Day 5K Reel",
+        "format": "9:16 Vertical",
+        "platform": "IG Reels / TikTok",
+        "deadline": "2027-06-01"
+      }
+    ],
+    "postProduction": {
+      "drives": "A-Cam CFexpress (512GB), B-Cam CFexpress (512GB), Sound 32-bit float WAVs, Drone ProRes",
+      "serverPath": "smb://apple-social-media.corp.apple.com/FY27/SHT-016_Santa_Monica_Track_&_Beach_Promenade/",
+      "checksumStatus": "Verified (Silverstack MD5 Hash Check)",
+      "proxiesUploaded": false,
+      "masterUploaded": false,
+      "alertSent": false,
+      "notes": "All A-Cam and B-Cam media mirrored to LaCie 4TB Rugged Shuttle A & Shuttle B before cloud sync.",
+      "alertChannels": [
+        "#fitness-social-post",
+        "#fy27-deliverables-alerts",
+        "post-supervisors@group.apple.com"
+      ]
+    }
+  },
+  {
+    "id": "SHT-017",
+    "title": "WWDC 2027 - New Health & Fitness Features Social Unveil",
+    "date": "2027-06-08",
+    "type": "On-Location",
+    "location": "Apple Park, Cupertino CA",
+    "quarter": "Q3",
+    "linkedEventId": "EVT-2717",
+    "status": "Planning",
+    "producer": "Sebastian York",
+    "dp": "Cupertino Video Unit",
+    "trainers": [
+      "Cory Wharton-Malcolm",
+      "Bakari Williams",
+      "Jenn Lau"
+    ],
+    "notes": "On-campus social coverage reacting to new watchOS and Fitness+ capabilities.",
+    "travel": {
+      "flights": "Outbound: WN 1845 BUR -> SJC (Jun 7, 07:30) | Return: WN 2124 SJC -> BUR (Jun 9, 18:00)",
+      "hotel": "Hotel Citrine, Silicon Valley / Palo Alto",
+      "ground": "Apple Park internal shuttle and badge check-in",
+      "perDiem": "Apple Park Caff\u00e8 Macs credentials"
+    },
+    "wardrobe": {
+      "contact": "Elena Vance & Cupertino Corporate Stylist",
+      "fittings": "Hotel Citrine Jun 7 evening",
+      "pickup": "Jun 6 at 15:00 from Culver City Archive",
+      "steaming": "Hotel suite & Apple Park green room",
+      "stylingNotes": "Polished smart athleisure suitable for Apple Park Ring interior and courtyard interviews.",
+      "checklist": [
+        {
+          "item": "Approve digital wardrobe lookbook",
+          "done": true
+        },
+        {
+          "item": "Schedule wardrobe pick up from costume house",
+          "done": true
+        },
+        {
+          "item": "Ensure adherence to Apple brand security guidelines",
+          "done": true
+        },
+        {
+          "item": "Post-shoot wrap, inventory check & dry cleaning return",
+          "done": false
+        }
+      ]
+    },
+    "schedule": [
+      {
+        "time": "08:30",
+        "scene": "Keynote Reaction Staging",
+        "desc": "Setting up camera outside Steve Jobs Theater",
+        "loc": "SJT Terrace"
+      },
+      {
+        "time": "12:00",
+        "scene": "Feature Walkthrough Soundbites",
+        "desc": "Trainers demoing watchOS updates in Caff\u00e8 Macs",
+        "loc": "Apple Park Ring"
+      },
+      {
+        "time": "15:00",
+        "scene": "Developer Fitness Experience",
+        "desc": "Quick talks with health app builders",
+        "loc": "Tantau Courtyard"
+      }
+    ],
+    "deliverables": [
+      {
+        "title": "WWDC Fitness Highlights",
+        "format": "9:16 & 16:9",
+        "platform": "Social Channels",
+        "deadline": "2027-06-08"
+      }
+    ],
+    "postProduction": {
+      "drives": "A-Cam CFexpress (512GB), B-Cam CFexpress (512GB), Sound 32-bit float WAVs, Drone ProRes",
+      "serverPath": "smb://apple-social-media.corp.apple.com/FY27/SHT-017_Apple_Park/",
+      "checksumStatus": "Verified (Silverstack MD5 Hash Check)",
+      "proxiesUploaded": false,
+      "masterUploaded": false,
+      "alertSent": false,
+      "notes": "All A-Cam and B-Cam media mirrored to LaCie 4TB Rugged Shuttle A & Shuttle B before cloud sync.",
+      "alertChannels": [
+        "#fitness-social-post",
+        "#fy27-deliverables-alerts",
+        "post-supervisors@group.apple.com"
+      ]
+    }
+  },
+  {
+    "id": "SHT-018",
+    "title": "International Yoga Day - Solstice Sunrise Flow",
+    "date": "2027-06-19",
+    "type": "On-Location",
+    "location": "Malibu Coastal Bluffs, CA",
+    "quarter": "Q3",
+    "linkedEventId": "EVT-2718",
+    "status": "Planning",
+    "producer": "Sebastian York",
+    "dp": "Field DP",
+    "trainers": [
+      "Dice Iida-Klein",
+      "Jessica Skye",
+      "Jonelle Lewis",
+      "Christian Howard",
+      "Molly Fox"
+    ],
+    "notes": "Summer solstice outdoor flow series, ocean horizon, natural golden hour.",
+    "travel": {
+      "flights": "Jessica and Jonelle flown from London (BA 269 Jun 16 - Jun 23)",
+      "hotel": "The Surfrider Malibu (Check-in: Jun 18, Check-out: Jun 20)",
+      "ground": "Production transport along PCH",
+      "perDiem": "$85/day crew standard"
+    },
+    "wardrobe": {
+      "contact": "Elena Vance (Wardrobe Lead)",
+      "fittings": "Jun 18 at 14:00 at Malibu hotel base",
+      "pickup": "Jun 17 at 11:00 from Culver City Archive",
+      "steaming": "Malibu basecamp unit",
+      "stylingNotes": "Serene coastal palette (sand, off-white, soft sage green, pale sky blue). Pure organic cotton and seamless stretch knits.",
+      "checklist": [
+        {
+          "item": "Approve digital wardrobe lookbook",
+          "done": true
+        },
+        {
+          "item": "Schedule wardrobe pick up from costume house",
+          "done": true
+        },
+        {
+          "item": "Bring weighted mats to prevent wind flapping on cliffs",
+          "done": false
+        },
+        {
+          "item": "Post-shoot wrap, inventory check & dry cleaning return",
+          "done": false
+        }
+      ]
+    },
+    "schedule": [
+      {
+        "time": "05:30",
+        "scene": "Dawn Call & Mat Alignment",
+        "desc": "Camera facing east towards sunrise over bay",
+        "loc": "Point Dume Overlook"
+      },
+      {
+        "time": "06:15",
+        "scene": "Sun Salutation Sequence",
+        "desc": "Synchronized fluid 5-trainer flow",
+        "loc": "Point Dume Bluff"
+      },
+      {
+        "time": "09:00",
+        "scene": "Solstice Breathwork Close",
+        "desc": "Jessica Skye leading soundscape breathwork",
+        "loc": "Malibu Beach Base"
+      }
+    ],
+    "deliverables": [
+      {
+        "title": "Solstice Flow Hero Video",
+        "format": "9:16 Vertical",
+        "platform": "IG Reels / YouTube",
+        "deadline": "2027-06-21"
+      }
+    ],
+    "postProduction": {
+      "drives": "A-Cam CFexpress (512GB), B-Cam CFexpress (512GB), Sound 32-bit float WAVs, Drone ProRes",
+      "serverPath": "smb://apple-social-media.corp.apple.com/FY27/SHT-018_Malibu_Coastal_Bluffs/",
+      "checksumStatus": "Verified (Silverstack MD5 Hash Check)",
+      "proxiesUploaded": false,
+      "masterUploaded": false,
+      "alertSent": false,
+      "notes": "All A-Cam and B-Cam media mirrored to LaCie 4TB Rugged Shuttle A & Shuttle B before cloud sync.",
+      "alertChannels": [
+        "#fitness-social-post",
+        "#fy27-deliverables-alerts",
+        "post-supervisors@group.apple.com"
+      ]
+    }
+  },
+  {
+    "id": "SHT-019",
+    "title": "National Parks Summer Challenge - Yosemite Alpine Hike",
+    "date": "2027-08-20",
+    "type": "On-Location",
+    "location": "Yosemite Valley & Glacier Point, CA",
+    "quarter": "Q4",
+    "linkedEventId": "EVT-2719",
+    "status": "Planning",
+    "producer": "Sebastian York",
+    "dp": "Outdoor Adventure Unit",
+    "trainers": [
+      "Josh Crosby",
+      "Kyle Ardill",
+      "Anja Garcia"
+    ],
+    "notes": "Annual National Parks badge challenge; rugged granite trails and elevation gain.",
+    "travel": {
+      "flights": "Fly into FAT (Fresno Yosemite Airport) via UA / DL",
+      "hotel": "The Ahwahnee / Rush Creek Lodge (Aug 19 - Aug 23)",
+      "ground": "National Park permitted 4WD vans + wilderness permit reservation",
+      "perDiem": "$95/day park travel tier"
+    },
+    "wardrobe": {
+      "contact": "Elena Vance & Outdoor Technical Stylist",
+      "fittings": "Aug 17 at 14:00 (Studio)",
+      "pickup": "Aug 18 at 10:00 from Outdoor Gear Costume Vault",
+      "steaming": "Rush Creek lodge staging room",
+      "stylingNotes": "High-durability technical hiking apparel, mountain sun protection, trail hiking footwear with deep lugs.",
+      "checklist": [
+        {
+          "item": "Approve digital wardrobe lookbook",
+          "done": true
+        },
+        {
+          "item": "Schedule wardrobe pick up from costume house",
+          "done": true
+        },
+        {
+          "item": "Check pack weight and hydration compatibility",
+          "done": false
+        },
+        {
+          "item": "Post-shoot wrap, inventory check & dry cleaning return",
+          "done": false
+        }
+      ]
+    },
+    "schedule": [
+      {
+        "time": "06:00",
+        "scene": "Glacier Point Sunrise Call",
+        "desc": "Half Dome golden light backdrop",
+        "loc": "Glacier Point"
+      },
+      {
+        "time": "09:00",
+        "scene": "Mist Trail Elevation Ascent",
+        "desc": "Stair climbing and Apple Watch elevation gain demos",
+        "loc": "Vernal Fall Trail"
+      },
+      {
+        "time": "14:00",
+        "scene": "Alpine Recovery Session",
+        "desc": "Anja leading outdoor mobility stretches",
+        "loc": "Tenaya Lake Shore"
+      }
+    ],
+    "deliverables": [
+      {
+        "title": "National Parks Trail Reel",
+        "format": "9:16 Vertical",
+        "platform": "IG Reels / TikTok",
+        "deadline": "2027-08-24"
+      }
+    ],
+    "postProduction": {
+      "drives": "A-Cam CFexpress (512GB), B-Cam CFexpress (512GB), Sound 32-bit float WAVs, Drone ProRes",
+      "serverPath": "smb://apple-social-media.corp.apple.com/FY27/SHT-019_Yosemite_Valley_&_Glacier_Point/",
+      "checksumStatus": "Verified (Silverstack MD5 Hash Check)",
+      "proxiesUploaded": false,
+      "masterUploaded": false,
+      "alertSent": false,
+      "notes": "All A-Cam and B-Cam media mirrored to LaCie 4TB Rugged Shuttle A & Shuttle B before cloud sync.",
+      "alertChannels": [
+        "#fitness-social-post",
+        "#fy27-deliverables-alerts",
+        "post-supervisors@group.apple.com"
+      ]
+    }
+  },
+  {
+    "id": "SHT-020",
+    "title": "Sydney Marathon - 7th Major Celebration & Harbour Bridge Sunrise",
+    "date": "2027-08-28",
+    "type": "On-Location",
+    "location": "Sydney Harbour Bridge & Opera House, Sydney Australia",
+    "quarter": "Q4",
+    "linkedEventId": "EVT-2720",
+    "status": "Planning",
+    "producer": "Sebastian York",
+    "dp": "Sydney Production Unit (DP: Liam Hemsworth / Aus Crew)",
+    "trainers": [
+      "Cory Wharton-Malcolm",
+      "Sam Sanchez"
+    ],
+    "notes": "Celebrating Sydney's induction as the 7th Abbott World Marathon Major.",
+    "travel": {
+      "flights": "Outbound: QF 12 LAX -> SYD (Aug 24, 22:30) | Return: QF 11 SYD -> LAX (Sep 1, 11:20)",
+      "hotel": "Park Hyatt Sydney, The Rocks (Check-in: Aug 26, Check-out: Sep 1)",
+      "ground": "Local production van + Sydney Roads Maritime Services Harbour Bridge filming permit",
+      "perDiem": "$140 AUD / day standard international rate"
+    },
+    "wardrobe": {
+      "contact": "Elena Vance & Sydney Local Wardrobe Lead Chloe Davies",
+      "fittings": "Park Hyatt Suite Aug 27 at 14:00",
+      "pickup": "Aug 26 at 15:00 from Paddington Costume Studio Sydney",
+      "steaming": "Park Hyatt production wardrobe suite",
+      "stylingNotes": "Vibrant emerald green and gold accents (Australian sports heritage) with modern athletic technical cuts. Windbreakers for harbour gusts.",
+      "checklist": [
+        {
+          "item": "Approve digital wardrobe lookbook",
+          "done": true
+        },
+        {
+          "item": "Schedule wardrobe pick up from costume house",
+          "done": true
+        },
+        {
+          "item": "Verify Australian custom biosecurity clearance for running shoes",
+          "done": true
+        },
+        {
+          "item": "Mobile garment steamer packed in harbour support van",
+          "done": false
+        },
+        {
+          "item": "Post-shoot wrap, inventory check & dry cleaning return",
+          "done": false
+        }
+      ]
+    },
+    "schedule": [
+      {
+        "time": "05:30",
+        "scene": "Harbour Bridge Pedestrian Stride",
+        "desc": "Sweeping runner perspective against Opera House sunrise",
+        "loc": "Harbour Bridge Walkway"
+      },
+      {
+        "time": "08:30",
+        "scene": "Opera House Forecourt Sprints",
+        "desc": "Fast pacing clips against iconic sails",
+        "loc": "Bennelong Point"
+      },
+      {
+        "time": "11:30",
+        "scene": "Community Shakeout at Circular Quay",
+        "desc": "Fan interactions and pre-race buzz",
+        "loc": "The Rocks / Quay"
+      }
+    ],
+    "deliverables": [
+      {
+        "title": "Sydney 7th Major Anthem",
+        "format": "9:16 Vertical",
+        "platform": "IG / TikTok / Shorts",
+        "deadline": "2027-08-29"
+      }
+    ],
+    "postProduction": {
+      "drives": "A-Cam CFexpress (512GB), B-Cam CFexpress (512GB), Sound 32-bit float WAVs, Drone ProRes",
+      "serverPath": "smb://apple-social-media.corp.apple.com/FY27/SHT-020_Sydney_Harbour_Bridge_&_Opera_House/",
+      "checksumStatus": "Verified (Silverstack MD5 Hash Check)",
+      "proxiesUploaded": false,
+      "masterUploaded": false,
+      "alertSent": false,
+      "notes": "All A-Cam and B-Cam media mirrored to LaCie 4TB Rugged Shuttle A & Shuttle B before cloud sync.",
+      "alertChannels": [
+        "#fitness-social-post",
+        "#fy27-deliverables-alerts",
+        "post-supervisors@group.apple.com"
+      ]
+    }
+  },
+  {
+    "id": "SHT-021",
+    "title": "Apple Fall Keynote 2027 - Hardware Social Reveal",
+    "date": "2027-09-08",
+    "type": "On-Location",
+    "location": "Steve Jobs Theater & Apple Park, Cupertino CA",
+    "quarter": "Q4",
+    "linkedEventId": "EVT-2721",
+    "status": "Planning",
+    "producer": "Sebastian York",
+    "dp": "Cupertino Event Production",
+    "trainers": [
+      "Cory Wharton-Malcolm",
+      "Bakari Williams",
+      "Anja Garcia",
+      "Kyle Ardill"
+    ],
+    "notes": "Next-generation Apple Watch Series & Ultra feature launches; instant reaction reels.",
+    "travel": {
+      "flights": "Outbound: WN 1202 BUR -> SJC (Sep 7) | Return: WN 1405 SJC -> BUR (Sep 10)",
+      "hotel": "Juniper Hotel Cupertino / Cupertino Hotel",
+      "ground": "Apple corporate shuttle passes",
+      "perDiem": "Keynote event catering"
+    },
+    "wardrobe": {
+      "contact": "Elena Vance (Wardrobe Lead)",
+      "fittings": "Sep 6 at 11:00 in LA before departing",
+      "pickup": "Sep 5 at 14:00 from Studio Costume Shop",
+      "steaming": "Cupertino Green Room 07:00",
+      "stylingNotes": "Sophisticated black, charcoal, and deep navy tones that showcase new hardware case finishes and launch-day watch bands.",
+      "checklist": [
+        {
+          "item": "Approve digital wardrobe lookbook",
+          "done": true
+        },
+        {
+          "item": "Schedule wardrobe pick up from costume house",
+          "done": true
+        },
+        {
+          "item": "Strict embargo check on new band colors",
+          "done": true
+        },
+        {
+          "item": "Post-shoot wrap, inventory check & dry cleaning return",
+          "done": false
+        }
+      ]
+    },
+    "schedule": [
+      {
+        "time": "07:30",
+        "scene": "Hands-On Demo Room Staging",
+        "desc": "Camera testing in Steve Jobs Theater lower level",
+        "loc": "SJT Hands-on Area"
+      },
+      {
+        "time": "11:30",
+        "scene": "Live Reaction Clips",
+        "desc": "Trainers testing new Workout app capabilities",
+        "loc": "Hands-on Area"
+      },
+      {
+        "time": "14:30",
+        "scene": "Apple Park Ring Walkthrough",
+        "desc": "First impressions and fitness takeaway wrap",
+        "loc": "Courtyard Walkway"
+      }
+    ],
+    "deliverables": [
+      {
+        "title": "Keynote Fitness Reaction Cut",
+        "format": "9:16 Vertical",
+        "platform": "Social Channels",
+        "deadline": "2027-09-08"
+      }
+    ],
+    "postProduction": {
+      "drives": "A-Cam CFexpress (512GB), B-Cam CFexpress (512GB), Sound 32-bit float WAVs, Drone ProRes",
+      "serverPath": "smb://apple-social-media.corp.apple.com/FY27/SHT-021_Steve_Jobs_Theater_&_Apple_Park/",
+      "checksumStatus": "Verified (Silverstack MD5 Hash Check)",
+      "proxiesUploaded": false,
+      "masterUploaded": false,
+      "alertSent": false,
+      "notes": "All A-Cam and B-Cam media mirrored to LaCie 4TB Rugged Shuttle A & Shuttle B before cloud sync.",
+      "alertChannels": [
+        "#fitness-social-post",
+        "#fy27-deliverables-alerts",
+        "post-supervisors@group.apple.com"
+      ]
+    }
+  },
+  {
+    "id": "SHT-022",
+    "title": "BMW Berlin Marathon - Brandenburg Gate Finale & Year-End Wrap",
+    "date": "2027-09-25",
+    "type": "On-Location",
+    "location": "Brandenburg Gate & Tiergarten, Berlin Germany",
+    "quarter": "Q4",
+    "linkedEventId": "EVT-2722",
+    "status": "Planning",
+    "producer": "Sebastian York",
+    "dp": "EU Production Unit",
+    "trainers": [
+      "Cory Wharton-Malcolm",
+      "Scott Carvin",
+      "Emily Fayette"
+    ],
+    "notes": "Fastest course on earth hype, fan signs, finish line celebration, closing FY27.",
+    "travel": {
+      "flights": "Outbound: LH 453 LAX -> MUC -> BER (Sep 22) | Return: LH 452 BER -> MUC -> LAX (Sep 28)",
+      "hotel": "Hotel de Rome, Behrenstra\u00dfe Berlin (Check-in: Sep 23, Check-out: Sep 28)",
+      "ground": "Mercedes Sprinter Production Van + Berlin Senate filming clearance",
+      "perDiem": "\u20ac85 / day Berlin rate"
+    },
+    "wardrobe": {
+      "contact": "Elena Vance & Berlin Local Stylist Greta Bauer",
+      "fittings": "Hotel de Rome suite Sep 24 at 15:00",
+      "pickup": "Sep 23 at 14:00 from Babelsberg Wardrobe Studio Berlin",
+      "steaming": "Hotel de Rome production base",
+      "stylingNotes": "High-contrast speed-themed running wear (cobalt blue and crisp white). Weather shells for brisk autumn Berlin morning.",
+      "checklist": [
+        {
+          "item": "Approve digital wardrobe lookbook",
+          "done": true
+        },
+        {
+          "item": "Schedule wardrobe pick up from costume house",
+          "done": true
+        },
+        {
+          "item": "Inspect footwear cleanliness for Brandenburg Gate monument permits",
+          "done": false
+        },
+        {
+          "item": "Pack mobile steamer in Tiergarten chase vehicle",
+          "done": false
+        },
+        {
+          "item": "Post-shoot wrap, inventory check & dry cleaning return",
+          "done": false
+        }
+      ]
+    },
+    "schedule": [
+      {
+        "time": "06:30",
+        "scene": "Brandenburg Gate Morning Stride",
+        "desc": "Iconic landmark run through the columns",
+        "loc": "Pariser Platz"
+      },
+      {
+        "time": "10:30",
+        "scene": "Tiergarten Community Shakeout",
+        "desc": "Park running with German running community",
+        "loc": "Tiergarten Park"
+      },
+      {
+        "time": "14:00",
+        "scene": "FY27 Season-End Wrap Toast",
+        "desc": "Trainers reflecting on the full marathon majors calendar",
+        "loc": "Pariser Platz"
+      }
+    ],
+    "deliverables": [
+      {
+        "title": "Berlin Speed Capital Reel",
+        "format": "9:16 Vertical",
+        "platform": "IG Reels / TikTok",
+        "deadline": "2027-09-25"
+      },
+      {
+        "title": "FY27 Full Season Recap",
+        "format": "9:16 & 16:9",
+        "platform": "All Social Channels",
+        "deadline": "2027-09-30"
+      }
+    ],
+    "postProduction": {
+      "drives": "A-Cam CFexpress (512GB), B-Cam CFexpress (512GB), Sound 32-bit float WAVs, Drone ProRes",
+      "serverPath": "smb://apple-social-media.corp.apple.com/FY27/SHT-022_Brandenburg_Gate_&_Tiergarten/",
+      "checksumStatus": "Verified (Silverstack MD5 Hash Check)",
+      "proxiesUploaded": false,
+      "masterUploaded": false,
+      "alertSent": false,
+      "notes": "All A-Cam and B-Cam media mirrored to LaCie 4TB Rugged Shuttle A & Shuttle B before cloud sync.",
+      "alertChannels": [
+        "#fitness-social-post",
+        "#fy27-deliverables-alerts",
+        "post-supervisors@group.apple.com"
+      ]
+    }
+  }
+];
 
     // State
     let shootsData = JSON.parse(localStorage.getItem('apple_fy27_shoots') || 'null') || DEFAULT_SHOOTS;
@@ -1032,6 +3074,88 @@
       document.getElementById('shoot-detail-modal').classList.remove('hidden');
     }
 
+
+    function renderUploadButtons(post) {
+      const btnProxies = document.getElementById('btn-toggle-proxies');
+      const btnMasters = document.getElementById('btn-toggle-masters');
+      const alertBtn = document.getElementById('btn-send-post-alert');
+      const alertStatusText = document.getElementById('modal-alert-status-text');
+
+      if (post.proxiesUploaded) {
+        btnProxies.className = "flex-1 py-1.5 px-2 rounded text-[11px] font-semibold border bg-emerald-500/20 text-emerald-300 border-emerald-500/30";
+        btnProxies.innerHTML = `<i class="fa-solid fa-check mr-1"></i> Proxies Uploaded`;
+      } else {
+        btnProxies.className = "flex-1 py-1.5 px-2 rounded text-[11px] font-semibold border bg-slate-800 hover:bg-slate-700 text-slate-300 border-slate-700";
+        btnProxies.innerHTML = `<i class="fa-solid fa-arrow-up mr-1"></i> Mark Proxies Uploaded`;
+      }
+
+      if (post.masterUploaded) {
+        btnMasters.className = "flex-1 py-1.5 px-2 rounded text-[11px] font-semibold border bg-emerald-500/20 text-emerald-300 border-emerald-500/30";
+        btnMasters.innerHTML = `<i class="fa-solid fa-check-double mr-1"></i> Masters Uploaded`;
+      } else {
+        btnMasters.className = "flex-1 py-1.5 px-2 rounded text-[11px] font-semibold border bg-slate-800 hover:bg-slate-700 text-slate-300 border-slate-700";
+        btnMasters.innerHTML = `<i class="fa-solid fa-cloud mr-1"></i> Mark Masters Uploaded`;
+      }
+
+      if (post.alertSent) {
+        alertBtn.className = "bg-emerald-600 text-white font-semibold text-xs px-3.5 py-1.5 rounded-lg shadow-md flex items-center space-x-1.5";
+        document.getElementById('btn-post-alert-label').innerText = "Alert Sent to Post Team";
+        alertStatusText.innerHTML = `<span class="text-emerald-400 font-medium">✓ Post partners notified with download links & checksum hashes</span>`;
+      } else {
+        alertBtn.className = "bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold text-xs px-3.5 py-1.5 rounded-lg shadow-md transition flex items-center space-x-1.5";
+        document.getElementById('btn-post-alert-label').innerText = "Send Alert to Post Team";
+        alertStatusText.innerText = "Drafting notification to editorial, sound & color teams";
+      }
+    }
+
+    function toggleWardrobeCheck(idx, isChecked) {
+      if (!activeShootForModal || !activeShootForModal.wardrobe) return;
+      activeShootForModal.wardrobe.checklist[idx].done = isChecked;
+      saveState();
+      openShootDetail(activeShootForModal.id);
+    }
+
+    function toggleUploadStatus(type) {
+      if (!activeShootForModal) return;
+      if (!activeShootForModal.postProduction) {
+        activeShootForModal.postProduction = {
+          drives: "A-Cam & B-Cam CFexpress, Sound WAVs",
+          serverPath: `smb://apple-social-media.corp.apple.com/FY27/${activeShootForModal.id}/`,
+          checksumStatus: "Verified (Silverstack MD5 Hash Check)",
+          proxiesUploaded: false,
+          masterUploaded: false,
+          alertSent: false,
+          notes: "Media backed up to production shuttles.",
+          alertChannels: ["#fitness-social-post", "#fy27-deliverables-alerts"]
+        };
+      }
+      if (type === 'proxies') {
+        activeShootForModal.postProduction.proxiesUploaded = !activeShootForModal.postProduction.proxiesUploaded;
+      } else if (type === 'masters') {
+        activeShootForModal.postProduction.masterUploaded = !activeShootForModal.postProduction.masterUploaded;
+      }
+      saveState();
+      renderUploadButtons(activeShootForModal.postProduction);
+    }
+
+    function sendPostProductionAlert() {
+      if (!activeShootForModal) return;
+      if (!activeShootForModal.postProduction) {
+        toggleUploadStatus('proxies');
+      }
+      activeShootForModal.postProduction.alertSent = true;
+      saveState();
+      renderUploadButtons(activeShootForModal.postProduction);
+      
+      const channels = (activeShootForModal.postProduction.alertChannels || []).join(', ');
+      alert(`🚀 Post-Production Alert Broadcasted!
+
+Shoot: ${activeShootForModal.title} (${activeShootForModal.id})
+Destination: ${activeShootForModal.postProduction.serverPath}
+Notified Partners: ${channels}
+Status: Media verified, proxies online & ready for ingest.`);
+    }
+
     function closeShootDetailModal() {
       document.getElementById('shoot-detail-modal').classList.add('hidden');
     }
@@ -1199,6 +3323,26 @@
               `).join('')}
             </tbody>
           </table>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <h3 style="font-size: 14px; font-weight: bold; border-bottom: 1px solid #ccc; padding-bottom: 4px;">TRAVEL & ACCOMMODATIONS</h3>
+          <p style="font-size: 11px; margin: 4px 0;"><strong>Flights:</strong> ${s.travel ? s.travel.flights : 'Local LA / None'}</p>
+          <p style="font-size: 11px; margin: 4px 0;"><strong>Hotel:</strong> ${s.travel ? s.travel.hotel : 'Local LA / None'}</p>
+          <p style="font-size: 11px; margin: 4px 0;"><strong>Ground Transport:</strong> ${s.travel ? s.travel.ground : 'Standard'}</p>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <h3 style="font-size: 14px; font-weight: bold; border-bottom: 1px solid #ccc; padding-bottom: 4px;">WARDROBE & STYLING</h3>
+          <p style="font-size: 11px; margin: 4px 0;"><strong>Wardrobe Lead:</strong> ${s.wardrobe ? s.wardrobe.contact : 'Wardrobe Dept'}</p>
+          <p style="font-size: 11px; margin: 4px 0;"><strong>Wardrobe Pick-up:</strong> ${s.wardrobe ? s.wardrobe.pickup : 'Scheduled'}</p>
+          <p style="font-size: 11px; margin: 4px 0;"><strong>Styling Notes:</strong> ${s.wardrobe ? s.wardrobe.stylingNotes : 'Standard activewear'}</p>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <h3 style="font-size: 14px; font-weight: bold; border-bottom: 1px solid #ccc; padding-bottom: 4px;">END-OF-DAY POST PRODUCTION INGEST</h3>
+          <p style="font-size: 11px; margin: 4px 0;"><strong>Server Destination:</strong> ${s.postProduction ? s.postProduction.serverPath : 'Central Storage'}</p>
+          <p style="font-size: 11px; margin: 4px 0;"><strong>Notification Channels:</strong> ${(s.postProduction ? s.postProduction.alertChannels : ['#social-post']).join(', ')}</p>
         </div>
 
         <div style="margin-bottom: 20px;">
